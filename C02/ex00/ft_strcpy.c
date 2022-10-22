@@ -1,16 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultimate_ft.c                                   :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/19 15:21:30 by mcoppola          #+#    #+#             */
-/*   Updated: 2022/10/19 15:59:32 by mcoppola         ###   ########.fr       */
+/*   Created: 2022/10/20 15:49:32 by mcoppola          #+#    #+#             */
+/*   Updated: 2022/10/20 17:44:07 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_ultimate_ft(int *********nbr)
+char	*ft_strcpy(char *dest, char *src)
 {
-	*********nbr = 42;
+	int	c;
+
+	c = 0;
+	while (src[c] != '\0')
+	{
+		dest[c] = src[c];
+		c++;
+	}
+	return (dest);
 }
+/*
+int	main(void)
+{
+	char	str[] = "ciaoo";
+	char	dest_str[] = "     ";
+	
+	printf("%s",ft_strcpy(dest_str, str));
+	
+}
+*/

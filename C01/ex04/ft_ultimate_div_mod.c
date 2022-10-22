@@ -1,16 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultimate_ft.c                                   :+:      :+:    :+:   */
+/*   ft_ultimate_div_mod.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/19 15:21:30 by mcoppola          #+#    #+#             */
-/*   Updated: 2022/10/19 15:59:32 by mcoppola         ###   ########.fr       */
+/*   Created: 2022/10/19 21:08:04 by mcoppola          #+#    #+#             */
+/*   Updated: 2022/10/19 21:38:17 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_ultimate_ft(int *********nbr)
+void	ft_ultimate_div_mod(int *a, int *b)
 {
-	*********nbr = 42;
+	int	appoggio_a;
+
+	appoggio_a = *a;
+	*a = appoggio_a / *b;
+	*b = appoggio_a % *b;
 }

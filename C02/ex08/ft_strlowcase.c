@@ -1,16 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultimate_ft.c                                   :+:      :+:    :+:   */
+/*   ft_strlowcase.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/19 15:21:30 by mcoppola          #+#    #+#             */
-/*   Updated: 2022/10/19 15:59:32 by mcoppola         ###   ########.fr       */
+/*   Created: 2022/10/22 17:11:02 by mcoppola          #+#    #+#             */
+/*   Updated: 2022/10/22 17:15:06 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_ultimate_ft(int *********nbr)
+char	*ft_strlowcase(char *str)
 {
-	*********nbr = 42;
+	int	c;
+
+	c = 0;
+	while (str[c] != '\0')
+	{
+		if (str[c] >= 'A' && str[c] <= 'Z')
+			str[c] += 32;
+		c++;
+	}
+	return (str);
 }
+/*
+int	main(void)
+{
+	char	str[] = "ssdaASDa23sda";
+
+	printf("%s", ft_strlowcase(str));
+}*/

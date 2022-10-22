@@ -1,16 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultimate_ft.c                                   :+:      :+:    :+:   */
+/*   ft_print_reverse_alphabet.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/19 15:21:30 by mcoppola          #+#    #+#             */
-/*   Updated: 2022/10/19 15:59:32 by mcoppola         ###   ########.fr       */
+/*   Created: 2022/10/14 10:18:11 by mcoppola          #+#    #+#             */
+/*   Updated: 2022/10/14 10:38:31 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_ultimate_ft(int *********nbr)
+#include <unistd.h>
+
+void	ft_print_reverse_alphabet(void)
 {
-	*********nbr = 42;
+	int	dec;
+
+	dec = 'z';
+	while (dec > 96)
+	{
+		write(1, &dec, 1);
+		dec--;
+	}
 }

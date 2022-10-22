@@ -1,16 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultimate_ft.c                                   :+:      :+:    :+:   */
+/*   ft_print_alphabet.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/19 15:21:30 by mcoppola          #+#    #+#             */
-/*   Updated: 2022/10/19 15:59:32 by mcoppola         ###   ########.fr       */
+/*   Created: 2022/10/14 07:49:44 by mcoppola          #+#    #+#             */
+/*   Updated: 2022/10/14 09:01:31 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <unistd.h>
 
-void	ft_ultimate_ft(int *********nbr)
+void	ft_print_alphabet(void)
 {
-	*********nbr = 42;
+	int	dec;
+
+	dec = 'a';
+	while (dec < 123)
+	{
+		write(1, &dec, 1);
+		dec++;
+	}
 }
