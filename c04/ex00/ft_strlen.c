@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 18:22:06 by mcoppola          #+#    #+#             */
-/*   Updated: 2022/10/27 18:22:14 by mcoppola         ###   ########.fr       */
+/*   Created: 2022/10/27 17:00:41 by mcoppola          #+#    #+#             */
+/*   Updated: 2022/10/27 17:07:17 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
+int	ft_strlen(char *str)
 {
-	int		i;
+	int	c;
 
-	i = 0;
-	while (s1[i] != 0 && s1[i] == s2[i])
+	c = 0;
+	while (str[c] != '\0')
 	{
-		i++;
+		c++;
 	}
-	return (s1[i] - s2[i]);
+	return (c);
 }
 /*
 int	main(void)
 {
-	char string1[] = "1Ciao";
-	char string2[] = "Ciao";
-	ft_strcmp(string1, string2);
-}
-*/
+	ft_strlen("prova");
+}*/
