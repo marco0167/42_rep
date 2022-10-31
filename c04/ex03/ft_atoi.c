@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 18:01:57 by mcoppola          #+#    #+#             */
-/*   Updated: 2022/10/27 21:14:39 by mcoppola         ###   ########.fr       */
+/*   Updated: 2022/10/31 14:00:48 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,32 @@
 
 int	ft_atoi(char *str)
 {
-	int	c;
-	int	nb;
-	int	sign;
-	int	num_found;
-
-	c = 0;
-	nb = 0;
-	sign = 1;
-	num_found = 0;
-	while (str[c] != 0)
+	int	i;
+	int	m;
+	int	n;
+	n = 0;
+	m = 0;
+	i = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	while (str[i] == '+' || str[i] == '-')
 	{
-		if (num_found == 1 && !(str[c] >= '0' && str[c] <= '9'))
-			break;
-		else if(str[c] >= '0' && str[c] <= '9')
-		{
-			nb *= 10;
-			nb += str[c] - '0';
-			num_found = 1;
-		}
-		else if (str[c] == '-') 
-			sign *= -1;
-		c++;
+		if (str[i] == '-')
+			m++;
+		i++;
 	}
-		return (nb * sign);
+	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
+	{
+		n = n * 10 + str[i] - '0';
+		i++;
+	}
+	if (m % 2 == 0)
+		return (n);
+	return (n *= -1);
 }
-
+/*
 int	main(void)
 {
 	printf("%d", ft_atoi("   ---+---+1234ab567"));
 }
+*/
