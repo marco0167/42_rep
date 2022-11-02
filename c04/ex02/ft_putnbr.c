@@ -6,40 +6,59 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:35:49 by mcoppola          #+#    #+#             */
-/*   Updated: 2022/10/27 17:53:43 by mcoppola         ###   ########.fr       */
+/*   Updated: 2022/11/01 19:48:10 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
+void	printer_int(long ml10, int counter, long nblong);
+
 void	ft_putnbr(int nb)
 {
-	long	long_nb;
-	long	app_nb;
-	long	sec_nb;
+	int		e;
+	long	nbl;
+	long	mlt;
+	long	nbl2;
 
-	long_nb = nb;
-	if (long_nb < 0)
+	e = 0;
+	mlt = 1;
+	nbl = nb;
+	if (nbl < 0)
 	{
+		nbl *= -1;
 		write(1, "-", 1);
-		long_nb = long_nb * -1;
 	}
-	while (long_nb > 0)
+	nbl2 = nbl;
+	while (nbl2 >= 1)
 	{
-		app_nb = long_nb % 10;
-		long_nb = long_nb / 10;
-		sec_nb = sec_nb * 10 + app_nb;
+		mlt *= 10;
+		nbl2 /= 10;
+		e++;
 	}
-	while (sec_nb > 0)
+	printer_int(mlt, e, nbl);
+	if (nbl == 0)
+		write(1, "0", 1);
+}
+
+void	printer_int(long ml10, int counter, long nblong)
+{
+	char	c;
+	long	x;
+
+	ml10 /= 10;
+	while (counter > 0)
 	{
-		app_nb = sec_nb % 10 + '0';
-		sec_nb = sec_nb / 10;
-		write(1, &app_nb, 1);
+		x = nblong;
+		c = x / ml10 % 10 + '0';
+		write(1, &c, 1);
+		counter --;
+		ml10 /= 10;
 	}
 }
 /*
-int	main(void)
-{
-	ft_putnbr(-1132);
-}
-*/
+   int	main(void)
+   {
+   ft_putnbr(-1132);
+   }
+   */
