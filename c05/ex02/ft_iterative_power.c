@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:15:25 by mcoppola          #+#    #+#             */
-/*   Updated: 2022/11/02 15:52:02 by mcoppola         ###   ########.fr       */
+/*   Updated: 2022/11/03 13:35:24 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@ int	ft_iterative_power(int nb, int power)
 	int	result;
 
 	result = nb;
-	if (nb < 0)
-		return (0);
-	if (power == 0)
-		return (1);
 	while (power > 1)
 	{
 		result *= nb;
 		power--;
 	}
+	if (power == 0)
+		return (1);
+	if (power < 0)
+		return (0);
 	return (result);
 }
 /*
