@@ -6,12 +6,9 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 17:57:35 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/01/03 18:27:29 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/01/05 17:14:24 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// #include <stdio.h>
-// #include <ctype.h>
 
 int	ft_isalpha(int c)
 {
@@ -20,9 +17,3 @@ int	ft_isalpha(int c)
 	else
 		return (0);
 }
-
-// int	main(void)
-// {
-// 	printf("%d", isalpha('8'));
-// 	printf("%d", ft_isalpha('8'));
-// }

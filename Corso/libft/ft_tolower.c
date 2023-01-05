@@ -6,12 +6,10 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 13:26:27 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/01/05 15:36:16 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/01/05 17:13:38 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <ctype.h>
-// #include <stdio.h>
 int	ft_tolower(int c)
 {
 	if (c >= 'A' && c <= 'Z')
@@ -19,9 +17,3 @@ int	ft_tolower(int c)
 	else
 		return (c);
 }
-
-// int	main(void)
-// {
-// 	printf("%c", ft_tolower('A'));
-// 	printf("%c", tolower('A'));
-// }
