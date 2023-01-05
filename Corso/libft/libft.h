@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:40:28 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/01/05 17:12:35 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/01/05 18:19:37 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ int	ft_isprint(int c);
 int	ft_tolower(int c);
 int	ft_toupper(int c);
 int	ft_strlen(char *s);
+void	ft_bzero(char *s, int n);
 
 #endif

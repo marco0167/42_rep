@@ -6,15 +6,15 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:54:29 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/01/05 17:03:12 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/01/05 17:46:39 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-int	main(void)
+void	ft_bzero(char *s, int n)
 {
-	char	s[5] = "hello";
-
-	while()
-	printf("%s", s);
+	while(n > 0)
+	{
+		s[n - 1] = '\0';
+		n--;
+	}
 }
