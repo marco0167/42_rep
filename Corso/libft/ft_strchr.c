@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 18:40:28 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/01/06 17:33:06 by mcoppola         ###   ########.fr       */
+/*   Created: 2023/01/06 16:54:04 by mcoppola          #+#    #+#             */
+/*   Updated: 2023/01/06 17:34:14 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include <string.h>
+#include <stdio.h>
 
-int		ft_isdigit(int c);
-int		ft_isalpha(int c);
-int		ft_isalnum(int c);
-int		ft_isascii(int c);
-int		ft_isprint(int c);
-int		ft_tolower(int c);
-int		ft_toupper(int c);
-int		ft_strlen(char *s);
-void	ft_bzero(char *s, int n);
-char	*ft_strchr(char *s, int c);
+char	*ft_strchr(char *s, int c)
+{
+	int	i;
 
-#endif
+	i = 0;
+	// if (c == '\0')
+	// 	return ('\0');
+	while (s[i] != c && s[i])
+	{
+		i++;
+	}
+	if (s[i] == c)
+		return (s + i);
+	return ("(null)");
+}
+
+int	main(void)
+{
+	char	*s;
+
+	s = "ciaoo";
+	// printf("%s\n", strchr(s, '5'));
+	printf("%s\n", ft_strchr(s, '5'));
+}
