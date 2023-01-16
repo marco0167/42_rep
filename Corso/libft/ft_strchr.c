@@ -10,16 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
-	int	i;
-
-	i = 0;
-	while (s[i] != c && s[i])
+	while (*s++ != '\0')
 	{
-		i++;
+		if (*s == c)
+			return ((char *)s);
 	}
-	if (s[i] == c)
-		return (s + i);
-	return ("(null)");
+	return (NULL);
 }
