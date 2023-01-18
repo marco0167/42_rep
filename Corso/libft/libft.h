@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:40:28 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/01/06 17:33:06 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/01/18 18:37:59 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ int		ft_isprint(int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 int		ft_strlen(char *s);
-void	ft_bzero(char *s, int n);
+void	ft_bzero(void *s, int n);
 char	*ft_strchr(char *s, int c);
+void	*ft_memset(void *s, int c, int n);
+void	*ft_memcpy(void *dest, void *src, int n);
+void	*ft_memchr(const void *s, int c, int n);
 
 #endif
