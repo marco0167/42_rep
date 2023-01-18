@@ -6,14 +6,14 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 18:04:58 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/01/18 18:37:29 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/01/18 20:01:07 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	*ft_memchr(const void *s, int c, int n)
 {
-	int				i;
-	const	char	*char_s;
+	int			i;
+	const char	*char_s;
 
 	char_s = (const char *)s;
 	i = 0;
@@ -24,5 +24,4 @@ void	*ft_memchr(const void *s, int c, int n)
 		i++;
 	}
 	return ((void *)0);
-
 }
