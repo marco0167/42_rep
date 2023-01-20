@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 19:26:20 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/01/20 14:35:36 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/01/20 14:59:07 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int			i;
+	size_t		i;
 	const char	*char_s1;
 	const char	*char_s2;
 

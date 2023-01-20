@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/18 16:14:33 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/01/20 14:58:59 by mcoppola         ###   ########.fr       */
+/*   Created: 2023/01/20 14:47:36 by mcoppola          #+#    #+#             */
+/*   Updated: 2023/01/20 14:58:26 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/* potrebbe non dover fare i controlli char_src[i] && char_dest[i]
-all'interno del while */
-void	*ft_memcpy(void *restrict dest, const void *restrict src, size_t n)
-{
-	size_t	i;
-	char	*char_src;
-	char	*char_dest;
+// #include <string.h>
+// #include <stdio.h>
 
-	if (dest == (void *)0)
-		return ((void *)0);
-	char_src = (char *)src;
-	char_dest = (char *)dest;
-	i = 0;
-	while (i < n && char_src[i] && char_dest[i])
-	{
-		char_dest[i] = char_src[i];
-		i++;
-	}
-	return (dest);
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	return (ft_memcmp(s1, s2, n));
 }
+
+// int	main()
+// {
+// 	char	s1[]= "";
+// 	char	s2[]= "ciauoo";
+
+// 	printf("%d\n", ft_strncmp(s1, s2, 4));
+// 	printf("%d\n", strncmp(s1, s2, 4));
+// }

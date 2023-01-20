@@ -6,19 +6,37 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 11:40:42 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/01/20 14:27:48 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/01/20 15:29:29 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+// #include <string.h>
+// #include <stdio.h>
+
 char	*ft_strrchr(const char *s, int c)
 {
-	int	i;
+	size_t	i;
 
-	i = ft_strlen();
-	while (*s++ != '\0')
+	i = ft_strlen((char *)s) - 1;
+	if(!s)
+		return (NULL);
+	while (s[i] != '\0')
 	{
-		if (*s == c)
-			return ((char *)s);
+		if (s[i] == c)
+			return (((char *)s) + i);
+		i--;
 	}
-	return ((void *)0);
+	if (s[i] == c)
+		return (((char *)s) + i);
+	return (NULL);
 }
+
+// int main()
+// {
+// 	// void *d = 0;
+// 	char s[]="ciaoaoaoasssd";
+
+// 	printf("%s", ft_strrchr(s, '0'));
+// 	printf("%s", strrchr(s, '0'));
+// }
