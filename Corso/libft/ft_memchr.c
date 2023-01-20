@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/06 16:54:04 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/01/17 13:02:04 by mcoppola         ###   ########.fr       */
+/*   Created: 2023/01/18 18:04:58 by mcoppola          #+#    #+#             */
+/*   Updated: 2023/01/18 20:01:07 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
+void	*ft_memchr(const void *s, int c, int n)
 {
-	while (*s++ != '\0')
+	int			i;
+	const char	*char_s;
+
+	char_s = (const char *)s;
+	i = 0;
+	while (i < n && char_s[i])
 	{
-		if (*s == c)
-			return ((char *)s);
+		if (char_s[i] == c)
+			return (((void *)char_s) + i);
+		i++;
 	}
 	return ((void *)0);
 }

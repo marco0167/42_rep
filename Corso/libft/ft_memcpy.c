@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/06 16:54:04 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/01/17 13:02:04 by mcoppola         ###   ########.fr       */
+/*   Created: 2023/01/18 16:14:33 by mcoppola          #+#    #+#             */
+/*   Updated: 2023/01/18 17:55:23 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
+/* potrebbe non dover fare i controlli char_src[i] && char_dest[i]
+all'interno del while */
+void	*ft_memcpy(void *dest, void *src, int n)
 {
-	while (*s++ != '\0')
+	int		i;
+	char	*char_src;
+	char	*char_dest;
+
+	if (dest == (void *)0)
+		return ((void *)0);
+	char_src = (char *)src;
+	char_dest = (char *)dest;
+	i = 0;
+	while (i < n && char_src[i] && char_dest[i])
 	{
-		if (*s == c)
-			return ((char *)s);
+		char_dest[i] = char_src[i];
+		i++;
 	}
-	return ((void *)0);
+	return (dest);
 }
