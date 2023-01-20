@@ -6,11 +6,13 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 18:04:58 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/01/18 20:01:07 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/01/20 14:38:20 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memchr(const void *s, int c, int n)
+#include "libft.h"
+
+void	*ft_memchr(const void *s, int c, size_t n)
 {
 	int			i;
 	const char	*char_s;

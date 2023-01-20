@@ -6,11 +6,13 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 16:42:24 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/01/06 16:43:23 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/01/20 14:30:38 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *s)
+#include "libft.h"
+
+size_t	ft_strlen(char *s)
 {
 	int	l;
 
