@@ -6,32 +6,60 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 20:44:31 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/01/22 21:03:12 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:56:19 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+//#include <stdio.h>
+//#include <string.h>
+#include "libft.h"
 
-int	main()
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	int	bf1[10] = {1,2,3,4,5,6,7,8,9,10};
-	// int	bf2[10] = {1,2,3,4,5,6,7,8,9,10};
-	int i;
+	char		*d;
+	const char	*s;
+	size_t		i;
 
+	d = dst;
+	s = src;
 	i = 0;
-	memmove(bf1 + 2, bf1, sizeof(int) * 10);
-	// memcpy(bf2 + 2, bf1, sizeof(int) * 10);
-	while (bf1[i])
+	if (d < s)
 	{
-		printf("i=%d, num=%d, indirizzo=%p\n", i, bf1[i], &bf1[i]);
-		i++;
+		while (i < len)
+		{
+			d[i] = s[i];
+			i++;
+		}
 	}
-	i = 0;
-	// while (bf2[i])
-	// {
-	// 	printf("i=%d, num=%d\n", i, bf2[i]);
-	// 	i++;
-	// }
-
+	else
+	{
+		while (len != 0)
+		{
+			d[len - 1] = s[len - 1];
+			len--;
+		}
+	}
+	return (dst);
 }
+
+//int	main()
+//{
+//	int	bf1[] = {1,2,3,4,5,6,7,8,9,10, '\0'};
+//	int	bf2[] = {1,2,3,4,5,6,7,8,9,10, '\0'};
+//	int i;
+//
+//	i = 0;
+//	memmove(bf1 + 2, bf1, sizeof(int) * 8);
+//	ft_memmove(bf2 + 2, bf2, sizeof(int) * 8);
+//	while (bf1[i])
+//	{
+//		printf("i=%d, num=%d, indirizzo=%p\n", i, bf1[i], &bf1[i]);
+//		i++;
+//	}
+//	i = 0;
+//	while (bf2[i])
+//	{
+//		printf("i=%d, num=%d\n", i, bf2[i]);
+//		i++;
+//	}
+//}

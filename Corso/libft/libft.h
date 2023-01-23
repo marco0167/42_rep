@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:40:28 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/01/20 14:37:58 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/01/23 12:02:36 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ void	*ft_memset(void *s, int c, size_t n);
 void	*ft_memcpy(void *restrict dest, const void *restrict src, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
+void	*memmove(void *dst, const void *src, size_t len);
 
 #endif

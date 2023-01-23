@@ -1,42 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 11:40:42 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/01/23 12:01:26 by mcoppola         ###   ########.fr       */
+/*   Created: 2023/01/23 16:00:42 by mcoppola          #+#    #+#             */
+/*   Updated: 2023/01/23 16:56:11 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-// #include <string.h>
-// #include <stdio.h>
 
-char	*ft_strrchr(const char *s, int c)
+int	ft_atoi(const char *str)
 {
-	size_t	i;
+	int			n;
+	int			sign;
+	const char	*s;
 
-	i = ft_strlen((char *)s) - 1;
-	if (!s)
-		return (NULL);
-	while (s[i] != '\0')
+	n = 0;
+	sign = 1;
+	s = str;
+	while (*s == ' ' || *s == '\t' || *s == '\n' || *s == '\r'
+		|| *s == '\f' || *s == '\v')
+		s++;
+	if (*s == '-')
 	{
-		if (s[i] == c)
-			return (((char *)s) + i);
-		i--;
+		sign = -1;
+		s++;
 	}
-	if (s[i] == c)
-		return (((char *)s) + i);
-	return (NULL);
+	else if (*s == '+')
+		s++;
+	while (*s >= '0' && *s <= '9')
+	{
+		n = n * 10;
+		n += *s - '0';
+		s++;
+	}
+	return (n * sign);
 }
-
-// int main()
-// {
-// 	// void *d = 0;
-// 	char s[]="ciaoaoaoasssd";
-
-// 	printf("%s", ft_strrchr(s, '0'));
-// 	printf("%s", strrchr(s, '0'));
-// }
