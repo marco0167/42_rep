@@ -6,14 +6,14 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 16:14:33 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/01/20 14:58:59 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/01/24 18:22:22 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 /* potrebbe non dover fare i controlli char_src[i] && char_dest[i]
 all'interno del while */
-void	*ft_memcpy(void *restrict dest, const void *restrict src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t	i;
 	char	*char_src;
