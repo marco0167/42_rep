@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 19:53:13 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/01/23 19:59:51 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/01/25 20:17:02 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	size_t	n;
 
 	dstlen = ft_strlen(dst);
-	srclen = ft_strlen(src);
+	srclen = ft_strlen((char *)src);
 	if (dstsize <= dstlen)
 		return (dstlen + srclen);
 	if (srclen < dstsize - dstlen - 1)

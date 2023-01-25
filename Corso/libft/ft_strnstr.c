@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 18:53:41 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/01/23 19:18:01 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/01/25 20:18:33 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	needle_len;
 
-	needle_len = ft_strlen(needle);
+	needle_len = ft_strlen((char *)needle);
 	if (needle_len == 0)
 		return ((char *)haystack);
 	while (len >= needle_len)
