@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:09:22 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/01/20 14:54:59 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/01/26 00:13:29 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_memset(void *s, int c, size_t n)
 	size_t	i;
 
 	i = 0;
-	while (i < n && ((char *)s)[i])
+	while (i < n)
 	{
 		((char *)s)[i] = c;
 		i++;

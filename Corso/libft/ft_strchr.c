@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:54:04 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/01/23 12:00:56 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/01/25 23:38:50 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,15 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	return ((char *)ft_memchr(s, c, ft_strlen((char *)s)));
+	while (*s != '\0' && c != *s)
+	{
+		s++;
+	}
+	if (*s == c)
+	{
+		return ((char *) s);
+	}
+	return (0);
 }
 // int main()
 // {
