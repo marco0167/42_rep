@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 20:08:01 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/01/24 20:08:03 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/01/26 06:24:39 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ static char	*copy_words(const char *str, int start, int end)
 
 	i = 0;
 	word = malloc((end - start + 1) * sizeof(char));
+	if (!word)
+		return (0);
 	while (start < end)
 	{
 		word[i] = str[start];
@@ -62,19 +64,17 @@ static char	*copy_words(const char *str, int start, int end)
 	return (word);
 }
 
-char	**ft_split(char const *s, char c)
+char	**prova(int start, int j, char const *s, char c)
 {
 	char	**split;
 	int		i;
-	int		start;
-	int		j;
 
-	split = malloc((count_nbr_words(s, c) + 1) * sizeof(char *));
-	if (!s || !split)
+	if (!s)
 		return (0);
-	start = -1;
+	split = malloc((count_nbr_words(s, c) + 1) * sizeof(char *));
+	if (!split)
+		return (0);
 	i = 0;
-	j = 0;
 	while (i <= strlen_neg_pos(s))
 	{
 		if (s[i] != c && start < 0)
@@ -88,4 +88,14 @@ char	**ft_split(char const *s, char c)
 	}
 	split[j] = 0;
 	return (split);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	int	start;
+	int	j;
+
+	start = -1;
+	j = 0;
+	return (prova(start, j, s, c));
 }
