@@ -6,35 +6,36 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 19:58:05 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/01/24 19:58:08 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/01/28 16:44:22 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	strlen_neg_pos(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*new_str;
-	int		i;
-	size_t	j;
+	char			*res;
+	unsigned int	i;
 
-	new_str = (char *)malloc(len + 1);
-	if (!s || !new_str)
+	if (!s)
 		return (0);
-	i = start;
-	j = 0;
-	while (i < strlen_neg_pos(s) && j < len)
-		new_str[j++] = s[i++];
-	new_str[j] = '\0';
-	return (new_str);
+	if (start >= ft_strlen((char *)s))
+	{
+		res = malloc(1);
+		*res = 0;
+		return (res);
+	}
+	i = 0;
+	if (len > ft_strlen((char *)s))
+		len = ft_strlen((char *)s);
+	res = malloc(sizeof(char) * (len + 1));
+	if (!(res))
+		return (0);
+	while (i < len)
+	{
+		*(res + i) = s[start + i];
+		i++;
+	}
+	*(res + i) = 0;
+	return (res);
 }

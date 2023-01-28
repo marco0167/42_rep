@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 20:05:19 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/01/23 20:08:50 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/01/28 16:48:10 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*ptr;
+	void	*dst;
 
-	ptr = malloc(nmemb * size);
-	if (ptr != NULL)
-		ft_memset(ptr, 0, nmemb * size);
-	return (ptr);
+	dst = malloc (size * nmemb);
+	if (!dst)
+		return (0);
+	ft_memset(dst, 0, (size * nmemb));
+	return (dst);
 }
