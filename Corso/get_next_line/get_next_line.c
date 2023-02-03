@@ -6,12 +6,12 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 16:14:10 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/02/02 18:17:04 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/02/03 14:59:11 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-int BUFFER_SIZE= 10;
+// int BUFFER_SIZE= 10;
 size_t	ft_strlen(char *s)
 {
 	size_t	l;
