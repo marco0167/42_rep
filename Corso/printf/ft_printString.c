@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printString.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 16:10:17 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/02/07 17:38:41 by mcoppola         ###   ########.fr       */
+/*   Created: 2023/02/07 17:21:27 by mcoppola          #+#    #+#             */
+/*   Updated: 2023/02/07 17:40:50 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
+int	printString(char *str)
+{
+	int		i;
+	char	*temp;
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
-# include <stdio.h>
-
-void	toUpper(char *str);
-void	revertString(char * str);
-int		printString(char *str);
-int		decToString(long nbr);
-int		hexToString(unsigned long nbr, int upper);
-int		ft_printf(const char *format, ...);
-
-#endif
+	i = 0;
+	while (str[i])
+	{
+		temp = &str[i++];
+		write(1, temp, 1);
+	}
+	return (i);
+}
