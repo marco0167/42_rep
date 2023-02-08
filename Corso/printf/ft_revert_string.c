@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printString.c                                   :+:      :+:    :+:   */
+/*   ft_revert_string.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 17:21:27 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/02/07 17:40:50 by mcoppola         ###   ########.fr       */
+/*   Created: 2023/02/07 17:27:15 by mcoppola          #+#    #+#             */
+/*   Updated: 2023/02/08 14:11:01 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-int	printString(char *str)
+
+void	ft_revert_string(char *str)
 {
+	char	temp;
 	int		i;
-	char	*temp;
+	int		j;
 
 	i = 0;
+	j = 0;
 	while (str[i])
 	{
-		temp = &str[i++];
-		write(1, temp, 1);
+		i++;
 	}
-	return (i);
+	i--;
+	while (i > j)
+	{
+		temp = str[j];
+		str[j] = str[i];
+		str[i] = temp;
+		i--;
+		j++;
+	}
 }

@@ -1,40 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hexToString.c                                   :+:      :+:    :+:   */
+/*   ft_print_string.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 17:28:31 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/02/07 17:38:27 by mcoppola         ###   ########.fr       */
+/*   Created: 2023/02/07 17:21:27 by mcoppola          #+#    #+#             */
+/*   Updated: 2023/02/08 16:11:23 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	hexToString(unsigned long nbr, int upper)
+int	ft_print_string(char *str)
 {
-	char *str;
-	int i;
-	int j;
+	int		i;
+	char	*temp;
 
 	i = 0;
-	j = 0;
-	str = (char *)malloc(sizeof(char) * 100);
-	while (nbr > 0)
+	if (str == NULL)
 	{
-		if (nbr % 16 < 10)
-			str[i] = nbr % 16 + '0';
-		else
-			str[i] = nbr % 16 + 'a' - 10;
-		nbr = nbr / 16;
-		i++;
+		write(1, "(null)", 6);
+		return (6);
 	}
-	str[i] = '\0';
-	revertString(str);
-	if (upper == 1)
-		toUpper(str);
-	j = printString(str);
-	free(str);
-	return (j);
+	while (str[i])
+	{
+		temp = &str[i++];
+		write(1, temp, 1);
+	}
+	return (i);
 }

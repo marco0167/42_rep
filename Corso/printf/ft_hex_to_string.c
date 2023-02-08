@@ -1,38 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_decToString.c                                   :+:      :+:    :+:   */
+/*   ft_hex_to_string.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 17:29:20 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/02/07 17:36:32 by mcoppola         ###   ########.fr       */
+/*   Created: 2023/02/07 17:28:31 by mcoppola          #+#    #+#             */
+/*   Updated: 2023/02/08 16:19:16 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	decToString(long nbr)
+int	ft_hex_to_string(unsigned long nbr, int upper)
 {
-	char *str;
-	int i;
+	char	*str;
+	int		i;
+	int		j;
 
+	if (nbr == 0)
+		return (write(1, "0", 1));
 	i = 0;
+	j = 0;
 	str = (char *)malloc(sizeof(char) * 100);
-	if (nbr < 0)
-	{
-		write(1, "-", 1);
-		nbr = nbr * -1;
-	}
 	while (nbr > 0)
 	{
-		str[i] = nbr % 10 + '0';
-		nbr = nbr / 10;
+		if (nbr % 16 < 10)
+			str[i] = nbr % 16 + '0';
+		else
+			str[i] = nbr % 16 + 'a' - 10;
+		nbr = nbr / 16;
 		i++;
 	}
 	str[i] = '\0';
-	revertString(str);
-	i = printString(str);
+	ft_revert_string(str);
+	if (upper == 1)
+		ft_to_upper(str);
+	j = ft_print_string(str);
 	free(str);
-	return (i);
+	return (j);
 }

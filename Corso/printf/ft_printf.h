@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 16:10:17 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/02/07 17:38:41 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/02/08 14:53:21 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@
 # include <stdarg.h>
 # include <stdio.h>
 
-void	toUpper(char *str);
-void	revertString(char * str);
-int		printString(char *str);
-int		decToString(long nbr);
-int		hexToString(unsigned long nbr, int upper);
+void	ft_to_upper(char *str);
+void	ft_revert_string(char *str);
+int		ft_print_string(char *str);
+int		ft_dec_to_string(long nbr);
+int		ft_hex_to_string(unsigned long nbr, int upper);
 int		ft_printf(const char *format, ...);
+int		ft_printf_condition(const char *format, va_list args);
+int		ft_printf_condition2(const char *format, va_list args);
 
 #endif
