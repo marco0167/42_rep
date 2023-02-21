@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 16:10:12 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/02/08 15:34:10 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/02/08 17:41:56 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_printf(const char *format, ...)
 // {
 // 	char	*str = "H";
 
-// 	printf("%d\n", ft_printf("%c%c%c%c%c", 'a', 'i', 'u', 'e', 'o'));
+// 	printf("%d\n", ft_printf("ciao%c %s%c%c%c%c", 'a', 'i', 'u', 'e', 'o'));
 // 	printf("\n");
 // 	printf("%d\n", printf("%c%c%c%c%c", 'a', 'i', 'u', 'e', 'o'));
 // 	return (0);
