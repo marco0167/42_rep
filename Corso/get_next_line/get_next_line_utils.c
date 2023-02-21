@@ -6,7 +6,11 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 16:14:06 by mcoppola          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/02/21 18:13:12 by mcoppola         ###   ########.fr       */
+=======
+/*   Updated: 2023/02/11 18:38:29 by mcoppola         ###   ########.fr       */
+>>>>>>> 798c0ca0ffdc012def4fad4d98454c91376a1a5f
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +53,13 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
+<<<<<<< HEAD
 	new_str = malloc((ft_strlen((char *)s1) + ft_strlen((char *)s2) + 1)
 			* sizeof(char));
+=======
+	new_str = malloc((ft_strlen((char *)s1)
+				+ ft_strlen((char *)s2) + 1) * sizeof(char));
+>>>>>>> 798c0ca0ffdc012def4fad4d98454c91376a1a5f
 	if (!new_str)
 		return (NULL);
 	i = 0;
