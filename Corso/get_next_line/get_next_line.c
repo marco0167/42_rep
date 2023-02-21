@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 18:19:05 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/02/21 18:19:23 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/02/21 18:20:04 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-<<<<<<< HEAD
 // int    main(void)
 // {
 //     int        fd;
@@ -51,19 +50,4 @@ char	*get_next_line(int fd)
 //     printf("line: %s", get_next_line(fd));
 //     printf("line: %s", get_next_line(fd));
 //     return (0);
-=======
-// int	main(void)
-// {
-// 	int		fd;
-
-// 	fd = open("test", O_RDONLY);
-// 	printf("line: %s", get_next_line(fd));
-// 	printf("line: %s", get_next_line(fd));
-// 	printf("line: %s", get_next_line(fd));
-// 	printf("line: %s", get_next_line(fd));
-// 	printf("line: %s", get_next_line(fd));
-// 	printf("line: %s", get_next_line(fd));
-// 	printf("line: %s", get_next_line(fd));
-// 	return (0);
->>>>>>> 798c0ca0ffdc012def4fad4d98454c91376a1a5f
 // }
