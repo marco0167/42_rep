@@ -51,7 +51,21 @@ char *ft_strdup(const char *s1)
 	return (s2);
 }
 
-char *checker(t_game *game)
+char	*dimension_checker(t_game *game)
+{
+	int i;
+
+	i = 0;
+	while (game->map.map[i])
+	{
+		if (game->map.width != ft_strlen(game->map.map[i]))
+			return ("map not rectangle");
+		i++;
+	}
+	return (0);
+}
+
+char *wall_cheker(t_game *game)
 {
 	int i;
 	int j;
@@ -59,8 +73,6 @@ char *checker(t_game *game)
 	i = 0;
 	while (game->map.map[i])
 	{
-		if (game->map.width != ft_strlen(game->map.map[i]))
-			return ("map not rectangle");
 		j = 0;
 		if (i == 0 || i == (game->map.height - 1))
 		{
@@ -79,6 +91,46 @@ char *checker(t_game *game)
 		i++;
 	}
 	return (0);
+}
+
+char	*obj_checker_scd(t_game *game, int p, int e)
+{
+	if (p != 1)
+		return ("Player error");
+	if (e < 1)
+		return ("Exit error");
+	if (game->collectable.qnt < 1)
+		return ("Collectable error");
+	return (0);
+}
+
+char	*obj_checker(t_game *game)
+{
+	int	i;
+	int	j;
+	int	p;
+	int	e;
+
+	i = 1;
+	p = 0;
+	e = 0;
+	game->collectable.qnt = 0;
+	while (i < game->map.height - 1)
+	{
+		j = 1;
+		while (j < game->map.width - 1)
+		{
+			if (game->map.map[i][j] == 'P')
+				p++;
+			else if (game->map.map[i][j] == 'E')
+				e++;
+			else if (game->map.map[i][j] == 'C')
+				game->collectable.qnt++;
+			j++;
+		}
+		i++;
+	}
+	return (obj_checker_scd(game, p, e));
 }
 
 void set_map_matrix(t_game *game)
@@ -112,5 +164,7 @@ void set_map_matrix(t_game *game)
 		printf("string = %s\n", game->map.map[i]);
 		i++;
 	}
-	printf("CHECKER %s", checker(game));
+	printf("dimension %s\n", dimension_checker(game));
+	printf("wall %s\n", wall_cheker(game));
+	printf("obj %s\n", obj_checker(game));
 }
