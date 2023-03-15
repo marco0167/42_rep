@@ -6,11 +6,12 @@
 #    By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 19:22:19 by mcoppola          #+#    #+#              #
-#    Updated: 2023/02/22 19:28:56 by mcoppola         ###   ########.fr        #
+#    Updated: 2023/03/15 14:39:39 by mcoppola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c # map.c screen.c sprites.c update.c input.c utilz.c utilz_2.c
+SRCS = main.c ./functions/classic_f.c ./functions/map_utils.c ./functions/set_map.c ./get_next_line/get_next_line_utils.c ./get_next_line/get_next_line.c
+
 OBJS = ${SRCS:.c=.o}
 
 CC = gcc
@@ -23,16 +24,16 @@ RM = rm -f
 
 NAME = so_long
 
-PRINTF = #ft_printf/libftprintf.a
+PRINTF = printf/libftprintf.a
 
-GET_NEXT_LINE = #ft_get_next_line/libftget_next_line.a
+GET_NEXT_LINE = get_next_line/get_next_line.a
 
 LIBX = minilibx_opengl_20191021/libmlx.a
 
 INCLUDE = -I include
 
 ${NAME}: ${OBJS}
-	${CC} ${FLAGS} ${LINKAR} ${INCLUDE} ${OBJS} ${PRINTF} ${GET_NEXT_LINE} ${LIBX} -o ${NAME}
+	${CC} ${FLAGS} ${LINKAR} ${INCLUDE} ${OBJS} ${PRINTF} ${LIBX} -o ${NAME}
 
 all: ${NAME}
 

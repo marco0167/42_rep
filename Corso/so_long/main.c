@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/15 11:29:29 by mcoppola          #+#    #+#             */
+/*   Updated: 2023/03/15 15:33:37 by mcoppola         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "main.h"
+#include "so_long.h"
 
 // typedef struct	s_data {
 // 	void	*img;
@@ -40,13 +51,16 @@ t_game	*ft_alloc_game(t_game *game)
 	return (game);
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
 	t_game *game;
 
 	game = ft_alloc_game(game);
 
-
+	map_checker(game, argc, argv);
 	set_map_matrix(game);
-
+	ft_printf("Player position: %d, %d, alive: %d", game->player.position.x, game->player.position.y, game->player.alive);
+	game->mlx = mlx_init();
+	game->window = mlx_new_window(game->mlx, game->map.width * 32, game->map.height * 32, "Hello world!");
+	mlx_loop(game->mlx);
 }
