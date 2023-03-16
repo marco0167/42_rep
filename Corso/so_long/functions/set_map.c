@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:28:51 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/15 16:17:49 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/16 12:23:17 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char *obj_checker_return(t_game *game, int *p, int e)
 		return ("Player error");
 	if (e < 1)
 		return ("Exit error");
-	if (game->collectable.qnt < 1)
+	if (game->objects.collectable < 1)
 		return ("Collectable error");
 	return (0);
 }
@@ -55,18 +55,18 @@ void	get_pos(t_game *game, int *i, int *j, int *p, int *e)
 	if (game->map.map[(*i)][(*j)] == 'P')
 	{
 		(*p)++;
-		game->player.position.x = (*j);
-		game->player.position.y = (*i);
+		game->player_pos.x = (*j);
+		game->player_pos.y = (*i);
 	}
 	else if (game->map.map[(*i)][(*j)] == 'E')
 	{
 		(*e)++;
-		game->exit.position.x = (*j);
-		game->exit.position.y = (*i);
-		game->exit.visible = 0;
+		printf("EXIT pos: %d, %d", (*j), (*i));
+		game->exit_pos.x = (*j);
+		game->exit_pos.y = (*i);
 	}
 	else if (game->map.map[(*i)][(*j)] == 'C')
-		game->collectable.qnt++;
+		game->objects.collectable++;
 }
 
 char *obj_checker(t_game *game)
@@ -79,7 +79,7 @@ char *obj_checker(t_game *game)
 	i = 1;
 	p = 0;
 	e = 0;
-	game->collectable.qnt = 0;
+	game->objects.collectable = 0;
 	while (i < game->map.height - 1)
 	{
 		j = 1;

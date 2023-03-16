@@ -31,31 +31,27 @@ typedef struct s_vector
 	int	x;
 	int	y;
 }				t_vector;
-
-typedef struct s_collectable
-{
-	int	qnt;
-	int	collected;
-}				t_collectable;
-
-typedef struct s_image
-{
-	void	*reference;
-	char	*addr;
-	int		endian;
-}				t_image;
-
-typedef struct s_player
-{
-	t_vector	position;
-	t_image		*img;
-}				t_player;
-
 typedef struct s_exit
 {
-	t_vector	position;
-	short int	visible;
+	void	*door;
+	void	*door_struct;
 }				t_exit;
+
+typedef struct s_sprites
+{
+	void	*floor;
+	void	*wall;
+	t_exit	*exit;
+	void	*collectable;
+	void	*player;
+}				t_sprites;
+
+typedef struct s_objects
+{
+	int	player;
+	int	collectable;
+	int	exit;
+}				t_objects;
 
 typedef struct s_map
 {
@@ -66,12 +62,16 @@ typedef struct s_map
 }				t_map;
 
 typedef struct s_game {
-	void			*mlx;
+	void		*mlx;
 	void		*window;
-	t_map			map;
-	t_player		player;
-	t_exit			exit;
-	t_collectable	collectable;
+	t_map		map;
+	t_sprites	*sprites;
+	t_objects	objects;
+	t_vector	player_pos;
+	t_vector	exit_pos;
+	int			bit;
+	int			collectable_get;
+	short int	time_count;
 }				t_game;
 
 void	*ft_memcpy(void *dest, const void *src, size_t n);
@@ -84,5 +84,8 @@ char	*obj_checker(t_game *game);
 char	*obj_checker_return(t_game *game, int *p, int e);
 char	*map_checker(t_game *game, int argc, char **argv);
 void	set_map_matrix(t_game *game);
+void	print_map(t_game *game);
+void	sprite_assign(t_game *game);
+int	input(int key, void *param);
 
 # endif
