@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:28:51 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/16 12:23:17 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/18 15:05:40 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	get_pos(t_game *game, int *i, int *j, int *p, int *e)
 	else if (game->map.map[(*i)][(*j)] == 'E')
 	{
 		(*e)++;
-		printf("EXIT pos: %d, %d", (*j), (*i));
+		ft_printf("EXIT pos: %d, %d", (*j), (*i));
 		game->exit_pos.x = (*j);
 		game->exit_pos.y = (*i);
 	}
@@ -128,16 +128,21 @@ void set_map_matrix(t_game *game)
 	line = get_next_line(fd);
 	while (line)
 	{
+		free(line);
 		line = get_next_line(fd);
 		game->map.height++;
 	}
+	free(line);
 	close(fd);
 	i = 0;
 	fd = open(game->map.name, O_RDONLY);
 	game->map.map = malloc(sizeof(char *) * game->map.height + 1);
+
 	while (i < game->map.height)
 	{
-		game->map.map[i] = ft_strdup(get_next_line(fd));
+		line = get_next_line(fd);
+		game->map.map[i] = ft_strdup(line);
+		free(line);
 		i++;
 	}
 	game->map.map[i] = 0;

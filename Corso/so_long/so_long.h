@@ -37,10 +37,11 @@ typedef struct s_exit
 	void	*door_struct;
 }				t_exit;
 
+
 typedef struct s_sprites
 {
 	void	*floor;
-	void	*wall;
+	void	**wall;
 	t_exit	*exit;
 	void	*collectable;
 	void	*player;
@@ -86,6 +87,7 @@ char	*map_checker(t_game *game, int argc, char **argv);
 void	set_map_matrix(t_game *game);
 void	print_map(t_game *game);
 void	sprite_assign(t_game *game);
-int	input(int key, void *param);
+int		input(int key, void *param);
+void	close_game(t_game *game);
 
 # endif

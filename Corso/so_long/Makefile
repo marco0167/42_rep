@@ -6,11 +6,11 @@
 #    By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 19:22:19 by mcoppola          #+#    #+#              #
-#    Updated: 2023/03/16 13:53:21 by mcoppola         ###   ########.fr        #
+#    Updated: 2023/03/18 12:38:54 by mcoppola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c ./functions/classic_f.c ./functions/map_utils.c ./functions/set_map.c ./functions/print_map.c ./functions/hooks.c ./get_next_line/get_next_line_utils.c ./get_next_line/get_next_line.c
+SRCS = main.c ./functions/classic_f.c ./functions/map_utils.c ./functions/set_map.c ./functions/close.c ./functions/print_map.c ./functions/hooks.c ./get_next_line/get_next_line_utils.c ./get_next_line/get_next_line.c
 
 OBJS = ${SRCS:.c=.o}
 
