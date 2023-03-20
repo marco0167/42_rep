@@ -42,7 +42,7 @@ typedef struct s_sprites
 {
 	void	*floor;
 	void	**wall;
-	t_exit	*exit;
+	void	**exit;
 	void	*collectable;
 	void	*player;
 }				t_sprites;
@@ -78,16 +78,15 @@ typedef struct s_game {
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 char	*ft_strdup(const char *s1);
 int		ft_strlen2(char *s);
-char	*map_checker(t_game *game, int argc, char **argv);
+int		map_checker(t_game *game, int argc, char **argv);
 char	*dimension_checker(t_game *game);
 char	*wall_cheker(t_game *game);
 char	*obj_checker(t_game *game);
 char	*obj_checker_return(t_game *game, int *p, int e);
-char	*map_checker(t_game *game, int argc, char **argv);
 void	set_map_matrix(t_game *game);
 void	print_map(t_game *game);
 void	sprite_assign(t_game *game);
 int		input(int key, void *param);
-void	close_game(t_game *game);
+void	close_game(t_game *game, int code, char *str);
 
 # endif

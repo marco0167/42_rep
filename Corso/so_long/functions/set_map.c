@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:28:51 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/18 15:05:40 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/20 17:10:14 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	get_pos(t_game *game, int *i, int *j, int *p, int *e)
 	else if (game->map.map[(*i)][(*j)] == 'E')
 	{
 		(*e)++;
-		ft_printf("EXIT pos: %d, %d", (*j), (*i));
+		ft_printf("EXIT pos: %d, %d\n", (*j), (*i));
 		game->exit_pos.x = (*j);
 		game->exit_pos.y = (*i);
 	}
@@ -94,13 +94,16 @@ char *obj_checker(t_game *game)
 	return (0);
 }
 
-char *map_checker(t_game *game, int argc, char **argv)
+int	map_checker(t_game *game, int argc, char **argv)
 {
 	int nameLen;
 	int i;
 
 	if (argc != 2)
-		return ("Map error");
+	{
+		close_game(game, 1, "Wrong number of arguments");
+		return (1);
+	}
 	else
 	{
 		i = 3;
@@ -108,7 +111,10 @@ char *map_checker(t_game *game, int argc, char **argv)
 		while (i >= 0)
 		{
 			if (argv[1][nameLen] != ".ber"[i])
-				return ("Map not .ber");
+			{
+				close_game(game, 1, "Map not .ber");
+				return (1);
+			}
 			i--;
 			nameLen--;
 		}

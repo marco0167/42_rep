@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:56:40 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/18 19:07:44 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/20 16:30:17 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,11 @@ void	print_map(t_game *game)
 					mlx_put_image_to_window(game->mlx, game->window,
 					game->sprites->floor, j * game->bit, i * game->bit);
 					if (game->objects.collectable == 0)
-						game->sprites->exit->door = mlx_xpm_file_to_image(game->mlx, "./assets_32/door_open.xpm", &game->bit, &game->bit);
+						game->sprites->exit[1] = mlx_xpm_file_to_image(game->mlx, "./assets_32/exit/door_open.xpm", &game->bit, &game->bit);
 					mlx_put_image_to_window(game->mlx, game->window,
-					game->sprites->exit->door_struct, j * game->bit, i * game->bit);
+					game->sprites->exit[1], j * game->bit, i * game->bit);
 					mlx_put_image_to_window(game->mlx, game->window,
-					game->sprites->exit->door, j * game->bit, i * game->bit);
+					game->sprites->exit[0], j * game->bit, i * game->bit);
 				}
 			j++;
 		}
@@ -93,7 +93,7 @@ void	print_map(t_game *game)
 void	sprite_assign(t_game *game)
 {
 	game->sprites = malloc(sizeof(t_sprites));
-	game->sprites->exit = malloc(sizeof(t_exit));
+	game->sprites->exit = malloc(sizeof(void) * 2);
 	game->sprites->wall = malloc(sizeof(void) * 8);
 	game->sprites->wall[0] = mlx_xpm_file_to_image(game->mlx, "./assets_32/wall/wall_0.xpm", &game->bit, &game->bit);
 	game->sprites->wall[1] = mlx_xpm_file_to_image(game->mlx, "./assets_32/wall/wall_1.xpm", &game->bit, &game->bit);
@@ -106,7 +106,7 @@ void	sprite_assign(t_game *game)
 	// game->sprites->wall[4] = 0;
 	game->sprites->player = mlx_xpm_file_to_image(game->mlx, "./assets_32/player.xpm", &game->bit, &game->bit);
 	game->sprites->floor = mlx_xpm_file_to_image(game->mlx, "./assets_32/floor.xpm", &game->bit, &game->bit);
-	game->sprites->exit->door = mlx_xpm_file_to_image(game->mlx, "./assets_32/door_close.xpm", &game->bit, &game->bit);
-	game->sprites->exit->door_struct = mlx_xpm_file_to_image(game->mlx, "./assets_32/door_struct.xpm", &game->bit, &game->bit);
+	game->sprites->exit[0] = mlx_xpm_file_to_image(game->mlx, "./assets_32/exit/door_struct.xpm", &game->bit, &game->bit);
+	game->sprites->exit[1] = mlx_xpm_file_to_image(game->mlx, "./assets_32/exit/door_close.xpm", &game->bit, &game->bit);
 	game->sprites->collectable = mlx_xpm_file_to_image(game->mlx, "./assets_32/collectable_1.xpm", &game->bit, &game->bit);
 }
