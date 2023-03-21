@@ -41,8 +41,8 @@ typedef struct s_exit
 typedef struct s_sprites
 {
 	void	*floor;
-	void	**wall;
-	void	**exit;
+	void	*wall[8];
+	void	*exit[2];
 	void	*collectable;
 	void	*player;
 }				t_sprites;
@@ -72,7 +72,7 @@ typedef struct s_game {
 	t_vector	exit_pos;
 	int			bit;
 	int			collectable_get;
-	short int	time_count;
+	// short int	time_count;
 }				t_game;
 
 void	*ft_memcpy(void *dest, const void *src, size_t n);

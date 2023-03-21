@@ -6,7 +6,7 @@
 #    By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 19:22:19 by mcoppola          #+#    #+#              #
-#    Updated: 2023/03/18 12:38:54 by mcoppola         ###   ########.fr        #
+#    Updated: 2023/03/21 12:59:36 by mcoppola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ LIBX = minilibx_opengl_20191021/libmlx.a
 INCLUDE = -I include
 
 ${NAME}: ${OBJS}
-	${CC} ${FLAGS} ${LINKAR} ${INCLUDE} ${OBJS} ${PRINTF} ${LIBX} -o ${NAME}
+	${CC} ${FLAGS} ${LINKAR} ${INCLUDE} ${OBJS} ${PRINTF} ${LIBX} -o ${NAME} -g
 
 all: ${NAME}
 

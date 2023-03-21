@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:29:29 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/20 17:23:00 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/21 13:13:16 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 t_game	*ft_alloc_game(t_game *game)
 {
 	game = malloc(sizeof(t_game));
+	game->collectable_get = 0;
+		// printf("%d\n", game->bit);
 	return (game);
 }
 

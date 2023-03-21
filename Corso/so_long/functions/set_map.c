@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:28:51 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/20 17:10:14 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/21 13:12:23 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,4 +163,5 @@ void set_map_matrix(t_game *game)
 	ft_printf("dimension %s\n", dimension_checker(game));
 	ft_printf("wall %s\n", wall_cheker(game));
 	ft_printf("obj %s\n", obj_checker(game));
+	printf("diocane\n");
 }
