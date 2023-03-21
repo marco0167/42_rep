@@ -41,7 +41,7 @@ typedef struct s_exit
 typedef struct s_sprites
 {
 	void	*floor;
-	void	*wall[8];
+	void	*wall[2];
 	void	*exit[2];
 	void	*collectable;
 	void	*player;
