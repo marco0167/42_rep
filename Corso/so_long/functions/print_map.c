@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:56:40 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/21 13:48:09 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/22 13:26:53 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,20 @@
 
 void	print_wall(t_game *game, int i, int j)
 {
-	if ((i == 0 || i == game->map.height - 1) && j != game->map.width - 1)
-		mlx_put_image_to_window(game->mlx, game->window,
-			game->sprites->wall[0], j * game->bit, i * game->bit);
-	else
+	mlx_put_image_to_window(game->mlx, game->window,
+			game->sprites->floor, j * game->bit, i * game->bit);
+	if (i == 0 && j == game->map.width - 1)
 		mlx_put_image_to_window(game->mlx, game->window,
 			game->sprites->wall[1], j * game->bit, i * game->bit);
+	else if (i == game->map.height - 1 && j == 0)
+		mlx_put_image_to_window(game->mlx, game->window,
+			game->sprites->wall[4], j * game->bit, i * game->bit);
+	else if ((i == 0 || i == game->map.height - 1) && j != game->map.width - 1)
+		mlx_put_image_to_window(game->mlx, game->window,
+			game->sprites->wall[2], j * game->bit, i * game->bit);
+	else
+		mlx_put_image_to_window(game->mlx, game->window,
+			game->sprites->wall[3], j * game->bit, i * game->bit);
 }
 
 void	print_map(t_game *game)
@@ -72,18 +80,13 @@ void	print_map(t_game *game)
 void	sprite_assign(t_game *game)
 {
 	game->sprites = malloc(sizeof(t_sprites));
-	// game->sprites->wall[0] = mlx_xpm_file_to_image(game->mlx, "./assets_32/wall/wall_0.xpm", &game->bit, &game->bit);
-	// game->sprites->wall[1] = mlx_xpm_file_to_image(game->mlx, "./assets_32/wall/wall_1.xpm", &game->bit, &game->bit);
-	// game->sprites->wall[2] = mlx_xpm_file_to_image(game->mlx, "./assets_32/wall/wall_2.xpm", &game->bit, &game->bit);
-	// game->sprites->wall[3] = mlx_xpm_file_to_image(game->mlx, "./assets_32/wall/wall_3.xpm", &game->bit, &game->bit);
-	// game->sprites->wall[4] = mlx_xpm_file_to_image(game->mlx, "./assets_32/wall/angle_0.xpm", &game->bit, &game->bit);
-	// game->sprites->wall[5] = mlx_xpm_file_to_image(game->mlx, "./assets_32/wall/angle_1.xpm", &game->bit, &game->bit);
-	// game->sprites->wall[6] = mlx_xpm_file_to_image(game->mlx, "./assets_32/wall/angle_2.xpm", &game->bit, &game->bit);
-	// game->sprites->wall[7] = mlx_xpm_file_to_image(game->mlx, "./assets_32/wall/angle_3.xpm", &game->bit, &game->bit);
-	game->sprites->wall[0] = mlx_xpm_file_to_image(game->mlx, "assets/wall_1", &game->bit, &game->bit);
-	game->sprites->wall[1] = mlx_xpm_file_to_image(game->mlx, "assets/wall_2", &game->bit, &game->bit);
+	game->sprites->wall[0] = mlx_xpm_file_to_image(game->mlx, "./assets/wall/wall_1.xpm", &game->bit, &game->bit);
+	game->sprites->wall[1] = mlx_xpm_file_to_image(game->mlx, "./assets/wall/wall_2.xpm", &game->bit, &game->bit);
+	game->sprites->wall[2] = mlx_xpm_file_to_image(game->mlx, "./assets/wall/wall_3.xpm", &game->bit, &game->bit);
+	game->sprites->wall[3] = mlx_xpm_file_to_image(game->mlx, "./assets/wall/wall_4.xpm", &game->bit, &game->bit);
+	game->sprites->wall[4] = mlx_xpm_file_to_image(game->mlx, "./assets/wall/wall_5.xpm", &game->bit, &game->bit);
 	game->sprites->player = mlx_xpm_file_to_image(game->mlx, "./assets_32/player.xpm", &game->bit, &game->bit);
-	game->sprites->floor = mlx_xpm_file_to_image(game->mlx, "./assets_32/floor.xpm", &game->bit, &game->bit);
+	game->sprites->floor = mlx_xpm_file_to_image(game->mlx, "./assets/grass_1.xpm", &game->bit, &game->bit);
 	game->sprites->exit[0] = mlx_xpm_file_to_image(game->mlx, "./assets_32/exit/door_struct.xpm", &game->bit, &game->bit);
 	game->sprites->exit[1] = mlx_xpm_file_to_image(game->mlx, "./assets_32/exit/door_close.xpm", &game->bit, &game->bit);
 	game->sprites->collectable = mlx_xpm_file_to_image(game->mlx, "./assets_32/collectable_1.xpm", &game->bit, &game->bit);

@@ -41,7 +41,7 @@ typedef struct s_exit
 typedef struct s_sprites
 {
 	void	*floor;
-	void	*wall[2];
+	void	*wall[5];
 	void	*exit[2];
 	void	*collectable;
 	void	*player;
@@ -72,6 +72,7 @@ typedef struct s_game {
 	t_vector	exit_pos;
 	int			bit;
 	int			collectable_get;
+	int			move_count;
 	// short int	time_count;
 }				t_game;
 
@@ -79,14 +80,16 @@ void	*ft_memcpy(void *dest, const void *src, size_t n);
 char	*ft_strdup(const char *s1);
 int		ft_strlen2(char *s);
 int		map_checker(t_game *game, int argc, char **argv);
-char	*dimension_checker(t_game *game);
-char	*wall_cheker(t_game *game);
-char	*obj_checker(t_game *game);
-char	*obj_checker_return(t_game *game, int *p, int e);
+void	dimension_checker(t_game *game);
+void	wall_cheker(t_game *game);
+void	obj_checker(t_game *game);
+void	obj_checker_return(t_game *game, int *p, int e);
 void	set_map_matrix(t_game *game);
 void	print_map(t_game *game);
 void	sprite_assign(t_game *game);
 int		input(int key, void *param);
 void	close_game(t_game *game, int code, char *str);
+void	ft_set_movement(t_game *game, t_vector old_player_pos);
+char	*ft_itoa(int n);
 
 # endif

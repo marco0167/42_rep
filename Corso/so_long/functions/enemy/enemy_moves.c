@@ -1,26 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_utils.c                                        :+:      :+:    :+:   */
+/*   enemy_moves.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/15 11:29:11 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/21 14:27:39 by mcoppola         ###   ########.fr       */
+/*   Created: 2023/03/22 13:28:07 by mcoppola          #+#    #+#             */
+/*   Updated: 2023/03/22 13:28:35 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../so_long.h"
 
-void	dimension_checker(t_game *game)
-{
-	int i;
 
-	i = 0;
-	while (game->map.map[i])
-	{
-		if (game->map.width != ft_strlen(game->map.map[i]))
-			close_game(game, 2, "map not rectangle");
-		i++;
-	}
-}

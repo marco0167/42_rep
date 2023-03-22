@@ -6,13 +6,13 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:28:51 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/21 13:12:23 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/21 14:32:25 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-char *wall_cheker(t_game *game)
+void	wall_cheker(t_game *game)
 {
 	int i;
 	int j;
@@ -26,28 +26,24 @@ char *wall_cheker(t_game *game)
 			while (game->map.map[i][j])
 			{
 				if (game->map.map[i][j] != '1')
-				{
-					return ("mappa non circondata di muri qui");
-				}
+					close_game(game, 2, "mappa non circondata di muri qui");
 				j++;
 			}
 		}
 		else if (game->map.map[i][0] != '1' || game->map.map[i][game->map.width - 1] != '1')
-			return ("mappa non circondata di muri");
+			close_game(game, 2, "mappa non circondata di muri");
 		i++;
 	}
-	return (0);
 }
 
-char *obj_checker_return(t_game *game, int *p, int e)
+void	obj_checker_return(t_game *game, int *p, int e)
 {
 	if ((*p) != 1)
-		return ("Player error");
+		close_game(game, 2, "Player error");
 	if (e < 1)
-		return ("Exit error");
+		close_game(game, 2, "Exit error");
 	if (game->objects.collectable < 1)
-		return ("Collectable error");
-	return (0);
+		close_game(game, 2, "Collectable error");
 }
 
 void	get_pos(t_game *game, int *i, int *j, int *p, int *e)
@@ -61,7 +57,6 @@ void	get_pos(t_game *game, int *i, int *j, int *p, int *e)
 	else if (game->map.map[(*i)][(*j)] == 'E')
 	{
 		(*e)++;
-		ft_printf("EXIT pos: %d, %d\n", (*j), (*i));
 		game->exit_pos.x = (*j);
 		game->exit_pos.y = (*i);
 	}
@@ -69,7 +64,7 @@ void	get_pos(t_game *game, int *i, int *j, int *p, int *e)
 		game->objects.collectable++;
 }
 
-char *obj_checker(t_game *game)
+void	obj_checker(t_game *game)
 {
 	int i;
 	int j;
@@ -91,7 +86,6 @@ char *obj_checker(t_game *game)
 		i++;
 	}
 	obj_checker_return(game, &p, e);
-	return (0);
 }
 
 int	map_checker(t_game *game, int argc, char **argv)
@@ -143,7 +137,6 @@ void set_map_matrix(t_game *game)
 	i = 0;
 	fd = open(game->map.name, O_RDONLY);
 	game->map.map = malloc(sizeof(char *) * game->map.height + 1);
-
 	while (i < game->map.height)
 	{
 		line = get_next_line(fd);
@@ -153,15 +146,13 @@ void set_map_matrix(t_game *game)
 	}
 	game->map.map[i] = 0;
 	game->map.width = ft_strlen(game->map.map[0]);
-
-	i = 0;
-	while (game->map.map[i] != 0)
-	{
-		ft_printf("string = %s\n", game->map.map[i]);
-		i++;
-	}
-	ft_printf("dimension %s\n", dimension_checker(game));
-	ft_printf("wall %s\n", wall_cheker(game));
-	ft_printf("obj %s\n", obj_checker(game));
-	printf("diocane\n");
+	// i = 0;
+	// while (game->map.map[i] != 0)
+	// {
+	// 	ft_printf("string = %s\n", game->map.map[i]);
+	// 	i++;
+	// }
+	dimension_checker(game);
+	wall_cheker(game);
+	obj_checker(game);
 }

@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:29:29 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/21 13:13:16 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/22 14:09:07 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 t_game	*ft_alloc_game(t_game *game)
 {
 	game = malloc(sizeof(t_game));
-	game->collectable_get = 0;
-		// printf("%d\n", game->bit);
+	game->move_count = 0;
 	return (game);
 }
 
@@ -29,8 +28,6 @@ int main(int argc, char **argv)
 
 	map_checker(game, argc, argv);
 	set_map_matrix(game);
-	// ft_printf("Player position: %d, %d\n", game->player_pos.x, game->player_pos.y);
-
 	game->mlx = mlx_init();
 	game->window = mlx_new_window(game->mlx, game->map.width * game->bit, game->map.height * game->bit, "Hello world!");
 	sprite_assign(game);
