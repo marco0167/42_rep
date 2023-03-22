@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:56:40 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/22 14:49:10 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:22:26 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	print_map(t_game *game)
 					game->sprites->collectable, j * game->bit, i * game->bit);
 			else if (game->map.map[i][j] == 'X')
 				mlx_put_image_to_window(game->mlx, game->window,
-					game->sprites->enemy[0], j * game->bit, i * game->bit);
+					game->sprites->enemy[game->index], j * game->bit, i * game->bit);
 			else if (game->map.map[i][j] == 'E')
 			{
 				if (game->objects.collectable == 0)

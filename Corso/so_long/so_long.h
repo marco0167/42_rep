@@ -72,6 +72,7 @@ typedef struct s_game {
 	int				collectable_get;
 	int				move_count;
 	short int		index;
+	short int		enemy_dir;
 	struct timeval	curr_tm;
 	// short int	time_count;
 }				t_game;
@@ -91,5 +92,8 @@ int		input(int key, void *param);
 void	close_game(t_game *game, int code, char *str);
 void	ft_set_movement(t_game *game, t_vector old_player_pos);
 char	*ft_itoa(int n);
+int		ft_next_frame(t_game *game);
+void	ft_set_text(t_game *game);
+void	ft_enemy_moves(t_game *game);
 
 # endif

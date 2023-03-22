@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:28:51 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/22 16:13:01 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:53:48 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_get_pos(t_game *game, int *i, int *j)
 		game->exit_pos.x = (*j);
 		game->exit_pos.y = (*i);
 	}
-	else if (game->map.map[(*i)][(*j)] == 'E')
+	else if (game->map.map[(*i)][(*j)] == 'X')
 	{
 		game->objects.enemy++;
 		game->enemy_pos.x = (*j);

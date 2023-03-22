@@ -18,6 +18,12 @@ void	ft_is_exit(t_game *game, t_vector old_player_pos)
 			game->player_pos = old_player_pos;
 	}
 }
+void	ft_is_enemy(t_game *game)
+{
+	if (game->enemy_pos.x == game->player_pos.x
+		&& game->enemy_pos.y == game->player_pos.y)
+		close_game(game, 3, "You lose!");
+}
 
 int	input(int key, void *param)
 {
@@ -39,6 +45,7 @@ int	input(int key, void *param)
 		game->player_pos.x += 1;
 	ft_is_collectable(game);
 	ft_is_exit(game, old_player_pos);
+	ft_is_enemy(game);
 	game->map.map[old_player_pos.y][old_player_pos.x] = '0';
 	game->map.map[game->player_pos.y][game->player_pos.x] = 'P';
 	print_map(game);

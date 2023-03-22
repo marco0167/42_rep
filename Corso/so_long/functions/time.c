@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 15:43:16 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/22 15:57:46 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/22 18:07:40 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,20 @@ int	ft_gettimestamp(t_game *game)
 
 int	ft_next_frame(t_game *game)
 {
-	if (ft_gettimestamp(game) >= 140)
+	int	time;
+
+	time = ft_gettimestamp(game);
+	if (time >= 140)
 	{
-		if (game->index == 4)
+		if (game->index == 3)
 			game->index = 0;
 		else
 			game->index++;
-		ft_charge_map_on_screen(game);
+		print_map(game);
+		ft_set_text(game);
+		ft_enemy_moves(game);
 	}
-	if ((game->objects.enemy > 0) && game->enemy_pos.x == game->player_pos.x
-		&& game->enemy_pos.y == game->player_pos.y)
-	{
-		ft_printf("You Lose !!\n");
-		ft_close(game);
-	}
+	// if (time >= 250)
+	ft_is_enemy(game);
 	return (0);
 }
