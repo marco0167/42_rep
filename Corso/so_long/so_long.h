@@ -19,12 +19,7 @@
 #include <stdio.h>
 # include "./get_next_line/get_next_line.h"
 # include "./printf/ft_printf.h"
-
-// typedef struct s_pos
-// {
-// 	int	x;
-// 	int	y;
-// }				t_pos;
+# include <sys/time.h>
 
 typedef struct s_vector
 {
@@ -45,11 +40,13 @@ typedef struct s_sprites
 	void	*exit[2];
 	void	*collectable;
 	void	*player;
+	void	*enemy[4];
 }				t_sprites;
 
 typedef struct s_objects
 {
 	int	player;
+	int	enemy;
 	int	collectable;
 	int	exit;
 }				t_objects;
@@ -63,16 +60,19 @@ typedef struct s_map
 }				t_map;
 
 typedef struct s_game {
-	void		*mlx;
-	void		*window;
-	t_map		map;
-	t_sprites	*sprites;
-	t_objects	objects;
-	t_vector	player_pos;
-	t_vector	exit_pos;
-	int			bit;
-	int			collectable_get;
-	int			move_count;
+	void			*mlx;
+	void			*window;
+	t_map			map;
+	t_sprites		*sprites;
+	t_objects		objects;
+	t_vector		player_pos;
+	t_vector		enemy_pos;
+	t_vector		exit_pos;
+	int				bit;
+	int				collectable_get;
+	int				move_count;
+	short int		index;
+	struct timeval	curr_tm;
 	// short int	time_count;
 }				t_game;
 
@@ -83,7 +83,7 @@ int		map_checker(t_game *game, int argc, char **argv);
 void	dimension_checker(t_game *game);
 void	wall_cheker(t_game *game);
 void	obj_checker(t_game *game);
-void	obj_checker_return(t_game *game, int *p, int e);
+void	obj_checker_return(t_game *game);
 void	set_map_matrix(t_game *game);
 void	print_map(t_game *game);
 void	sprite_assign(t_game *game);

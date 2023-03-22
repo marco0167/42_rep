@@ -27,7 +27,6 @@ void	close_game(t_game *game, int code, char *str)
 		mlx_destroy_window(game->mlx, game->window);
 		free(game);
 	}
-
 	ft_printf("%s\n", str);
 	exit(0);
 }

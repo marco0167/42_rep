@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:56:40 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/22 13:26:53 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/22 14:49:10 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	print_wall(t_game *game, int i, int j)
 {
-	mlx_put_image_to_window(game->mlx, game->window,
-			game->sprites->floor, j * game->bit, i * game->bit);
 	if (i == 0 && j == game->map.width - 1)
 		mlx_put_image_to_window(game->mlx, game->window,
 			game->sprites->wall[1], j * game->bit, i * game->bit);
@@ -41,29 +39,21 @@ void	print_map(t_game *game)
 		j = 0;
 		while (game->map.map[i][j])
 		{
+			mlx_put_image_to_window(game->mlx, game->window,
+				game->sprites->floor, j * game->bit, i * game->bit);
 			if (game->map.map[i][j] == '1')
 				print_wall(game, i, j);
-			else if (game->map.map[i][j] == '0')
-				mlx_put_image_to_window(game->mlx, game->window,
-					game->sprites->floor, j * game->bit, i * game->bit);
 			else if (game->map.map[i][j] == 'P')
-			{
-				mlx_put_image_to_window(game->mlx, game->window,
-					game->sprites->floor, j * game->bit, i * game->bit);
 				mlx_put_image_to_window(game->mlx, game->window,
 					game->sprites->player, j * game->bit, i * game->bit);
-			}
 			else if (game->map.map[i][j] == 'C')
-			{
-				mlx_put_image_to_window(game->mlx, game->window,
-					game->sprites->floor, j * game->bit, i * game->bit);
 				mlx_put_image_to_window(game->mlx, game->window,
 					game->sprites->collectable, j * game->bit, i * game->bit);
-			}
+			else if (game->map.map[i][j] == 'X')
+				mlx_put_image_to_window(game->mlx, game->window,
+					game->sprites->enemy[0], j * game->bit, i * game->bit);
 			else if (game->map.map[i][j] == 'E')
 			{
-				mlx_put_image_to_window(game->mlx, game->window,
-				game->sprites->floor, j * game->bit, i * game->bit);
 				if (game->objects.collectable == 0)
 					game->sprites->exit[1] = mlx_xpm_file_to_image(game->mlx, "./assets_32/exit/door_open.xpm", &game->bit, &game->bit);
 				mlx_put_image_to_window(game->mlx, game->window,
@@ -90,4 +80,8 @@ void	sprite_assign(t_game *game)
 	game->sprites->exit[0] = mlx_xpm_file_to_image(game->mlx, "./assets_32/exit/door_struct.xpm", &game->bit, &game->bit);
 	game->sprites->exit[1] = mlx_xpm_file_to_image(game->mlx, "./assets_32/exit/door_close.xpm", &game->bit, &game->bit);
 	game->sprites->collectable = mlx_xpm_file_to_image(game->mlx, "./assets_32/collectable_1.xpm", &game->bit, &game->bit);
+	game->sprites->enemy[0] = mlx_xpm_file_to_image(game->mlx, "./assets/enemy/enemy_1.xpm", &game->bit, &game->bit);
+	game->sprites->enemy[1] = mlx_xpm_file_to_image(game->mlx, "./assets/enemy/enemy_2.xpm", &game->bit, &game->bit);
+	game->sprites->enemy[2] = mlx_xpm_file_to_image(game->mlx, "./assets/enemy/enemy_3.xpm", &game->bit, &game->bit);
+	game->sprites->enemy[3] = mlx_xpm_file_to_image(game->mlx, "./assets/enemy/enemy_4.xpm", &game->bit, &game->bit);
 }

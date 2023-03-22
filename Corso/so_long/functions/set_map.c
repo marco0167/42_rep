@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:28:51 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/21 14:32:25 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:13:01 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,39 +26,45 @@ void	wall_cheker(t_game *game)
 			while (game->map.map[i][j])
 			{
 				if (game->map.map[i][j] != '1')
-					close_game(game, 2, "mappa non circondata di muri qui");
+					close_game(game, 2, "Mappa non circondata da muri");
 				j++;
 			}
 		}
 		else if (game->map.map[i][0] != '1' || game->map.map[i][game->map.width - 1] != '1')
-			close_game(game, 2, "mappa non circondata di muri");
+			close_game(game, 2, "Mappa non circondata di muri");
 		i++;
 	}
 }
 
-void	obj_checker_return(t_game *game, int *p, int e)
+void	obj_checker_return(t_game *game)
 {
-	if ((*p) != 1)
-		close_game(game, 2, "Player error");
-	if (e < 1)
-		close_game(game, 2, "Exit error");
+	if (game->objects.player != 1)
+		close_game(game, 2, "Player missing");
+	if (game->objects.exit < 1)
+		close_game(game, 2, "Exit missing");
 	if (game->objects.collectable < 1)
-		close_game(game, 2, "Collectable error");
+		close_game(game, 2, "Collectable missing");
 }
 
-void	get_pos(t_game *game, int *i, int *j, int *p, int *e)
+void	ft_get_pos(t_game *game, int *i, int *j)
 {
 	if (game->map.map[(*i)][(*j)] == 'P')
 	{
-		(*p)++;
+		game->objects.player++;
 		game->player_pos.x = (*j);
 		game->player_pos.y = (*i);
 	}
 	else if (game->map.map[(*i)][(*j)] == 'E')
 	{
-		(*e)++;
+		game->objects.exit++;
 		game->exit_pos.x = (*j);
 		game->exit_pos.y = (*i);
+	}
+	else if (game->map.map[(*i)][(*j)] == 'E')
+	{
+		game->objects.enemy++;
+		game->enemy_pos.x = (*j);
+		game->enemy_pos.y = (*i);
 	}
 	else if (game->map.map[(*i)][(*j)] == 'C')
 		game->objects.collectable++;
@@ -68,24 +74,19 @@ void	obj_checker(t_game *game)
 {
 	int i;
 	int j;
-	int p;
-	int e;
 
 	i = 1;
-	p = 0;
-	e = 0;
-	game->objects.collectable = 0;
 	while (i < game->map.height - 1)
 	{
 		j = 1;
 		while (j < game->map.width - 1)
 		{
-			get_pos(game, &i, &j, &p, &e);
+			ft_get_pos(game, &i, &j);
 			j++;
 		}
 		i++;
 	}
-	obj_checker_return(game, &p, e);
+	obj_checker_return(game);
 }
 
 int	map_checker(t_game *game, int argc, char **argv)
