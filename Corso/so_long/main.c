@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:29:29 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/22 16:12:18 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:01:09 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ int main(int argc, char **argv)
 
 	game = ft_alloc_game(game);
 	game->bit = 32;
-	game->mlx = mlx_init();
-	game->window = mlx_new_window(game->mlx, game->map.width * game->bit, game->map.height * game->bit, "Hello world!");
 	map_checker(game, argc, argv);
 	set_map_matrix(game);
+	game->mlx = mlx_init();
+	game->window = mlx_new_window(game->mlx, game->map.width * game->bit, game->map.height * game->bit, "Hello world!");
 	sprite_assign(game);
 	print_map(game);
 	mlx_key_hook(game->window, *input, game);

@@ -10,6 +10,7 @@ void	close_game(t_game *game, int code, char *str)
 		mlx_destroy_image(game->mlx, game->sprites->floor);
 		mlx_destroy_image(game->mlx, game->sprites->player);
 		free(game->sprites);
+		mlx_destroy_window(game->mlx, game->window);
 	}
 	if (code > 1)
 	{
@@ -24,7 +25,6 @@ void	close_game(t_game *game, int code, char *str)
 	}
 	if (code > 0)
 	{
-		mlx_destroy_window(game->mlx, game->window);
 		free(game);
 	}
 	ft_printf("%s\n", str);
