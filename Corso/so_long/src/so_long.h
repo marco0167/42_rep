@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                             :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 18:32:58 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/15 11:18:33 by mcoppola         ###   ########.fr       */
+/*   Created: 2023/03/23 13:17:07 by mcoppola          #+#    #+#             */
+/*   Updated: 2023/03/23 13:20:55 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "./minilibx_opengl_20191021/mlx.h"
+# include "../minilibx_opengl_20191021/mlx.h"
 # include <fcntl.h>
 # include <stdlib.h>
-#include <stdio.h>
-# include "./get_next_line/get_next_line.h"
-# include "./printf/ft_printf.h"
+# include <stdio.h>
+# include "../get_next_line/get_next_line.h"
+# include "../printf/ft_printf.h"
 # include <sys/time.h>
 
 typedef struct s_vector
@@ -31,7 +31,6 @@ typedef struct s_exit
 	void	*door;
 	void	*door_struct;
 }				t_exit;
-
 
 typedef struct s_sprites
 {
@@ -79,7 +78,7 @@ typedef struct s_game {
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 char	*ft_strdup(const char *s1);
 int		ft_strlen2(char *s);
-int		ft_map_checker(t_game *game, int argc, char **argv);
+void	ft_map_checker(t_game *game, int argc, char **argv);
 void	ft_dimension_checker(t_game *game);
 void	ft_wall_cheker(t_game *game);
 void	ft_obj_checker(t_game *game);
@@ -95,5 +94,6 @@ int		ft_next_frame(t_game *game);
 void	ft_set_text(t_game *game);
 void	ft_enemy_moves(t_game *game);
 void	ft_is_enemy(t_game *game);
+void	ft_set_map_matrix_first_part(t_game *game, char *line, int fd);
 
-# endif
+#endif

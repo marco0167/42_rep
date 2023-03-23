@@ -6,12 +6,11 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 15:43:16 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/23 12:19:43 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/23 13:16:15 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
-
+#include "./so_long.h"
 
 int	ft_gettimestamp(t_game *game)
 {

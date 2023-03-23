@@ -6,16 +6,16 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 13:28:07 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/23 12:10:48 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/23 13:15:26 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
-
+#include "../so_long.h"
 
 void	ft_enemy_move_lef(t_game *game)
 {
-	if (game->map.map[game->enemy_pos.y][game->enemy_pos.x - 1] == '0' || game->map.map[game->enemy_pos.y][game->enemy_pos.x - 1] == 'P')
+	if (game->map.map[game->enemy_pos.y][game->enemy_pos.x - 1] == '0'
+			|| game->map.map[game->enemy_pos.y][game->enemy_pos.x - 1] == 'P')
 	{
 		game->map.map[game->enemy_pos.y][game->enemy_pos.x] = '0';
 		game->enemy_pos.x--;
@@ -24,15 +24,13 @@ void	ft_enemy_move_lef(t_game *game)
 		ft_print_map(game);
 	}
 	else
-	{
-
 		game->enemy_dir = 1;
-	}
 }
 
 void	ft_enemy_move_right(t_game *game)
 {
-	if (game->map.map[game->enemy_pos.y][game->enemy_pos.x + 1] == '0' || game->map.map[game->enemy_pos.y][game->enemy_pos.x + 1] == 'P')
+	if (game->map.map[game->enemy_pos.y][game->enemy_pos.x + 1] == '0'
+			|| game->map.map[game->enemy_pos.y][game->enemy_pos.x + 1] == 'P')
 	{
 		game->map.map[game->enemy_pos.y][game->enemy_pos.x] = '0';
 		game->enemy_pos.x++;

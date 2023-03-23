@@ -6,11 +6,11 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 12:16:47 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/23 12:16:48 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/23 13:15:56 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "./so_long.h"
 
 void	ft_close_game(t_game *game, int code, char *str)
 {
@@ -36,9 +36,7 @@ void	ft_close_game(t_game *game, int code, char *str)
 		free(game->map.map);
 	}
 	if (code > 0)
-	{
 		free(game);
-	}
 	ft_printf("%s\n", str);
 	exit(0);
 }

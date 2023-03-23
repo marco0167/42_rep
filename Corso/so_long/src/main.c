@@ -6,11 +6,11 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:29:29 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/23 12:20:14 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/23 13:16:08 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "./so_long.h"
 
 t_game	*ft_alloc_game(t_game *game)
 {
@@ -25,7 +25,7 @@ t_game	*ft_alloc_game(t_game *game)
 	return (game);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_game	*game;
 
@@ -34,7 +34,8 @@ int main(int argc, char **argv)
 	ft_map_checker(game, argc, argv);
 	ft_set_map_matrix(game);
 	game->mlx = mlx_init();
-	game->window = mlx_new_window(game->mlx, game->map.width * game->bit, game->map.height * game->bit, "Hello world!");
+	game->window = mlx_new_window(game->mlx, game->map.width * game->bit,
+			game->map.height * game->bit, "Hello world!");
 	ft_sprite_assign(game);
 	ft_print_map(game);
 	mlx_loop_hook(game->mlx, *ft_next_frame, game);

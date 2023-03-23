@@ -6,11 +6,11 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:29:15 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/23 12:15:33 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/23 13:15:51 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "./so_long.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {

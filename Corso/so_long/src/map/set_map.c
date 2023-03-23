@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:28:51 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/23 12:19:20 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/23 13:03:41 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,11 @@ void	ft_wall_cheker(t_game *game)
 				j++;
 			}
 		}
-		else if (game->map.map[i][0] != '1' || game->map.map[i][game->map.width - 1] != '1')
+		else if (game->map.map[i][0] != '1'
+				|| game->map.map[i][game->map.width - 1] != '1')
 			ft_close_game(game, 2, "Mappa non circondata di muri");
 		i++;
 	}
-}
-
-void	ft_obj_checker_return(t_game *game)
-{
-	if (game->objects.player != 1)
-		ft_close_game(game, 2, "Player missing");
-	if (game->objects.exit < 1)
-		ft_close_game(game, 2, "Exit missing");
-	if (game->objects.collectable < 1)
-		ft_close_game(game, 2, "Collectable missing");
 }
 
 void	ft_get_pos(t_game *game, int *i, int *j)
@@ -89,33 +80,26 @@ void	ft_obj_checker(t_game *game)
 	ft_obj_checker_return(game);
 }
 
-int	ft_map_checker(t_game *game, int argc, char **argv)
+void	ft_map_checker(t_game *game, int argc, char **argv)
 {
-	int	nameLen;
+	int	name_len;
 	int	i;
 
 	if (argc != 2)
-	{
 		ft_close_game(game, 1, "Wrong number of arguments");
-		return (1);
-	}
 	else
 	{
 		i = 3;
-		nameLen = ft_strlen(argv[1]) - 1;
+		name_len = ft_strlen(argv[1]) - 1;
 		while (i >= 0)
 		{
-			if (argv[1][nameLen] != ".ber"[i])
-			{
+			if (argv[1][name_len] != ".ber"[i])
 				ft_close_game(game, 1, "Map not .ber");
-				return (1);
-			}
 			i--;
-			nameLen--;
+			name_len--;
 		}
 		game->map.name = ft_strdup(argv[1]);
 	}
-	return (0);
 }
 
 void	ft_set_map_matrix(t_game *game)
@@ -124,17 +108,7 @@ void	ft_set_map_matrix(t_game *game)
 	int		fd;
 	char	*line;
 
-	game->map.height = 0;
-	fd = open(game->map.name, O_RDONLY);
-	line = get_next_line(fd);
-	while (line)
-	{
-		free(line);
-		line = get_next_line(fd);
-		game->map.height++;
-	}
-	free(line);
-	close(fd);
+	ft_set_map_matrix_first_part(game, line, fd);
 	i = 0;
 	fd = open(game->map.name, O_RDONLY);
 	game->map.map = malloc(sizeof(char *) * game->map.height + 1);

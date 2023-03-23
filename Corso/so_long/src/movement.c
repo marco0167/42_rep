@@ -6,18 +6,17 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 13:44:21 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/23 12:17:27 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/23 13:16:12 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "./so_long.h"
 
 void	ft_set_movement(t_game *game, t_vector old_player_pos)
 {
-	if ((game->player_pos.x != old_player_pos.x) || (game->player_pos.y != old_player_pos.y))
-	{
+	if ((game->player_pos.x != old_player_pos.x)
+		|| (game->player_pos.y != old_player_pos.y))
 		game->move_count++;
-	}
 	ft_set_text(game);
 }
 
