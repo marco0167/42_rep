@@ -30,7 +30,8 @@ void	ft_set_map_matrix_first_part(t_game *game, char *line, int fd)
 	game->map.height = 0;
 	fd = open(game->map.name, O_RDONLY);
 	line = get_next_line(fd);
-	if (!line){
+	if (!line)
+    {
 		free(line);
 		ft_close_game(game, 1, "Empty or non existing map");
 	}
