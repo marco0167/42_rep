@@ -6,16 +6,16 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:28:51 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/22 17:53:48 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/23 12:19:20 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	wall_cheker(t_game *game)
+void	ft_wall_cheker(t_game *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (game->map.map[i])
@@ -26,24 +26,24 @@ void	wall_cheker(t_game *game)
 			while (game->map.map[i][j])
 			{
 				if (game->map.map[i][j] != '1')
-					close_game(game, 2, "Mappa non circondata da muri");
+					ft_close_game(game, 2, "Mappa non circondata da muri");
 				j++;
 			}
 		}
 		else if (game->map.map[i][0] != '1' || game->map.map[i][game->map.width - 1] != '1')
-			close_game(game, 2, "Mappa non circondata di muri");
+			ft_close_game(game, 2, "Mappa non circondata di muri");
 		i++;
 	}
 }
 
-void	obj_checker_return(t_game *game)
+void	ft_obj_checker_return(t_game *game)
 {
 	if (game->objects.player != 1)
-		close_game(game, 2, "Player missing");
+		ft_close_game(game, 2, "Player missing");
 	if (game->objects.exit < 1)
-		close_game(game, 2, "Exit missing");
+		ft_close_game(game, 2, "Exit missing");
 	if (game->objects.collectable < 1)
-		close_game(game, 2, "Collectable missing");
+		ft_close_game(game, 2, "Collectable missing");
 }
 
 void	ft_get_pos(t_game *game, int *i, int *j)
@@ -70,10 +70,10 @@ void	ft_get_pos(t_game *game, int *i, int *j)
 		game->objects.collectable++;
 }
 
-void	obj_checker(t_game *game)
+void	ft_obj_checker(t_game *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 1;
 	while (i < game->map.height - 1)
@@ -86,17 +86,17 @@ void	obj_checker(t_game *game)
 		}
 		i++;
 	}
-	obj_checker_return(game);
+	ft_obj_checker_return(game);
 }
 
-int	map_checker(t_game *game, int argc, char **argv)
+int	ft_map_checker(t_game *game, int argc, char **argv)
 {
-	int nameLen;
-	int i;
+	int	nameLen;
+	int	i;
 
 	if (argc != 2)
 	{
-		close_game(game, 1, "Wrong number of arguments");
+		ft_close_game(game, 1, "Wrong number of arguments");
 		return (1);
 	}
 	else
@@ -107,7 +107,7 @@ int	map_checker(t_game *game, int argc, char **argv)
 		{
 			if (argv[1][nameLen] != ".ber"[i])
 			{
-				close_game(game, 1, "Map not .ber");
+				ft_close_game(game, 1, "Map not .ber");
 				return (1);
 			}
 			i--;
@@ -118,11 +118,11 @@ int	map_checker(t_game *game, int argc, char **argv)
 	return (0);
 }
 
-void set_map_matrix(t_game *game)
+void	ft_set_map_matrix(t_game *game)
 {
-	int i;
-	int fd;
-	char *line;
+	int		i;
+	int		fd;
+	char	*line;
 
 	game->map.height = 0;
 	fd = open(game->map.name, O_RDONLY);
@@ -147,13 +147,7 @@ void set_map_matrix(t_game *game)
 	}
 	game->map.map[i] = 0;
 	game->map.width = ft_strlen(game->map.map[0]);
-	// i = 0;
-	// while (game->map.map[i] != 0)
-	// {
-	// 	ft_printf("string = %s\n", game->map.map[i]);
-	// 	i++;
-	// }
-	dimension_checker(game);
-	wall_cheker(game);
-	obj_checker(game);
+	ft_dimension_checker(game);
+	ft_wall_cheker(game);
+	ft_obj_checker(game);
 }

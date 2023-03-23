@@ -6,13 +6,13 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:29:11 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/22 15:26:13 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/23 12:13:58 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	dimension_checker(t_game *game)
+void	ft_dimension_checker(t_game *game)
 {
 	int i;
 
@@ -20,7 +20,7 @@ void	dimension_checker(t_game *game)
 	while (game->map.map[i])
 	{
 		if (game->map.width != ft_strlen(game->map.map[i]))
-			close_game(game, 2, "map not rectangle");
+			ft_close_game(game, 2, "map not rectangle");
 		i++;
 	}
 }

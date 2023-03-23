@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 13:28:07 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/22 18:14:17 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/23 12:10:48 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_enemy_move_lef(t_game *game)
 		game->enemy_pos.x--;
 		ft_is_enemy(game);
 		game->map.map[game->enemy_pos.y][game->enemy_pos.x] = 'X';
-		print_map(game);
+		ft_print_map(game);
 	}
 	else
 	{
@@ -38,7 +38,7 @@ void	ft_enemy_move_right(t_game *game)
 		game->enemy_pos.x++;
 		ft_is_enemy(game);
 		game->map.map[game->enemy_pos.y][game->enemy_pos.x] = 'X';
-		print_map(game);
+		ft_print_map(game);
 	}
 	else
 	{
@@ -53,4 +53,5 @@ void	ft_enemy_moves(t_game *game)
 		ft_enemy_move_lef(game);
 	else if (game->enemy_dir == 1)
 		ft_enemy_move_right(game);
+	ft_set_text(game);
 }

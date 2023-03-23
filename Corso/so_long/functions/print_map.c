@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_map.c                                        :+:      :+:    :+:   */
+/*   ft_print_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -28,7 +28,7 @@ void	print_wall(t_game *game, int i, int j)
 			game->sprites->wall[3], j * game->bit, i * game->bit);
 }
 
-void	print_map(t_game *game)
+void	ft_print_map(t_game *game)
 {
 	int	i;
 	int	j;
@@ -67,7 +67,7 @@ void	print_map(t_game *game)
 	}
 }
 
-void	sprite_assign(t_game *game)
+void	ft_sprite_assign(t_game *game)
 {
 	game->sprites = malloc(sizeof(t_sprites));
 	game->sprites->wall[0] = mlx_xpm_file_to_image(game->mlx, "./assets/wall/wall_1.xpm", &game->bit, &game->bit);

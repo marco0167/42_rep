@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 15:43:16 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/22 18:07:40 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/23 12:19:43 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,10 @@ int	ft_next_frame(t_game *game)
 			game->index = 0;
 		else
 			game->index++;
-		print_map(game);
+		ft_print_map(game);
 		ft_set_text(game);
 		ft_enemy_moves(game);
 	}
-	// if (time >= 250)
 	ft_is_enemy(game);
 	return (0);
 }
