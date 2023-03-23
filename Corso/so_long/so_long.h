@@ -94,5 +94,6 @@ char	*ft_itoa(int n);
 int		ft_next_frame(t_game *game);
 void	ft_set_text(t_game *game);
 void	ft_enemy_moves(t_game *game);
+void	ft_is_enemy(t_game *game);
 
 # endif

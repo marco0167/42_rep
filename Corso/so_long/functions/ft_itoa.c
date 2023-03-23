@@ -6,10 +6,11 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 14:11:53 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/22 14:11:55 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/23 12:37:05 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../so_long.h"
 
 static int	div_calc(int power)
 {
