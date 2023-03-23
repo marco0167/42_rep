@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:28:51 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/23 13:03:41 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/23 15:29:50 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ void	ft_set_map_matrix(t_game *game)
 	}
 	game->map.map[i] = 0;
 	game->map.width = ft_strlen(game->map.map[0]);
+	ft_char_checker(game);
 	ft_dimension_checker(game);
 	ft_wall_cheker(game);
 	ft_obj_checker(game);

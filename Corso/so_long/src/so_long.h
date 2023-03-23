@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:17:07 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/23 13:20:55 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/23 15:48:58 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,7 @@ void	ft_set_text(t_game *game);
 void	ft_enemy_moves(t_game *game);
 void	ft_is_enemy(t_game *game);
 void	ft_set_map_matrix_first_part(t_game *game, char *line, int fd);
+void	ft_char_checker(t_game *game);
+int		ft_end_game(t_game *game);
 
 #endif

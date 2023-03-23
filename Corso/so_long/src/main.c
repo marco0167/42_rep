@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:29:29 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/23 13:16:08 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/23 15:49:23 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ t_game	*ft_alloc_game(t_game *game)
 	return (game);
 }
 
+int	ft_end_game(t_game *game)
+{
+	ft_close_game(game, 4, "EXIT");
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	*game;
@@ -40,5 +46,6 @@ int	main(int argc, char **argv)
 	ft_print_map(game);
 	mlx_loop_hook(game->mlx, *ft_next_frame, game);
 	mlx_key_hook(game->window, *ft_input, game);
+	mlx_hook(game->window, 17, 0, ft_end_game, game);
 	mlx_loop(game->mlx);
 }
