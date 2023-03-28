@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:59:52 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/28 17:31:46 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/28 17:42:37 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,6 @@ void	signal_handler(int signo, siginfo_t *info, void *context)
 	}
 }
 
-void	ft_close(int i)
-{
-	(void)i;
-	ft_printf("\nStopping server...\n");
-	exit(0);
-}
-
 int	main(void)
 {
 	struct sigaction	act;
@@ -49,7 +42,6 @@ int	main(void)
 	act.sa_flags = SA_SIGINFO;
 	sigaction(SIGUSR1, &act, NULL);
 	sigaction(SIGUSR2, &act, NULL);
-	signal(SIGINT, &ft_close);
 	sigemptyset(&act.sa_mask);
 	while (1)
 		pause();

@@ -10,17 +10,17 @@ RM = rm -f
 FLAGS = -Wall -Wextra -Werror
 
 %.o: %.c
-	gcc $(FLAG) -c $< -o $@
+	@gcc $(FLAG) -c $< -o $@
 
 ${NAME}: ${OBJ}
-	${LIBC} ${NAME} ${OBJ}
+	@${LIBC} ${NAME} ${OBJ}
 
 all: ${NAME}
 
 clean:
-	${RM} ${OBJ}
+	@${RM} ${OBJ}
 
 fclean: clean
-	${RM} ${NAME}
+	@${RM} ${NAME}
 
 re: fclean all

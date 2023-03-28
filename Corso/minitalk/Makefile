@@ -27,8 +27,8 @@ client:
 
 clean:
 	make clean -C $(FT_PRINTF)
-	rm -f $(OBJ_S)
-	rm -f $(OBJ_C)
+	@rm -f $(OBJ_S)
+	@rm -f $(OBJ_C)
 
 fclean:	clean
 	make fclean -C $(FT_PRINTF)
