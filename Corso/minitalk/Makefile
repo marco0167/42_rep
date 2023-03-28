@@ -4,8 +4,8 @@ NAME_C = client
 SRC_S = server.c
 SRC_C = client.c ./src/ft_atoi.c
 
-OBJ_S = $(SRC_S:.c=.o)
-OBJ_C = $(SRC_C:.c=.o)
+OBJ_S = $(SRC_S.o=.c)
+OBJ_C = $(SRC_C.o=.c)
 
 FT_PRINTF := ft_printf
 
@@ -36,3 +36,5 @@ fclean:	clean
 	rm -f $(NAME_C)
 
 re:	fclean all clean
+
+.PHONY: clean fclean re all

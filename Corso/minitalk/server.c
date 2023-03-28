@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 11:59:52 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/28 17:10:20 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/03/28 17:31:46 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	signal_handler(int signo, siginfo_t *info, void *context)
 {
 	static int	bit_counter;
 	static int	value;
-
 
 	(void )context;
 	if (signo == SIGUSR1)
@@ -52,6 +51,6 @@ int	main(void)
 	sigaction(SIGUSR2, &act, NULL);
 	signal(SIGINT, &ft_close);
 	sigemptyset(&act.sa_mask);
-	while(1)
+	while (1)
 		pause();
 }
