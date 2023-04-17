@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 15:09:53 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/31 16:44:19 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/17 16:28:49 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,32 +34,27 @@ int	find_letter(char **numbers, int len)
 	return (0);
 }
 
-void	check_error(char **av, int len)
+char	**check_error(char **av, int len)
 {
 	char	**numbers;
 	int		i;
 	int		result;
 
+	i = 0;
 	if (len == 1)
 		numbers = ft_split(av[1], ' ');
 	else
-		numbers = av;
+		numbers = ++av;
 	result = find_letter(numbers, len);
-
-	if (len == 1)
-		i = 0;
-	else
-		i = 1;
-	while (numbers[i])
-		printf("%s\n", numbers[i++]);
-
-	i = 0;
-	while (numbers[i])
-		free(numbers[i++]);
-	free(numbers);
+	// while (numbers[i])
+	// {
+	// 	printf("%s\n", numbers[i]);
+	// 	i++;
+	// }
 	if (result == 1)
 	{
 		write(2, "Error\n", 6);
 		exit(1);
 	}
+	return (numbers);
 }

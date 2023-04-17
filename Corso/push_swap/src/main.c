@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 16:35:50 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/31 16:38:33 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/17 16:25:35 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,15 @@ int	main(int ac, char **av)
 {
 	int			len;
 	t_stacks	stacks;
+	char		**numbers;
 
 	len = ac - 1;
 	stacks.stack_a = NULL;
 	stacks.stack_b = NULL;
 	printf("LEN: %d\n", len);
-	check_error(av, len);
-	// list_init(&stacks.stack_a, av, len);
+	numbers = check_error(av, len);
+	list_init(&stacks.stack_a, numbers, len);
 	(void)av;
-	ft_end(&stacks);
+	ft_end(&stacks, len, numbers);
 	return (0);
 }
