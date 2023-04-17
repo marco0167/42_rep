@@ -1,7 +1,7 @@
-SRCS = ./src/main.c ./src/list.c ./src/moves/push.c \
-		./src/moves/reverse_rotate.c ./src/moves/rotate.c ./src/moves/swap.c \
+SRCS = ./src/main.c ./src/list.c ./src/moves/ft_push.c \
+		./src/moves/ft_reverse_rotate.c ./src/moves/ft_rotate.c ./src/moves/ft_swap.c \
 		./src/utils/ft_atoi.c ./src/utils/ft_end.c ./src/utils/ft_split.c \
-		./src/check/ft_check_numbers.c
+		./src/check/ft_check_numbers.c ./src/moves/ft_moves.c
 
 OBJS = $(SRCS:.c=.o)
 

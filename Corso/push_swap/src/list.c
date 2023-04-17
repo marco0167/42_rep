@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:33:24 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/17 16:31:44 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/17 17:53:22 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,42 @@ void	set_numbers(char **data, t_node **head)
 		add_node_back(&*head, ft_atoi(data[i++]));
 }
 
-void	print_list(t_node **head)//funxzione da eliminareee
+void	print_list(t_stacks *stacks)//funxzione da eliminareee
 {
-	t_node	*current;
+	t_node	*stacks_a;
+	t_node	*stacks_b;
 
-	current = *head;
-	while (current != NULL)
+	stacks_a = stacks->stack_a;
+	stacks_b = stacks->stack_b;
+	write(1, "A    B\n", 7);
+	while (stacks_a != NULL || stacks_b != NULL)
 	{
-		printf("%d\n", current->data);
-		current = current->next;
+		if (stacks_a != NULL && stacks_b != NULL)
+		{
+			printf("%d  %d\n", stacks_a->data, stacks_b->data);
+			stacks_a = stacks_a->next;
+			stacks_b = stacks_b->next;
+		}
+		else
+		{
+			if (stacks_a != NULL)
+			{
+				printf("%d\n", stacks_a->data);
+				stacks_a = stacks_a->next;
+			}
+			else
+				printf("    ");
+			if (stacks_b != NULL)
+			{
+				printf("%d\n", stacks_b->data);
+				stacks_b = stacks_b->next;
+			}
+		}
 	}
 }
 
-void	list_init(t_node **head, char **data, int len)
+void	list_init(t_stacks *stacks, char **data, int len)
 {
-	set_numbers(data, &*head);
-	print_list(&*head);
+	set_numbers(data, &stacks->stack_a);
+	// print_list(stacks);
 }
