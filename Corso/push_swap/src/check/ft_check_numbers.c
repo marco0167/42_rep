@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 15:09:53 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/17 16:37:31 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/18 12:48:01 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,26 @@ int	find_letter(char **numbers, int len)
 	return (0);
 }
 
+int	check_doubles(char **numbers)
+{
+	int	i;
+	int	k;
+
+	i = 0;
+	while (numbers[i])
+	{
+		k = i + 1;
+		while (numbers[k])
+		{
+			if (ft_atoi(numbers[i]) == ft_atoi(numbers[k]))
+				return (1);
+			k++;
+		}
+		i++;
+	}
+	return (0);
+}
+
 char	**check_error(char **av, int len)
 {
 	char	**numbers;
@@ -45,8 +65,8 @@ char	**check_error(char **av, int len)
 		numbers = ft_split(av[1], ' ');
 	else
 		numbers = ++av;
-	result = find_letter(numbers, len);
-	if (result == 1)
+	result = find_letter(numbers, len) + check_doubles(numbers);
+	if (result > 0)
 	{
 		write(2, "Error\n", 6);
 		exit(1);

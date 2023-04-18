@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:33:24 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/18 11:55:25 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/18 12:25:01 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,4 @@ void	print_list(t_stacks *stacks)//funxzione da eliminareee
 void	list_init(t_stacks *stacks, char **data, int len)
 {
 	set_numbers(data, &stacks->stack_a);
-	// print_list(stacks);
 }
