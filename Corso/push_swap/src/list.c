@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:33:24 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/18 12:25:01 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/18 13:13:13 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,14 @@ void	add_node_back(t_node **head, int val)
 	}
 }
 
-void	set_numbers(char **data, t_node **head)
+int	set_numbers(char **data, t_node **head)
 {
 	int	i;
 
 	i = 0;
 	while (data[i])
 		add_node_back(&*head, ft_atoi(data[i++]));
+	return (i);
 }
 
 void	print_list(t_stacks *stacks)//funxzione da eliminareee
@@ -79,5 +80,5 @@ void	print_list(t_stacks *stacks)//funxzione da eliminareee
 
 void	list_init(t_stacks *stacks, char **data, int len)
 {
-	set_numbers(data, &stacks->stack_a);
+	stacks->len_a = set_numbers(data, &stacks->stack_a);
 }

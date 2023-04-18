@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:12:27 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/18 12:09:36 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:49:57 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 typedef struct s_node
 {
 	int				data;
+	int				cost;
 	struct s_node	*next;
 }				t_node;
 
@@ -27,6 +28,8 @@ typedef struct s_stacks
 {
 	t_node	*stack_a;
 	t_node	*stack_b;
+	int		len_a;
+	int		len_b;
 	int		moves;
 }				t_stacks;
 
@@ -69,5 +72,13 @@ void	ft_reverse_rotate_rrr(t_stacks *stacks);
 
 //ft_moves
 void	ft_moves(t_stacks *stacks);
+
+//ft_sorting_alg
+void	ft_sorting_alg(t_stacks *stacks);
+
+//ft_set_cost
+void	ft_set_cost_a(t_node **head, int len);
+void	ft_set_cost_b(t_node **head, int len);
+void	ft_init_cost(t_node **head);
 
 #endif
