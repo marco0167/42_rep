@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:33:24 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/17 17:53:22 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/18 11:55:25 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	print_list(t_stacks *stacks)//funxzione da eliminareee
 
 	stacks_a = stacks->stack_a;
 	stacks_b = stacks->stack_b;
+	write(1, "------\n", 7);
 	write(1, "A    B\n", 7);
 	while (stacks_a != NULL || stacks_b != NULL)
 	{

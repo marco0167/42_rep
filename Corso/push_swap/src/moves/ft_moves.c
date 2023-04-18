@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:42:36 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/17 17:56:06 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/18 12:21:59 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	ft_moves(t_stacks *stacks)
 {
 	ft_push_b(stacks);
 	ft_push_b(stacks);
-	write(1, "------\n", 7);
+	ft_push_b(stacks);
 	print_list(stacks);
-	ft_swap_ss(stacks);
-	write(1, "------\n", 7);
+	ft_rotate_rr(stacks);
 	print_list(stacks);
+	printf("mosse %d\n", stacks->moves);
 }

@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:12:27 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/17 17:56:45 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/18 12:09:36 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,16 @@ void	ft_push_b(t_stacks *stacks);
 void	ft_swap_a(t_stacks *stacks);
 void	ft_swap_b(t_stacks *stacks);
 void	ft_swap_ss(t_stacks *stacks);
+
+//ft_rotate
+void	ft_rotate_a(t_stacks *stacks);
+void	ft_rotate_b(t_stacks *stacks);
+void	ft_rotate_rr(t_stacks *stacks);
+
+//ft_reverse_rotate_a
+void	ft_reverse_rotate_a(t_stacks *stacks);
+void	ft_reverse_rotate_b(t_stacks *stacks);
+void	ft_reverse_rotate_rrr(t_stacks *stacks);
 
 //ft_moves
 void	ft_moves(t_stacks *stacks);
