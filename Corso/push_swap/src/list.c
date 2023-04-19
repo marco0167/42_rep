@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:33:24 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/18 13:13:13 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/19 10:34:45 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ int	set_numbers(char **data, t_node **head)
 	return (i);
 }
 
-void	print_list(t_stacks *stacks)//funxzione da eliminareee
+void	print_list(t_stacks *stacks)//funzione da eliminare
 {
 	t_node	*stacks_a;
 	t_node	*stacks_b;
 
 	stacks_a = stacks->stack_a;
 	stacks_b = stacks->stack_b;
-	write(1, "------\n", 7);
+	write(1, "\n------\n", 8);
 	write(1, "A    B\n", 7);
 	while (stacks_a != NULL || stacks_b != NULL)
 	{
@@ -76,6 +76,7 @@ void	print_list(t_stacks *stacks)//funxzione da eliminareee
 			}
 		}
 	}
+	write(1, "\n------\n", 8);
 }
 
 void	list_init(t_stacks *stacks, char **data, int len)

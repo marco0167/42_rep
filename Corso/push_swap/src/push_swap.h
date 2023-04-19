@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:12:27 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/18 16:49:57 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/19 11:21:43 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_node
 {
 	int				data;
 	int				cost;
+	int				prev_num;
 	struct s_node	*next;
 }				t_node;
 
@@ -79,6 +80,7 @@ void	ft_sorting_alg(t_stacks *stacks);
 //ft_set_cost
 void	ft_set_cost_a(t_node **head, int len);
 void	ft_set_cost_b(t_node **head, int len);
-void	ft_init_cost(t_node **head);
+void	ft_init_cost(t_node **stack_a, t_node **stack_b, t_stacks *stacks);
+void	ft_find_prev_num(t_stacks *stacks);
 
 #endif
