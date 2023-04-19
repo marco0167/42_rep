@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:18:41 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/18 12:20:51 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/19 16:21:15 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ void	ft_reverse_rotate_a(t_stacks *stacks)
 	current->next = NULL;
 	last->next = head;
 	stacks->stack_a = last;
-	write(1, "rra\n", 4);
 	stacks->moves++;
+	ft_upg_pos_a(stacks);
+	write(1, "rra\n", 4);
 }
 
 void	ft_reverse_rotate_b(t_stacks *stacks)
@@ -48,14 +49,15 @@ void	ft_reverse_rotate_b(t_stacks *stacks)
 	current->next = NULL;
 	last->next = head;
 	stacks->stack_b = last;
-	write(1, "rrb\n", 4);
 	stacks->moves++;
+	ft_upg_pos_b(stacks);
+	write(1, "rrb\n", 4);
 }
 
 void	ft_reverse_rotate_rrr(t_stacks *stacks)
 {
 	ft_reverse_rotate_a(stacks);
 	ft_reverse_rotate_b(stacks);
-	write(1, "rrr\n", 4);
 	stacks->moves--;
+	write(1, "rrr\n", 4);
 }

@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:12:27 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/19 11:21:43 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/19 16:14:31 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_node
 	int				data;
 	int				cost;
 	int				prev_num;
+	int				pos;
 	struct s_node	*next;
 }				t_node;
 
@@ -39,7 +40,7 @@ int		ft_atoi(const char *str);
 
 //list.c
 void	list_init(t_stacks *stacks, char **data, int len);
-void	add_node_back(t_node **head, int val);
+void	add_node_back(t_node **head, int val, int index);
 void	print_list(t_stacks *stacks);
 
 //-------- utils/ ----------
@@ -73,6 +74,7 @@ void	ft_reverse_rotate_rrr(t_stacks *stacks);
 
 //ft_moves
 void	ft_moves(t_stacks *stacks);
+void	ft_upg_pos(t_stacks *stacks);
 
 //ft_sorting_alg
 void	ft_sorting_alg(t_stacks *stacks);

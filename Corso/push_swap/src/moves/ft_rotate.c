@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:18:16 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/18 12:20:24 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/19 16:21:24 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ void	ft_rotate_a(t_stacks *stacks)
 	stacks->stack_a = head->next;
 	head->next = NULL;
 	current->next = head;
-	write(1, "ra\n", 3);
 	stacks->moves++;
+	ft_upg_pos_a(stacks);
+	write(1, "ra\n", 3);
 }
 
 void	ft_rotate_b(t_stacks *stacks)
@@ -40,8 +41,9 @@ void	ft_rotate_b(t_stacks *stacks)
 	stacks->stack_b = head->next;
 	head->next = NULL;
 	current->next = head;
-	write(1, "rb\n", 3);
 	stacks->moves++;
+	ft_upg_pos_b(stacks);
+	write(1, "rb\n", 3);
 }
 
 void	ft_rotate_rr(t_stacks *stacks)

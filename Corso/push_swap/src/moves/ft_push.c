@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:18:31 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/18 13:14:37 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/19 16:21:05 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_push_a(t_stacks *stacks)
 	stacks->len_a++;
 	stacks->len_b--;
 	stacks->moves++;
+	ft_upg_pos_a(stacks);
 	write(1, "pa\n", 3);
 }
 
@@ -37,5 +38,6 @@ void	ft_push_b(t_stacks *stacks)
 	stacks->len_b++;
 	stacks->len_a--;
 	stacks->moves++;
+	ft_upg_pos_b(stacks);
 	write(1, "pb\n", 3);
 }
