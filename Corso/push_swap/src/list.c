@@ -6,13 +6,13 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:33:24 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/19 10:34:45 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/19 16:05:15 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	add_node_back(t_node **head, int val)
+void	add_node_back(t_node **head, int val, int index)
 {
 	t_node	*curr;
 	t_node	*new;
@@ -22,6 +22,7 @@ void	add_node_back(t_node **head, int val)
 	if (!new)
 		exit(1);
 	new->data = val;
+	new->pos = index;
 	new->next = NULL;
 	if (*head == NULL)
 		*head = new;
@@ -39,7 +40,7 @@ int	set_numbers(char **data, t_node **head)
 
 	i = 0;
 	while (data[i])
-		add_node_back(&*head, ft_atoi(data[i++]));
+		add_node_back(&*head, ft_atoi(data[i++]), i);
 	return (i);
 }
 
