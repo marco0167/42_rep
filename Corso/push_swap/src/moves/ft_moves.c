@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:42:36 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/19 16:20:45 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/20 20:02:08 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,32 @@ void	ft_upg_pos_b(t_stacks *stacks)
 	}
 }
 
+int	ft_is_alrd_sorted(t_stacks *stacks)
+{
+	t_node	*current;
+
+	current = stacks->stack_a;
+	while (current->next != NULL)
+	{
+		if (current->data > current->next->data)
+			return (1);
+		current = current->next;
+	}
+	return (0);
+}
+
 void	ft_moves(t_stacks *stacks)
 {
+	// print_list(stacks);
+	if (ft_is_alrd_sorted(stacks) == 1)
+	{
+		if (stacks->len_a < 4)
+			ft_small_sorting(stacks);
+		// else if (stacks->len_a < 6)
+
+		else
+			ft_sorting_alg(stacks);
+	}
 	print_list(stacks);
-	ft_sorting_alg(stacks);
-	print_list(stacks);
-	printf("mosse %d\n", stacks->moves);
+	// printf("mosse %d\n", stacks->moves);
 }
