@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 15:09:53 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/18 17:10:56 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/20 19:14:53 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	find_letter(char **numbers, int len)
 		while (numbers[i][j])
 		{
 			if (numbers[i][j] < '0' || numbers[i][j] > '9')
-				return (1);
+				if (numbers[i][j] != '-' && numbers[i][j] != '+')
+					return (1);
 			j++;
 		}
 		i++;
