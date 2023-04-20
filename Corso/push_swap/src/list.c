@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:33:24 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/19 16:05:15 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/20 16:50:29 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ int	set_numbers(char **data, t_node **head)
 
 	i = 0;
 	while (data[i])
-		add_node_back(&*head, ft_atoi(data[i++]), i);
+	{
+		add_node_back(&*head, ft_atoi(data[i]), i);
+		i++;
+	}
 	return (i);
 }
 
