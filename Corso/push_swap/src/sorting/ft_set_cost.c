@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 16:34:43 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/19 11:28:02 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/20 19:53:09 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,20 @@ void	ft_find_prev_num(t_stacks *stacks)
 					mvs = stack_b->cost;
 				}
 			stack_b = stack_b->next;
+		}
+		if (prev == stack_a->data)
+		{
+			stack_b = stacks->stack_b;
+			prev = stack_b->data;
+			while (stack_b != NULL)
+			{
+				if (stack_b->data > prev)
+				{
+					prev = stack_b->data;
+					mvs = stack_b->cost;
+				}
+				stack_b = stack_b->next;
+			}
 		}
 		stack_a->prev_num = prev;
 		stack_a->cost = mvs;
@@ -101,12 +115,12 @@ void	ft_set_cost_a(t_node **head, int len)
 	cost = 1;
 	passed = 0;
 	current = *head;
-	while (current->next != NULL)
+	while (current != NULL)
 	{
 		ft_set_const_condition(&current, &cost, &passed, len);
 		current = current->next;
 	}
-	current->cost = cost + current->cost;
+	// current->cost = cost + current->cost;
 }
 
 void	ft_set_cost_b(t_node **head, int len)
@@ -118,12 +132,12 @@ void	ft_set_cost_b(t_node **head, int len)
 	cost = 1;
 	passed = 0;
 	current = *head;
-	while (current->next != NULL)
+	while (current != NULL)
 	{
 		ft_set_const_condition_b(&current, &cost, &passed, len);
 		current = current->next;
 	}
-	current->cost = cost - 1;
+	// current->cost = cost - 1;
 }
 
 void	ft_init_cost(t_node **stack_a, t_node **stack_b, t_stacks *stacks)

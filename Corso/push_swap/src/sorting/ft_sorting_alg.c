@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 12:53:50 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/19 16:56:52 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/20 19:53:33 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,27 +32,78 @@ void	ft_print_cost(t_node **head, char *text)//funzione da eliminare
 
 void	ft_mov_alg(t_node *curr, t_node *prev, t_stacks *stacks)
 {
-	if (curr->pos != 0 && prev->pos != 0)
+	// if (curr->pos != 0 && prev->pos != 0)
+	// {
+	// 	if (curr->pos > (stacks->len_a / 2) && prev->pos >
+	// 		(stacks->len_b / 2))
+	// 		ft_reverse_rotate_rrr(stacks);
+	// 	else if (curr->pos < (stacks->len_a / 2) && prev->pos <
+	// 		(stacks->len_b / 2))
+	// 		ft_rotate_rr(stacks);
+	// 	ft_find_cheaper(stacks);
+	// }
+	// else if (curr->pos == 0 && prev->pos == 0)
+	// 	ft_push_b(stacks);
+	// else
+	// {
+	// 	if (curr->pos != 0)
+	// 	{
+	// 		if (curr->pos > (stacks->len_a / 2))
+	// 			ft_reverse_rotate_a(stacks);
+	// 		else
+	// 			ft_rotate_a(stacks);
+	// 	}
+	// 	if (prev->pos != 0)
+	// 	{
+	// 		if (prev->pos > (stacks->len_b / 2))
+	// 			ft_reverse_rotate_b(stacks);
+	// 		else
+	// 			ft_rotate_b(stacks);
+	// 	}
+	// 	ft_find_cheaper(stacks);
+	// }
+
+	if (curr->pos != 0)
 	{
-		if (curr->pos > (stacks->len_a / 2) && prev->pos >
-			(stacks->len_b / 2))
-			ft_reverse_rotate_rrr(stacks);
+		if (prev->pos != 0)
+		{
+			if (curr->pos > (stacks->len_a / 2) && prev->pos >
+				(stacks->len_b / 2))
+				ft_reverse_rotate_rrr(stacks);
+			else if (curr->pos < (stacks->len_a / 2) && prev->pos >
+				(stacks->len_b / 2))
+			{
+				ft_reverse_rotate_a(stacks);
+				ft_rotate_b(stacks);
+			}
+			else if (curr->pos > (stacks->len_a / 2) && prev->pos <
+				(stacks->len_b / 2))
+			{
+				ft_rotate_a(stacks);
+				ft_reverse_rotate_b(stacks);
+			}
+			else
+				ft_rotate_rr(stacks);
+
+		}
+		else
+		{
+			if (curr->pos > (stacks->len_a / 2))
+				ft_reverse_rotate_a(stacks);
+			else
+				ft_rotate_a(stacks);
+
+		}
 		ft_find_cheaper(stacks);
 	}
 	else if (curr->pos == 0 && prev->pos == 0)
 		ft_push_b(stacks);
 	else
 	{
-		if (curr->pos != 0)
-			if (curr->pos > (stacks->len_a / 2))
-				ft_reverse_rotate_a(stacks);
-			else
-				ft_rotate_a(stacks);
-		if (prev->pos != 0)
-			if (prev->pos > (stacks->len_b / 2))
+		if (prev->pos > (stacks->len_b / 2))
 				ft_reverse_rotate_b(stacks);
-			else
-				ft_rotate_b(stacks);
+		else
+			ft_rotate_b(stacks);
 		ft_find_cheaper(stacks);
 	}
 
@@ -69,6 +120,7 @@ t_node	*ft_search_prev_num(t_node **head, int data)
 			return (curr);
 		curr = curr->next;
 	}
+	return (curr);
 }
 
 void	ft_find_cheaper(t_stacks *stacks)
@@ -86,21 +138,44 @@ void	ft_find_cheaper(t_stacks *stacks)
 	}
 	ft_mov_alg(cheaper, ft_search_prev_num(&stacks->stack_b, cheaper->prev_num),
 				stacks);
-	printf("\nCheaper %d - %d - %d -%d\n", cheaper->data, cheaper->cost, cheaper->prev_num, cheaper->pos);
+	// printf("\nCheaper %d - %d - %d -%d\n", cheaper->data, cheaper->cost, cheaper->prev_num, cheaper->pos);
+}
+
+void	ft_find_bigger_num(t_stacks *stacks)
+{
+	t_node	*current;
+	t_node	*bigger;
+
+	current = stacks->stack_b;
+	bigger = stacks->stack_b;
+	while (current != NULL)
+	{
+		if (current->data > bigger->data)
+			bigger = current;
+		current = current->next;
+	}
+	while (bigger->pos != 0)
+	{
+		if (bigger->pos > (stacks->len_b / 2))
+			ft_reverse_rotate_b(stacks);
+		else
+			ft_rotate_b(stacks);
+	}
 }
 
 void	ft_sorting_alg(t_stacks *stacks)
 {
 	ft_push_b(stacks);
-	ft_init_cost(&stacks->stack_a, &stacks->stack_a, stacks);
+	ft_push_b(stacks);
 	while (stacks->stack_a != NULL)
+	{
+		ft_init_cost(&stacks->stack_a, &stacks->stack_b, stacks);
 		ft_find_cheaper(stacks);
-	ft_print_cost(&stacks->stack_a, "----STACK  A----");
-	ft_print_cost(&stacks->stack_b, "----STACK  B----");
-	// 	ft_find_cheaper(stacks);
-	// ft_print_cost(&stacks->stack_a, "----STACK  A----");
-	// ft_print_cost(&stacks->stack_b, "----STACK  B----");
-	// 	ft_find_cheaper(stacks);
-	// ft_print_cost(&stacks->stack_a, "----STACK  A----");
-	// ft_print_cost(&stacks->stack_b, "----STACK  B----");
+		// print_list(stacks);
+		// ft_print_cost(&stacks->stack_a, "----STACK  A----");
+		// ft_print_cost(&stacks->stack_b, "----STACK  B----");
+	}
+	ft_find_bigger_num(stacks);
+	while (stacks->stack_b != NULL)
+		ft_push_a(stacks);
 }
