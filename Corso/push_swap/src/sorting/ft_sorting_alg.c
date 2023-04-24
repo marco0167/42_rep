@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 12:53:50 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/20 19:53:33 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/24 16:41:42 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,14 @@ void	ft_mov_alg(t_node *curr, t_node *prev, t_stacks *stacks)
 			else if (curr->pos < (stacks->len_a / 2) && prev->pos >
 				(stacks->len_b / 2))
 			{
-				ft_reverse_rotate_a(stacks);
-				ft_rotate_b(stacks);
+				ft_reverse_rotate_a(stacks, 1);
+				ft_rotate_b(stacks, 1);
 			}
 			else if (curr->pos > (stacks->len_a / 2) && prev->pos <
 				(stacks->len_b / 2))
 			{
-				ft_rotate_a(stacks);
-				ft_reverse_rotate_b(stacks);
+				ft_rotate_a(stacks, 1);
+				ft_reverse_rotate_b(stacks, 1);
 			}
 			else
 				ft_rotate_rr(stacks);
@@ -89,9 +89,9 @@ void	ft_mov_alg(t_node *curr, t_node *prev, t_stacks *stacks)
 		else
 		{
 			if (curr->pos > (stacks->len_a / 2))
-				ft_reverse_rotate_a(stacks);
+				ft_reverse_rotate_a(stacks, 1);
 			else
-				ft_rotate_a(stacks);
+				ft_rotate_a(stacks, 1);
 
 		}
 		ft_find_cheaper(stacks);
@@ -101,9 +101,9 @@ void	ft_mov_alg(t_node *curr, t_node *prev, t_stacks *stacks)
 	else
 	{
 		if (prev->pos > (stacks->len_b / 2))
-				ft_reverse_rotate_b(stacks);
+				ft_reverse_rotate_b(stacks, 1);
 		else
-			ft_rotate_b(stacks);
+			ft_rotate_b(stacks, 1);
 		ft_find_cheaper(stacks);
 	}
 
@@ -157,9 +157,9 @@ void	ft_find_bigger_num(t_stacks *stacks)
 	while (bigger->pos != 0)
 	{
 		if (bigger->pos > (stacks->len_b / 2))
-			ft_reverse_rotate_b(stacks);
+			ft_reverse_rotate_b(stacks, 1);
 		else
-			ft_rotate_b(stacks);
+			ft_rotate_b(stacks, 1);
 	}
 }
 
@@ -167,6 +167,7 @@ void	ft_sorting_alg(t_stacks *stacks)
 {
 	ft_push_b(stacks);
 	ft_push_b(stacks);
+
 	while (stacks->stack_a != NULL)
 	{
 		ft_init_cost(&stacks->stack_a, &stacks->stack_b, stacks);

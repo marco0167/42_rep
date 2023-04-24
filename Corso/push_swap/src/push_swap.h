@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:12:27 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/20 18:32:36 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/24 15:46:33 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,18 @@ void	ft_push_a(t_stacks *stacks);
 void	ft_push_b(t_stacks *stacks);
 
 //ft_swap
-void	ft_swap_a(t_stacks *stacks);
-void	ft_swap_b(t_stacks *stacks);
+void	ft_swap_a(t_stacks *stacks, int flag);
+void	ft_swap_b(t_stacks *stacks, int flag);
 void	ft_swap_ss(t_stacks *stacks);
 
 //ft_rotate
-void	ft_rotate_a(t_stacks *stacks);
-void	ft_rotate_b(t_stacks *stacks);
+void	ft_rotate_a(t_stacks *stacks, int flag);
+void	ft_rotate_b(t_stacks *stacks, int flag);
 void	ft_rotate_rr(t_stacks *stacks);
 
 //ft_reverse_rotate_a
-void	ft_reverse_rotate_a(t_stacks *stacks);
-void	ft_reverse_rotate_b(t_stacks *stacks);
+void	ft_reverse_rotate_a(t_stacks *stacks, int flag);
+void	ft_reverse_rotate_b(t_stacks *stacks, int flag);
 void	ft_reverse_rotate_rrr(t_stacks *stacks);
 
 //ft_moves
