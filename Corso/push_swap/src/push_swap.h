@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:12:27 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/20 18:32:36 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/25 12:41:45 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,9 @@ void	ft_sorting_alg(t_stacks *stacks);
 
 //ft_small_sorting
 void	ft_small_sorting(t_stacks *stacks);
+
+//ft_medium_sorting
+void	ft_medium_sorting(t_stacks *stacks);
 
 //ft_set_cost
 void	ft_set_cost_a(t_node **head, int len);

@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:42:36 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/20 20:02:08 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/25 12:42:11 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void	ft_moves(t_stacks *stacks)
 	{
 		if (stacks->len_a < 4)
 			ft_small_sorting(stacks);
-		// else if (stacks->len_a < 6)
-
+		else if (stacks->len_a < 6)
+			ft_medium_sorting(stacks);
 		else
 			ft_sorting_alg(stacks);
 	}
