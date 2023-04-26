@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:12:27 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/25 12:41:45 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/26 10:34:54 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	ft_reverse_rotate_rrr(t_stacks *stacks);
 void	ft_moves(t_stacks *stacks);
 void	ft_upg_pos_a(t_stacks *stacks);
 void	ft_upg_pos_b(t_stacks *stacks);
+int	ft_is_alrd_sorted(t_stacks *stacks);
 
 //ft_sorting_alg
 void	ft_sorting_alg(t_stacks *stacks);

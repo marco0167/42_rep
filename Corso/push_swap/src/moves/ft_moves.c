@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:42:36 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/25 12:42:11 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/26 10:42:39 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,6 @@ void	ft_moves(t_stacks *stacks)
 		else
 			ft_sorting_alg(stacks);
 	}
-	print_list(stacks);
+	// print_list(stacks);
 	// printf("mosse %d\n", stacks->moves);
 }
