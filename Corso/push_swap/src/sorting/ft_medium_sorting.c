@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 11:35:43 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/25 12:42:38 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/26 10:39:26 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	ft_medium_sorting(t_stacks *stacks)
 	t_node	*stack_b;
 	t_node	*min;
 	t_node	*max;
+	t_node	*next;
 
 	stack_a = stacks->stack_a;
-	stack_b = stacks->stack_b;
 	min = stack_a;
 	max = stack_a;
 	ft_upg_pos_a(stacks);
@@ -35,21 +35,24 @@ void	ft_medium_sorting(t_stacks *stacks)
 	stack_a = stacks->stack_a;
 	while (stack_a != NULL)
 	{
+		next = stack_a->next;
+		stack_b = stacks->stack_b;
 		if (stack_a == min || stack_a == max)
-			if (stack_a->pos == 3)
+		{
+			if (stack_a->pos == 0)
+				ft_push_b(stacks);
+			else if (stack_a->pos == 3)
+			{
+				ft_reverse_rotate_a(stacks);
+				ft_push_b(stacks);
+				if (stack_b == NULL)
 				{
 					ft_reverse_rotate_a(stacks);
 					ft_push_b(stacks);
-					if (stack_b == NULL)
-					{
-						ft_reverse_rotate_a(stacks);
-						ft_push_b(stacks);
-						break;
-					}
+					break;
 				}
-			else if (stack_a->pos = 0)
-				ft_push_b(stacks);
-			else if (stack_a->pos = 1)
+			}
+			else if (stack_a->pos == 1)
 			{
 				ft_swap_a(stacks);
 				ft_push_b(stacks);
@@ -60,7 +63,15 @@ void	ft_medium_sorting(t_stacks *stacks)
 				ft_rotate_a(stacks);
 				ft_push_b(stacks);
 			}
+		}
 		ft_upg_pos_a(stacks);
-		stack_a = stack_a->next;
+		stack_a = next;
 	}
+	ft_small_sorting(stacks);
+	stack_b = stacks->stack_b;
+	if (stack_b->data > stack_b->next->data)
+		ft_swap_b(stacks);
+	ft_push_a(stacks);
+	ft_push_a(stacks);
+	ft_rotate_a(stacks);
 }
