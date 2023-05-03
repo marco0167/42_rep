@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 11:35:43 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/26 10:39:26 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/05/03 10:31:42 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,24 @@ void	ft_medium_sorting(t_stacks *stacks)
 				ft_push_b(stacks);
 			else if (stack_a->pos == 3)
 			{
-				ft_reverse_rotate_a(stacks);
+				ft_reverse_rotate_a(stacks, 1);
 				ft_push_b(stacks);
 				if (stack_b == NULL)
 				{
-					ft_reverse_rotate_a(stacks);
+					ft_reverse_rotate_a(stacks, 1);
 					ft_push_b(stacks);
 					break;
 				}
 			}
 			else if (stack_a->pos == 1)
 			{
-				ft_swap_a(stacks);
+				ft_swap_a(stacks, 1);
 				ft_push_b(stacks);
 			}
 			else if (stack_a->pos == 2)
 			{
-				ft_rotate_a(stacks);
-				ft_rotate_a(stacks);
+				ft_rotate_a(stacks, 1);
+				ft_rotate_a(stacks, 1);
 				ft_push_b(stacks);
 			}
 		}
@@ -70,8 +70,8 @@ void	ft_medium_sorting(t_stacks *stacks)
 	ft_small_sorting(stacks);
 	stack_b = stacks->stack_b;
 	if (stack_b->data > stack_b->next->data)
-		ft_swap_b(stacks);
+		ft_swap_b(stacks, 1);
 	ft_push_a(stacks);
 	ft_push_a(stacks);
-	ft_rotate_a(stacks);
+	ft_rotate_a(stacks, 1);
 }
