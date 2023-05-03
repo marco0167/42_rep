@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 15:09:53 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/24 17:14:38 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/04/24 17:33:06 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	check_doubles(char **numbers)
 		while (numbers[k])
 		{
 			if (ft_atoi(numbers[i]) == ft_atoi(numbers[k]))
-				return (1);
+				return (2);
 			k++;
 		}
 		i++;
@@ -69,7 +69,12 @@ char	**check_error(char **av, int len)
 	result = find_letter(numbers, len) + check_doubles(numbers);
 	if (result > 0)
 	{
-		write(2, "Error\n", 6);
+		if (result == 1)
+			write(2, "Error: some arguments aren't integer\n", 36);
+		else if (result == 2)
+			write(2, "Error: doubles number found\n", 28);
+		else if (result == 3)
+			write(2, "Error: some arguments aren't integer & doubles number found\n", 59);
 		exit(1);
 	}
 	return (numbers);
