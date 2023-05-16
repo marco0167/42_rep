@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 12:53:50 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/24 16:41:42 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/05/16 19:24:38 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,17 +73,25 @@ void	ft_mov_alg(t_node *curr, t_node *prev, t_stacks *stacks)
 			else if (curr->pos < (stacks->len_a / 2) && prev->pos >
 				(stacks->len_b / 2))
 			{
-				ft_reverse_rotate_a(stacks, 1);
-				ft_rotate_b(stacks, 1);
+				ft_rotate_a(stacks, 1);
+				ft_reverse_rotate_b(stacks, 1);
 			}
 			else if (curr->pos > (stacks->len_a / 2) && prev->pos <
 				(stacks->len_b / 2))
 			{
-				ft_rotate_a(stacks, 1);
-				ft_reverse_rotate_b(stacks, 1);
+				ft_reverse_rotate_a(stacks, 1);
+				ft_rotate_b(stacks, 1);
 			}
-			else
+			else if (curr->pos == (stacks->len_a / 2) && prev->pos <=
+				(stacks->len_b / 2))
 				ft_rotate_rr(stacks);
+			else if (curr->pos == (stacks->len_a / 2) && prev->pos >=
+				(stacks->len_b / 2))
+				ft_reverse_rotate_rrr(stacks);
+			else{
+				// printf("ROTATE a:%d, b:%d, lenA:%d, lenB%d\n", curr->pos, prev->pos, stacks->len_a, stacks->len_b);
+				ft_rotate_rr(stacks);
+			}
 
 		}
 		else
@@ -128,6 +136,7 @@ void	ft_find_cheaper(t_stacks *stacks)
 	t_node	*current;
 	t_node	*cheaper;
 
+	// ft_init_cost(&stacks->stack_a, &stacks->stack_b, stacks);
 	current = stacks->stack_a;
 	cheaper = stacks->stack_a;
 	while (current != NULL)
@@ -136,6 +145,8 @@ void	ft_find_cheaper(t_stacks *stacks)
 			cheaper = current;
 		current = current->next;
 	}
+	// printf("b: %d\n", cheaper->prev_num);
+	// printf("a: %d\n", cheaper->data);
 	ft_mov_alg(cheaper, ft_search_prev_num(&stacks->stack_b, cheaper->prev_num),
 				stacks);
 	// printf("\nCheaper %d - %d - %d -%d\n", cheaper->data, cheaper->cost, cheaper->prev_num, cheaper->pos);
