@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:12:27 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/05/03 14:25:06 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/05/17 19:13:18 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct s_stacks
 	int		len_a;
 	int		len_b;
 	int		moves;
+	int		i;
+	t_node	*prev_app;
 }				t_stacks;
 
 //ft_atoi.c
@@ -76,10 +78,11 @@ void	ft_reverse_rotate_rrr(t_stacks *stacks);
 void	ft_moves(t_stacks *stacks);
 void	ft_upg_pos_a(t_stacks *stacks);
 void	ft_upg_pos_b(t_stacks *stacks);
-int	ft_is_alrd_sorted(t_stacks *stacks);
+int		ft_is_alrd_sorted(t_stacks *stacks);
 
 //ft_sorting_alg
 void	ft_sorting_alg(t_stacks *stacks);
+void	ft_mov_alg_condition(t_node *curr, t_node *prev, t_stacks *stacks);
 
 //ft_small_sorting
 void	ft_small_sorting(t_stacks *stacks);

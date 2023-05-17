@@ -3,6 +3,7 @@ SRCS = ./src/main.c ./src/list.c ./src/moves/ft_push.c \
 		./src/utils/ft_atoi.c ./src/utils/ft_end.c ./src/utils/ft_split.c \
 		./src/check/ft_check_numbers.c ./src/moves/ft_moves.c ./src/sorting/ft_sorting_alg.c \
 		./src/sorting/ft_set_cost.c ./src/sorting/ft_small_sorting.c ./src/sorting/ft_medium_sorting.c\
+		./src/utils/ft_sorting_alg_utl.c
 
 OBJS = $(SRCS:.c=.o)
 

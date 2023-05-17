@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:33:24 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/20 16:50:29 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/05/17 11:57:51 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,42 +45,6 @@ int	set_numbers(char **data, t_node **head)
 		i++;
 	}
 	return (i);
-}
-
-void	print_list(t_stacks *stacks)//funzione da eliminare
-{
-	t_node	*stacks_a;
-	t_node	*stacks_b;
-
-	stacks_a = stacks->stack_a;
-	stacks_b = stacks->stack_b;
-	write(1, "\n------\n", 8);
-	write(1, "A    B\n", 7);
-	while (stacks_a != NULL || stacks_b != NULL)
-	{
-		if (stacks_a != NULL && stacks_b != NULL)
-		{
-			printf("%d  %d\n", stacks_a->data, stacks_b->data);
-			stacks_a = stacks_a->next;
-			stacks_b = stacks_b->next;
-		}
-		else
-		{
-			if (stacks_a != NULL)
-			{
-				printf("%d\n", stacks_a->data);
-				stacks_a = stacks_a->next;
-			}
-			else
-				printf("    ");
-			if (stacks_b != NULL)
-			{
-				printf("%d\n", stacks_b->data);
-				stacks_b = stacks_b->next;
-			}
-		}
-	}
-	write(1, "\n------\n", 8);
 }
 
 void	list_init(t_stacks *stacks, char **data, int len)

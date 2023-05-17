@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 15:09:53 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/24 17:33:06 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/05/17 12:02:22 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char	**check_error(char **av, int len)
 		else if (result == 2)
 			write(2, "Error: doubles number found\n", 28);
 		else if (result == 3)
-			write(2, "Error: some arguments aren't integer & doubles number found\n", 59);
+			write(2, "Error: arguments not int & doubles number found\n", 59);
 		exit(1);
 	}
 	return (numbers);

@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 11:35:43 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/05/03 10:31:42 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/05/17 11:57:29 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_medium_sorting(t_stacks *stacks)
 				{
 					ft_reverse_rotate_a(stacks, 1);
 					ft_push_b(stacks);
-					break;
+					break ;
 				}
 			}
 			else if (stack_a->pos == 1)
