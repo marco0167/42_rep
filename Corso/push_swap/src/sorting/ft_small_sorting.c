@@ -21,19 +21,22 @@ void	ft_small_sorting(t_stacks *stacks)
 		head = stacks->stack_a;
 		if (head->data > head->next->data)
 		{
-			ft_rotate_a(stacks, 1);
+			if (head->next->data > head->next->next->data)
+			{
+				ft_rotate_a(stacks, 1);
+				ft_swap_a(stacks, 1);
+			}
+			else if (head->data < head->next->next->data)
+				ft_swap_a(stacks, 1);
+			else
+				ft_rotate_a(stacks, 1);
+		}
+		else if (head->data > head->next->next->data)
+			ft_reverse_rotate_a(stacks, 1);
+		else
+		{
+			ft_reverse_rotate_a(stacks, 1);
 			ft_swap_a(stacks, 1);
 		}
-		else if (head->data < head->next->next->data)
-			ft_swap_a(stacks, 1);
-		else
-			ft_rotate_a(stacks, 1);
-	}
-	else if (head->data > head->next->next->data)
-		ft_reverse_rotate_a(stacks, 1);
-	else
-	{
-		ft_reverse_rotate_a(stacks, 1);
-		ft_swap_a(stacks, 1);
 	}
 }
