@@ -30,47 +30,60 @@ void	ft_find_prev_num_utl1(t_node *stack_a, t_node *prev, t_stacks *stacks,
 	}
 }
 
+
+void	find_prev_num_util1(t_stacks *stacks, t_node *stack_a, t_node *stack_b)
+{
+	t_node	*prev;
+
+	prev = stack_a;
+	while (stack_b != NULL)
+	{
+		if (stack_b->data < stack_a->data)
+		{
+			if (stack_b->data > prev->data || prev->data == stack_a->data)
+			{
+				prev = stack_b;
+				stacks->i = stack_b->cost;
+			}
+		}
+		stack_b = stack_b->next;
+	}
+}
+
+void	find_prev_num_util2(t_stacks *stacks, t_node *stack_a, t_node *stack_b)
+{
+	t_node	*prev;
+
+	if (prev->data == stack_a->data)
+	{
+		stack_b = stacks->stack_b;
+		prev = stack_b;
+		while (stack_b != NULL)
+		{
+			if (stack_b->data > prev->data)
+			{
+				prev = stack_b;
+				stacks->i = stack_b->cost;
+			}
+			stack_b = stack_b->next;
+		}
+	}
+	stack_a->prev_num = prev->data;
+	stack_a->cost = stacks->i;
+}
+
 void	ft_find_prev_num(t_stacks *stacks)
 {
 	t_node	*stack_a;
 	t_node	*stack_b;
-	t_node	*prev;
 
 	stacks->i = 0;
 	stack_a = stacks->stack_a;
 	while (stack_a != NULL)
 	{
 		stack_b = stacks->stack_b;
-		// ft_find_prev_num_utl1(stack_a, prev, stacks, stack_b);
-		prev = stack_a;
-		while (stack_b != NULL)
-		{
-			if (stack_b->data < stack_a->data)
-			{
-				if (stack_b->data > prev->data || prev->data == stack_a->data)
-				{
-					prev = stack_b;
-					stacks->i = stack_b->cost;
-				}
-			}
-			stack_b = stack_b->next;
-		}
-		if (prev->data == stack_a->data)
-		{
-			stack_b = stacks->stack_b;
-			prev = stack_b;
-			while (stack_b != NULL)
-			{
-				if (stack_b->data > prev->data)
-				{
-					prev = stack_b;
-					stacks->i = stack_b->cost;
-				}
-				stack_b = stack_b->next;
-			}
-		}
-		stack_a->prev_num = prev->data;
-			stack_a->cost = stacks->i;
+		find_prev_num_util1(stacks, stack_a, stack_b);
+		find_prev_num_util2(stacks, stack_a, stack_b);
 		stack_a = stack_a->next;
 	}
 }
