@@ -56,8 +56,6 @@ int	ft_is_alrd_sorted(t_stacks *stacks)
 
 void	ft_moves(t_stacks *stacks)
 {
-	t_node *stack_a;
-
 	if (stacks->len_a != 1)
 	{
 		if (ft_is_alrd_sorted(stacks) == 1)
@@ -69,11 +67,5 @@ void	ft_moves(t_stacks *stacks)
 			else
 				ft_sorting_alg(stacks);
 		}
-	}
-	stack_a = stacks->stack_a;
-	while(stack_a)
-	{
-		printf("%d\n",stack_a->data);
-		stack_a = stack_a->next;
 	}
 }
