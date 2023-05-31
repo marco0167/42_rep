@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:12:27 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/05/17 19:13:18 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/05/31 10:52:30 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,14 @@ void	print_list(t_stacks *stacks);
 //-------- utils/ ----------
 //ft_end.c
 void	ft_end(t_stacks *stacks, int len, char **numbers);
+
+//ft_set_cost_util.c
+void	find_prev_num_util1(t_stacks *stacks, t_node *stack_a, t_node *stack_b);
+void	find_prev_num_util2(t_stacks *stacks, t_node *stack_a, t_node *stack_b);
+void	ft_set_const_condition_b(t_node **current, int *cost, int *passed,
+			int len);
+void	init_cost_stack_a(t_node **stack_a);
+void	init_cost_stack_b(t_node **stack_b, t_stacks *stacks);
 
 //ft_split.c
 char	**ft_split(char const *s, char c);
