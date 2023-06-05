@@ -6,13 +6,13 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:18:31 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/19 16:24:27 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/06/05 17:26:30 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_push_a(t_stacks *stacks)
+void	ft_push_a(t_stacks *stacks, int flag)
 {
 	t_node	*node_to_move;
 
@@ -25,10 +25,11 @@ void	ft_push_a(t_stacks *stacks)
 	stacks->moves++;
 	ft_upg_pos_a(stacks);
 	ft_upg_pos_b(stacks);
-	write(1, "pa\n", 3);
+	if (flag == 1)
+		write(1, "pa\n", 3);
 }
 
-void	ft_push_b(t_stacks *stacks)
+void	ft_push_b(t_stacks *stacks, int flag)
 {
 	t_node	*node_to_move;
 
@@ -41,5 +42,6 @@ void	ft_push_b(t_stacks *stacks)
 	stacks->moves++;
 	ft_upg_pos_a(stacks);
 	ft_upg_pos_b(stacks);
-	write(1, "pb\n", 3);
+	if (flag == 1)
+		write(1, "pb\n", 3);
 }

@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:18:16 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/04/24 15:48:08 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/06/05 16:56:27 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,11 @@ void	ft_rotate_b(t_stacks *stacks, int flag)
 		write(1, "rb\n", 3);
 }
 
-void	ft_rotate_rr(t_stacks *stacks)
+void	ft_rotate_rr(t_stacks *stacks, int flag)
 {
 	ft_rotate_a(stacks, 0);
 	ft_rotate_b(stacks, 0);
-	write(1, "rr\n", 3);
+	if (flag == 1)
+		write(1, "rr\n", 3);
 	stacks->moves--;
 }

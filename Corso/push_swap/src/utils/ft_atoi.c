@@ -6,13 +6,13 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:00:42 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/03/30 17:56:03 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/06/05 17:54:22 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
+long long	ft_atoi(const char *str)
 {
-	int			n;
+	long long	n;
 	int			sign;
 	const char	*s;
 

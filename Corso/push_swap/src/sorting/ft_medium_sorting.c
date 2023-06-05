@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 11:35:43 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/06/05 15:57:54 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/06/05 17:27:30 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ void	ft_process_min(t_stacks *stacks, t_node *stack_a)
 
 	stack_b = stacks->stack_b;
 	if (stack_a->pos == 0)
-		ft_push_b(stacks);
+		ft_push_b(stacks, 1);
 	else if (stack_a->pos == 3)
 	{
 		ft_reverse_rotate_a(stacks, 1);
-		ft_push_b(stacks);
+		ft_push_b(stacks, 1);
 		if (stack_b == NULL)
 		{
 			ft_reverse_rotate_a(stacks, 1);
-			ft_push_b(stacks);
+			ft_push_b(stacks, 1);
 		}
 	}
 }
@@ -54,13 +54,13 @@ void	ft_process_max(t_stacks *stacks, t_node *stack_a)
 	if (stack_a->pos == 1)
 	{
 		ft_swap_a(stacks, 1);
-		ft_push_b(stacks);
+		ft_push_b(stacks, 1);
 	}
 	else if (stack_a->pos == 2)
 	{
 		ft_rotate_a(stacks, 1);
 		ft_rotate_a(stacks, 1);
-		ft_push_b(stacks);
+		ft_push_b(stacks, 1);
 	}
 }
 
@@ -92,7 +92,7 @@ void	ft_medium_sorting(t_stacks *stacks)
 	if (stacks->stack_b->data > stacks->stack_b->next->data)
 		ft_swap_b(stacks, 1);
 	ft_small_sorting(stacks);
-	ft_push_a(stacks);
-	ft_push_a(stacks);
+	ft_push_a(stacks, 1);
+	ft_push_a(stacks, 1);
 	ft_rotate_a(stacks, 1);
 }

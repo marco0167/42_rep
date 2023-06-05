@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 12:53:50 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/05/17 12:06:17 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/06/05 17:27:52 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_mov_alg(t_node *curr, t_node *prev, t_stacks *stacks)
 		ft_find_cheaper(stacks);
 	}
 	else if (curr->pos == 0 && prev->pos == 0)
-		ft_push_b(stacks);
+		ft_push_b(stacks, 1);
 	else
 	{
 		if (prev->pos > (stacks->len_b / 2))
@@ -96,8 +96,8 @@ void	ft_find_bigger_num(t_stacks *stacks)
 
 void	ft_sorting_alg(t_stacks *stacks)
 {
-	ft_push_b(stacks);
-	ft_push_b(stacks);
+	ft_push_b(stacks, 1);
+	ft_push_b(stacks, 1);
 	while (stacks->stack_a != NULL)
 	{
 		ft_init_cost(&stacks->stack_a, &stacks->stack_b, stacks);
@@ -105,5 +105,5 @@ void	ft_sorting_alg(t_stacks *stacks)
 	}
 	ft_find_bigger_num(stacks);
 	while (stacks->stack_b != NULL)
-		ft_push_a(stacks);
+		ft_push_a(stacks, 1);
 }
