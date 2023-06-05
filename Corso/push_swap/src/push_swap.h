@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:12:27 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/05/31 10:52:30 by codespace        ###   ########.fr       */
+/*   Updated: 2023/06/05 15:44:13 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int		ft_atoi(const char *str);
 //list.c
 void	list_init(t_stacks *stacks, char **data, int len);
 void	add_node_back(t_node **head, int val, int index);
-void	print_list(t_stacks *stacks);
 
 //-------- utils/ ----------
 //ft_end.c

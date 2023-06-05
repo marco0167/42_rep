@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_medium_sorting.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 11:35:43 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/05/31 10:54:29 by codespace        ###   ########.fr       */
+/*   Updated: 2023/06/05 15:57:54 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,16 +81,17 @@ void	ft_medium_sorting(t_stacks *stacks)
 
 	stack_a = stacks->stack_a;
 	ft_find_min_max(stacks, &min, &max);
-	while (stack_a != NULL)
+	while (stack_a != NULL && stacks->len_b != 2)
 	{
 		next = stack_a->next;
 		if (stack_a == min || stack_a == max)
 			ft_push_min_max(stacks, stack_a, min, max);
 		stack_a = next;
 	}
-	ft_small_sorting(stacks);
+	stack_a = stacks->stack_a;
 	if (stacks->stack_b->data > stacks->stack_b->next->data)
 		ft_swap_b(stacks, 1);
+	ft_small_sorting(stacks);
 	ft_push_a(stacks);
 	ft_push_a(stacks);
 	ft_rotate_a(stacks, 1);
