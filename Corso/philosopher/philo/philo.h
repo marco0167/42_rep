@@ -11,11 +11,39 @@
 /* ************************************************************************** */
 
 #ifndef PHILO_H
-# define PHILO_H
+#define PHILO_H
 
-# include <pthread.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
+#include <pthread.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-# endif
+typedef struct	s_philo
+{
+	int				id;
+	int				*left_fork;
+	int				*right_fork;
+	int				eat_count;
+	int				*forks;
+	pthread_mutex_t	*forks_mutex;
+	pthread_mutex_t	*print_mutex;
+	pthread_mutex_t	*eat_mutex;
+	pthread_mutex_t	*dead_mutex;
+	pthread_t		thread;
+}					t_philo;
+
+typedef struct	s_data
+{
+	int		num_philo;
+	int		time_to_die;
+	int		time_to_eat;
+	int		time_to_sleep;
+	int		must_eat;
+	int		dead;
+	int		*forks;
+	t_philo	*philos;
+}					t_data;
+
+int	ft_atoi(const char *str);
+
+#endif
