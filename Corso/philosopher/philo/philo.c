@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 10:48:45 by codespace         #+#    #+#             */
-/*   Updated: 2023/06/14 02:26:49 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/06/14 10:21:19 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,15 @@ void	*process(void *arg)
 	// printf("Right fork %d\n", *philo->right_fork);
 	// printf("Left fork %d\n", *philo->left_fork);
 	// printf("----------------------\n");
-	while (philo->data->dead == 0)
+	while (philo->data->end == 0)
 	{
 		if (philo->status == 0)
 		{
-			printf("PHILOSOPHER %d is thinking\n", philo->id);
+			if (philo->is_tinking == 0)
+			{
+				printf("PHILOSOPHER %d is thinking\n", philo->id);
+				philo->is_tinking = 1;
+			}
 			sleep(1.6);
 			philo->status = 1;
 		}
@@ -113,6 +117,8 @@ void	*process(void *arg)
 				philo->data->forks[philo->left_fork] = 1;
 				philo->data->forks[philo->right_fork] = 1;
 				pthread_mutex_unlock(philo->data->mutex);
+				philo->eat_count++;
+				philo->is_tinking = 0;
 				philo->status = 2;
 			}
 			else
@@ -127,7 +133,12 @@ void	*process(void *arg)
 			sleep(philo->data->time_to_sleep);
 			philo->status = 0;
 		}
+		if (philo->eat_count == philo->data->must_eat)
+			philo->data->eat_count++;
+		if (philo->data->eat_count == philo->data->num_philo)
+			philo->data->end = 2;
 	}
+	printf("thread %d ended\n", philo->id);
 	return (NULL);
 }
 
@@ -144,6 +155,7 @@ void	init_philo(t_philo *philos, int id, t_data *data)
 	else
 		philo->right_fork = id + 1;
 	philo->eat_count = 0;
+	philo->is_tinking = 0;
 	philo->status = 0;
 	philo->data = data;
 	// pthread_create(&philo->thread, NULL, &process, (void *)philo);
@@ -152,7 +164,7 @@ void	init_philo(t_philo *philos, int id, t_data *data)
 void	init_data(int argc, char **argv, t_data *data)
 {
 	int 	i;
-	pthread_mutex_t *mutex;
+	pthread_mutex_t mutex;
 
 	data->num_philo = ft_atoi(argv[1]);
 	data->time_to_die = ft_atoi(argv[2]);
@@ -162,11 +174,12 @@ void	init_data(int argc, char **argv, t_data *data)
 		data->must_eat = ft_atoi(argv[5]);
 	else
 		data->must_eat = -1;
-	data->dead = 0;
+	data->end = 0;
 	printf("Number of philosophers: %d\n", data->num_philo);
 	data->forks = malloc(sizeof(int) * data->num_philo);
 	data->philos = malloc(sizeof(t_philo) * data->num_philo);
-	data->mutex = mutex;
+	data->mutex = &mutex;
+	pthread_mutex_init(data->mutex, NULL);
 	i = 0;
 	while (i < data->num_philo)
 	{
@@ -190,8 +203,6 @@ int	main(int argc, char **argv)
 
 	data = malloc(sizeof(t_data));
 	init_data(argc, argv, data);
-
-	pthread_mutex_init(data->mutex, NULL);
 	i = 0;
 	while (i < data->num_philo)
 	{
@@ -204,8 +215,9 @@ int	main(int argc, char **argv)
 		pthread_join(data->philos[i].thread, NULL);
 		i++;
 	}
-
+	printf("ENDED with %d\n", data->end);
 	pthread_mutex_destroy(data->mutex);
+	printf("ENDED222222 with %d\n", data->end);
 
 
 	// pthread_mutex_init(&mutex, NULL);

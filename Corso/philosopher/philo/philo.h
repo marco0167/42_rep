@@ -27,6 +27,7 @@ typedef struct	s_philo
 	int				right_fork;
 	int				eat_count;
 	int				status;
+	int				is_tinking;
 	int				*forks;
 	pthread_mutex_t	*forks_mutex;
 	pthread_mutex_t	*print_mutex;
@@ -43,7 +44,8 @@ typedef struct	s_data
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				must_eat;
-	int				dead;
+	int				eat_count;
+	int				end;
 	int				*forks;
 	pthread_mutex_t	*mutex;
 	t_philo			*philos;
