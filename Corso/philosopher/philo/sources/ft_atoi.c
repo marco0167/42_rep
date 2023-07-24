@@ -6,11 +6,11 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:00:42 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/06/13 14:37:55 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/07/21 13:39:16 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "../includes/philo.h"
 
 int	ft_atoi(const char *str)
 {
