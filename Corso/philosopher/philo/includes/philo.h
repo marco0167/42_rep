@@ -47,9 +47,8 @@ typedef struct s_table
 	int				philos_eaten;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	*print;
-	pthread_mutex_t	*dead_mutex;
 	pthread_mutex_t	*philos_eaten_mutex;
-	struct timeval	start;
+	long long		start;
 }					t_table;
 
 typedef struct s_philo
@@ -58,15 +57,36 @@ typedef struct s_philo
 	int				meals;
 	int				left_fork;
 	int				right_fork;
+	long long		last_meal;
+	short			is_full;
 	pthread_t		thread;
 	pthread_mutex_t	*left_fork_mutex;
 	pthread_mutex_t	*right_fork_mutex;
+	pthread_mutex_t	*read_write;
 	t_table			*table;
 }					t_philo;
 
-int		is_valid_input(int ac, char **av);
-int		ft_validity_checker(int ac, char **av);
-int		ft_atoi(const char *str);
-void	ft_initializer(int ac, char **av);
+typedef struct s_send
+{
+	t_philo	*philos;
+	t_table	*table;
+}				t_send;
+
+int			is_valid_input(int ac, char **av);
+int			ft_validity_checker(int ac, char **av);
+int			ft_atoi(const char *str);
+void		ft_initializer(int ac, char **av, t_table *table, t_philo *philos);
+
+void		ft_thread_starter(t_philo *philos, t_table *table);
+void		ft_controller_start(t_send *send);
+long long	ft_current_time(void);
+
+void		ft_close(t_table *table, t_philo *philos);
+
+void		ft_wait_start(long long start);
+void		ft_printer(t_philo *philo, char *str);
+void		ft_philo_act(t_philo *philo);
+void		*ft_philo_routine(void *arg);
+void		*ft_controller(void *arg);
 
 #endif
