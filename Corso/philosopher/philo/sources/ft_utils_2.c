@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_utils_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 09:14:07 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/07/25 18:09:38 by mcoppola         ###   ########.fr       */
+/*   Created: 2023/07/25 19:12:55 by mcoppola          #+#    #+#             */
+/*   Updated: 2023/07/25 19:22:31 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	main(int ac, char **av)
+long long	ft_current_time(void)
 {
-	t_table	table;
-	t_philo	*philos;
+	struct timeval	current_time;
+	long long		time;
 
-	if (!ft_validity_checker(ac, av))
-		return (1);
-	philos = NULL;
-	ft_initializer(ac, av, &table, &philos);
-	return (0);
+	gettimeofday(&current_time, NULL);
+	time = (current_time.tv_sec) * 1000 + (current_time.tv_usec) / 1000;
+	return (time);
+}
+
+void	ft_sleep(int ms)
+{
+	long long	s;
+
+	s = ft_current_time() + ms;
+	while (ft_current_time() < s)
+		usleep(100);
 }

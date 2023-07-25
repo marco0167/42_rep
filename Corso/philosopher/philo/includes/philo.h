@@ -46,8 +46,8 @@ typedef struct s_table
 	int				dead;
 	int				philos_eaten;
 	pthread_mutex_t	*forks;
-	pthread_mutex_t	*print;
-	pthread_mutex_t	*philos_eaten_mutex;
+	pthread_mutex_t	print;
+	pthread_mutex_t	philos_eaten_mutex;
 	long long		start;
 }					t_table;
 
@@ -62,7 +62,7 @@ typedef struct s_philo
 	pthread_t		thread;
 	pthread_mutex_t	*left_fork_mutex;
 	pthread_mutex_t	*right_fork_mutex;
-	pthread_mutex_t	*read_write;
+	pthread_mutex_t	read_write;
 	t_table			*table;
 }					t_philo;
 
@@ -75,11 +75,13 @@ typedef struct s_send
 int			is_valid_input(int ac, char **av);
 int			ft_validity_checker(int ac, char **av);
 int			ft_atoi(const char *str);
-void		ft_initializer(int ac, char **av, t_table *table, t_philo *philos);
+void		ft_initializer(int ac, char **av, t_table *table, t_philo **philos);
 
 void		ft_thread_starter(t_philo *philos, t_table *table);
 void		ft_controller_start(t_send *send);
+
 long long	ft_current_time(void);
+void		ft_sleep(int ms);
 
 void		ft_close(t_table *table, t_philo *philos);
 
