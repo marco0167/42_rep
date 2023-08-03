@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 09:14:07 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/07/25 18:09:38 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/08/03 18:06:20 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,5 @@ int	main(int ac, char **av)
 	if (!ft_validity_checker(ac, av))
 		return (1);
 	philos = NULL;
-	ft_initializer(ac, av, &table, &philos);
-	return (0);
+	return (ft_initializer(ac, av, &table, philos));
 }

@@ -23,14 +23,14 @@
 *                                     Macros                                 *
 *****************************************************************************/
 
-# define MAX_PHILOS 250
-# define STR_MAX_PHILOS "250"
+# define MAX_PHILOS 200
+# define STR_MAX_PHILOS "200"
 
 # define STR_USAGE "Usage: ./philo <number_of_philosophers> <time_to_die> \
 <time_to_eat> <time_to_sleep> [number_of_times_each_philosopher_must_eat]\n"
 # define STR_ERR_INPUT "Error: Invalid input\n"
 # define STR_ERR_NUM_PHILOS "Error: number of philosophers must be between \
-1 and 250\n"
+1 and 200\n"
 
 /*****************************************************************************
 *                                     Struct                                 *
@@ -76,7 +76,7 @@ typedef struct s_send
 int			is_valid_input(int ac, char **av);
 int			ft_validity_checker(int ac, char **av);
 int			ft_atoi(const char *str);
-void		ft_initializer(int ac, char **av, t_table *table, t_philo **philos);
+int			ft_initializer(int ac, char **av, t_table *table, t_philo *philos);
 
 void		ft_thread_starter(t_philo *philos, t_table *table);
 void		ft_controller_start(t_send *send);
