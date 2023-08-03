@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 13:49:17 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/07/25 19:09:58 by mcoppola         ###   ########.fr       */
+/*   Updated: 2023/08/03 09:50:46 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,25 @@ void	ft_philo_init(t_philo **philo, int id, t_table *table)
 	pthread_mutex_init(&(*philo)->read_write, NULL);
 }
 
-void	ft_philos_init(t_table *table, t_philo **philos)
+void	ft_philos_init(t_table *table, t_philo ***philos)
 {
 	int		i;
 
-	*philos = malloc(sizeof(t_philo) * table->num_philos);
+	*philos = malloc(sizeof(t_philo *) * table->num_philos);
 	i = 0;
 	while (i < table->num_philos)
 	{
-		philos[i] = malloc(sizeof(t_philo));
-		ft_philo_init(&philos[i], i, table);
+		(*philos)[i] = malloc(sizeof(t_philo));
+		ft_philo_init(&((*philos)[i]), i, table);
 		i++;
 	}
 }
 
 void	ft_table_init(t_table **table, int ac, char **av)
 {
+	int	i;
+
+	i = 0;
 	*table = malloc(sizeof(t_table));
 	(*table)->num_philos = ft_atoi(av[1]);
 	(*table)->time_to_die = ft_atoi(av[2]);
@@ -55,6 +58,12 @@ void	ft_table_init(t_table **table, int ac, char **av)
 	(*table)->forks = malloc(sizeof(pthread_mutex_t) * (*table)->num_philos);
 	pthread_mutex_init(&(*table)->print, NULL);
 	pthread_mutex_init(&(*table)->philos_eaten_mutex, NULL);
+	pthread_mutex_init(&(*table)->controller_mutex, NULL);
+	while (i < (*table)->num_philos)
+	{
+		pthread_mutex_init(&(*table)->forks[i], NULL);
+		i++;
+	}
 }
 
 void	ft_initializer(int ac, char **av, t_table *table, t_philo **philos)
@@ -62,7 +71,7 @@ void	ft_initializer(int ac, char **av, t_table *table, t_philo **philos)
 	t_send	send;
 
 	ft_table_init(&table, ac, av);
-	ft_philos_init(table, philos);
+	ft_philos_init(table, &philos);
 	ft_thread_starter(*philos, table);
 	send.philos = *philos;
 	send.table = table;

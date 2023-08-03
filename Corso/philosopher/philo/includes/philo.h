@@ -48,6 +48,7 @@ typedef struct s_table
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	print;
 	pthread_mutex_t	philos_eaten_mutex;
+	pthread_mutex_t	controller_mutex;
 	long long		start;
 }					t_table;
 
