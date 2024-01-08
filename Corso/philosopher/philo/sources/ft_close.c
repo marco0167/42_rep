@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:07:14 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/07/25 17:10:41 by mcoppola         ###   ########.fr       */
+/*   Updated: 2024/01/08 16:51:40 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	ft_close(t_table *table, t_philo *philos)
 	pthread_mutex_destroy(&table->print);
 	pthread_mutex_destroy(&table->philos_eaten_mutex);
 	free(table->forks);
-	// free(&table->print);
 	free(philos);
 	free(table);
 }

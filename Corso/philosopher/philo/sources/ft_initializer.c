@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 13:49:17 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/08/03 18:10:53 by mcoppola         ###   ########.fr       */
+/*   Updated: 2024/01/08 16:57:02 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	ft_table_init(t_table *table, int ac, char **av)
 	table->start = ft_current_time() + (table->num_philos * 2 * 10);
 	table->forks = malloc(sizeof(pthread_mutex_t) * table->num_philos);
 	if (!table->forks)
-		return (1);
+		return (ft_close(table, NULL), 1);
 	pthread_mutex_init(&table->print, NULL);
 	pthread_mutex_init(&table->philos_eaten_mutex, NULL);
 	pthread_mutex_init(&table->controller_mutex, NULL);
