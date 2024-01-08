@@ -6,15 +6,15 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 15:52:39 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/10/12 14:53:54 by mcoppola         ###   ########.fr       */
+/*   Updated: 2024/01/08 16:40:25 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void destroy_mutexes(pthread_mutex_t *forks, t_philo *philos, int n_philo)
+void	destroy_mutexes(pthread_mutex_t *forks, t_philo *philos, int n_philo)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < n_philo)
@@ -26,17 +26,17 @@ void destroy_mutexes(pthread_mutex_t *forks, t_philo *philos, int n_philo)
 	free(philos);
 }
 
-int control_philos(t_philo *philos, t_config *config)
+int	control_philos(t_philo *philos, t_config *config)
 {
-	int i;
-	int r;
+	int	i;
+	int	r;
 
 	i = -1;
 	r = 1;
 	while (++i < config->n_philo)
 	{
 		if (config->stop)
-			break;
+			break ;
 		pthread_mutex_lock(&philos[i].rw_mutex);
 		if (now_ts() - philos[i].last_meal > config->t_die)
 		{
@@ -52,25 +52,25 @@ int control_philos(t_philo *philos, t_config *config)
 	return (config->stop);
 }
 
-void *controller(void *args)
+void	*controller(void *args)
 {
-	t_send *send;
+	t_send	*send;
 
 	send = (t_send *)args;
 	wait_start(send->config->start_time);
 	while (1)
 	{
 		if (control_philos(send->philos, send->config))
-			break;
+			break ;
 		usleep(1000);
 	}
 	return (0);
 }
 
-void *work(void *args)
+void	*work(void *args)
 {
-	t_philo *philo;
-	unsigned long st;
+	t_philo			*philo;
+	unsigned long	st;
 
 	philo = (t_philo *)args;
 	st = philo->config->start_time;
@@ -88,14 +88,14 @@ void *work(void *args)
 		message(philo->id, THINKING, philo->config, philo->config->stop);
 		philo_act(philo);
 		if (philo->full)
-			break;
+			break ;
 	}
 	return ((void *)0);
 }
 
-void init_philoers(t_config *config, t_philo *philos, pthread_mutex_t *forks)
+void	init_philoers(t_config *config, t_philo *philos, pthread_mutex_t *forks)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < config->n_philo)

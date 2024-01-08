@@ -6,13 +6,13 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 15:52:34 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/10/12 14:53:54 by mcoppola         ###   ########.fr       */
+/*   Updated: 2024/01/08 16:40:15 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int message(int id, char *act, t_config *config, int d)
+int	message(int id, char *act, t_config *config, int d)
 {
 	if (d)
 		return (0);
@@ -22,10 +22,10 @@ int message(int id, char *act, t_config *config, int d)
 	return (0);
 }
 
-pthread_t *start(t_config *config, t_philo *philos, int n_philo)
+pthread_t	*start(t_config *config, t_philo *philos, int n_philo)
 {
-	int i;
-	pthread_t *threads;
+	int			i;
+	pthread_t	*threads;
 
 	i = -1;
 	config->start_time = now_ts() + (config->n_philo * 2 * 10);
@@ -38,9 +38,9 @@ pthread_t *start(t_config *config, t_philo *philos, int n_philo)
 	return (threads);
 }
 
-int _close(t_config *c, t_philo *p, pthread_t *t, char *msg)
+int	_close(t_config *c, t_philo *p, pthread_t *t, char *msg)
 {
-	int i;
+	int	i;
 
 	if (t)
 		free(t);
@@ -52,17 +52,17 @@ int _close(t_config *c, t_philo *p, pthread_t *t, char *msg)
 	{
 		i = -1;
 		while (msg[++i])
-			continue;
+			continue ;
 		write(1, msg, i);
 	}
 	return (1);
 }
 
-void start_controller(t_config *config, t_philo *philos, pthread_t *threads)
+void	start_controller(t_config *config, t_philo *philos, pthread_t *threads)
 {
-	int i;
-	pthread_t t;
-	t_send send;
+	int			i;
+	pthread_t	t;
+	t_send		send;
 
 	i = -1;
 	send.config = config;
@@ -75,12 +75,12 @@ void start_controller(t_config *config, t_philo *philos, pthread_t *threads)
 		pthread_join(t, (void *)0);
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	t_config *config;
-	t_philo *philos;
-	pthread_mutex_t *forks;
-	pthread_t *threads;
+	t_config		*config;
+	t_philo			*philos;
+	pthread_mutex_t	*forks;
+	pthread_t		*threads;
 
 	if (argc < 5)
 		return (_close((void *)0, (void *)0, (void *)0, "not enough args\n"));
