@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 13:49:17 by mcoppola          #+#    #+#             */
-/*   Updated: 2024/01/08 16:57:02 by mcoppola         ###   ########.fr       */
+/*   Updated: 2024/01/09 19:20:56 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,6 @@ int	ft_initializer(int ac, char **av, t_table *table, t_philo *philos)
 	send.philos = philos;
 	send.table = table;
 	ft_controller_start(&send);
+	ft_close(table, philos);
 	return (0);
 }
