@@ -38,20 +38,45 @@
 
 typedef struct s_table
 {
+	int				ph_n;
+	int				t_die;
+	int				t_eat;
+	int				t_sleep;
+	int				meals_n;
+	pthread_mutex_t	*forks;
 }					t_table;
 
 typedef struct s_philo
 {
+	pthread_t		tread;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
+	long long		last_meal;
+	int				t_eaten;
+	int				dead;
+	int				id;
 }					t_philo;
 
 typedef struct s_send
 {
-	t_philo	*philos;
+	t_philo	**philos;
 	t_table	*table;
 }				t_send;
 
-int			is_valid_input(int ac, char **av);
-int			ft_validity_checker(int ac, char **av);
-int			ft_atoi(const char *str);
+int		is_valid_input(int ac, char **av);
+void	ft_validity_checker(int ac, char **av);
+int		ft_atoi(const char *str);
+
+/* init */
+
+void	init(t_send *send);
+
+/* routine */
+
+void	*routine(void *value);
+
+/*  close */
+
+void	ft_close(t_send *send);
 
 #endif

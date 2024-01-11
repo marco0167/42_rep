@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   close.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 09:14:07 by mcoppola          #+#    #+#             */
-/*   Updated: 2024/01/11 20:44:17 by mcoppola         ###   ########.fr       */
+/*   Created: 2024/01/11 17:47:25 by mcoppola          #+#    #+#             */
+/*   Updated: 2024/01/11 18:59:48 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	main(int ac, char **av)
+void	ft_close(t_send *send)
 {
-	t_table	*table;
-	t_send	*send;
+	int	i;
 
-	ft_validity_checker(ac, av);
-	table = malloc(sizeof(t_table));
-	send = malloc(sizeof(t_send));
-	table->ph_n = ft_atoi(av[1]);
-	table->t_die = ft_atoi(av[2]);
-	table->t_eat = ft_atoi(av[3]);
-	table->t_sleep = ft_atoi(av[4]);
-	if (ac == 6)
-		table->meals_n = ft_atoi(av[5]);
-	else
-		table->meals_n = -1;
-	send->table = table;
-	init(send);
-	ft_close(send);
+	i = 0;
+	while (i < send->table->ph_n)
+	{
+		pthread_mutex_destroy(&send->table->forks[i]);
+		free(send->philos[i]);
+		i++;
+	}
+	free(send->table->forks);
+	free(send->table);
+	free(send->philos);
+	free(send);
 }

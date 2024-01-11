@@ -1,8 +1,9 @@
 NAME = philo
 
 SRCS = ./sources/main.c ./sources/input_check.c ./sources/ft_atoi.c \
-		./sources/ft_initializer.c ./sources/ft_starters.c \
-		./sources/ft_close.c ./sources/ft_utils.c ./sources/ft_utils_2.c
+		./sources/close.c ./sources/init.c ./sources/routine.c \
+		
+
 
 OBJS = $(SRCS:.c=.o)
 
