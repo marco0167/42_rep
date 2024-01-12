@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 17:47:25 by mcoppola          #+#    #+#             */
-/*   Updated: 2024/01/11 18:59:48 by mcoppola         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:14:06 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,5 @@ void	ft_close(t_send *send)
 	free(send->table);
 	free(send->philos);
 	free(send);
+	exit(0);
 }

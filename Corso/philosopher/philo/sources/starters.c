@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   starters.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 20:02:33 by mcoppola          #+#    #+#             */
-/*   Updated: 2024/01/11 20:51:13 by mcoppola         ###   ########.fr       */
+/*   Created: 2024/01/11 23:03:20 by mcoppola          #+#    #+#             */
+/*   Updated: 2024/01/12 00:18:14 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	*routine(void *value)
+void	starter(t_send *send)
 {
-	t_philo	*philo;
+	int	i;
 
-	philo = (t_philo *)value;
-	printf("Creato philo ---%d -- %lld -- %d\n\n\n", philo->id, philo->last_meal, philo->t_eaten);
+	i = 0;
+	pthread_create(&send->table->c_tread, NULL, &controller_routine, send);
+	while (i < send->table->ph_n)
+	{
+		pthread_create(&send->philos[i]->p_tread, NULL, &philo_routine, send->philos[i]);
+		i++;
+	}
+	i = 0;
+	pthread_join(send->table->c_tread, NULL);
+	while (i < send->table->ph_n)
+	{
+		pthread_join(send->philos[i]->p_tread, NULL);
+		i++;
+	}
 }
