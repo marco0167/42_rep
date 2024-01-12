@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 20:02:33 by mcoppola          #+#    #+#             */
-/*   Updated: 2024/01/12 14:27:57 by mcoppola         ###   ########.fr       */
+/*   Updated: 2024/01/12 15:42:44 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,12 @@ void	*controller_routine(void *value)
 				pthread_mutex_lock(&send->table->mtx_end);
 				send->table->end = 1;
 				pthread_mutex_unlock(&send->table->mtx_end);
+				ft_close(send);
 			}
 			i = 0;
 			n_finish_eat = 0;
 		}
-		if (send->philos[i]->dead || (ft_current_time() - send->philos[i]->last_meal) > send->table->t_die)
+		if ((ft_current_time() - send->philos[i]->last_meal) > send->table->t_die)
 		{
 			pthread_mutex_lock(&send->table->mtx_end);
 			ft_printer(send->philos[i], "died", 1);
