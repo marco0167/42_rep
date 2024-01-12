@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 20:02:33 by mcoppola          #+#    #+#             */
-/*   Updated: 2024/01/12 15:42:44 by mcoppola         ###   ########.fr       */
+/*   Updated: 2024/01/12 16:00:33 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,25 @@ void	*philo_routine(void *value)
 	}
 }
 
+void	end_eat(int n_finish_eat, t_send *send)
+{
+	if (n_finish_eat == send->table->ph_n)
+	{
+		pthread_mutex_lock(&send->table->mtx_end);
+		send->table->end = 1;
+		pthread_mutex_unlock(&send->table->mtx_end);
+		ft_close(send);
+	}
+}
+
+void	end_died(t_send *send, int i)
+{
+	pthread_mutex_lock(&send->table->mtx_end);
+	ft_printer(send->philos[i], "died", 1);
+	pthread_mutex_unlock(&send->table->mtx_end);
+	ft_close(send);
+}
+
 void	*controller_routine(void *value)
 {
 	t_send	*send;
@@ -53,24 +72,15 @@ void	*controller_routine(void *value)
 	{
 		if (i == send->table->ph_n)
 		{
-			if (n_finish_eat == send->table->ph_n)
-			{
-				pthread_mutex_lock(&send->table->mtx_end);
-				send->table->end = 1;
-				pthread_mutex_unlock(&send->table->mtx_end);
-				ft_close(send);
-			}
+			end_eat(n_finish_eat, send);
 			i = 0;
 			n_finish_eat = 0;
 		}
-		if ((ft_current_time() - send->philos[i]->last_meal) > send->table->t_die)
-		{
-			pthread_mutex_lock(&send->table->mtx_end);
-			ft_printer(send->philos[i], "died", 1);
-			pthread_mutex_unlock(&send->table->mtx_end);
-			ft_close(send);
-		}
-		if (send->philos[i]->t_eaten >= send->table->meals_n && send->table->meals_n > 0)
+		if ((ft_current_time() - send->philos[i]->last_meal)
+			> send->table->t_die)
+			end_died(send, i);
+		if (send->philos[i]->t_eaten >= send->table->meals_n
+			&& send->table->meals_n > 0)
 			n_finish_eat++;
 		i++;
 	}
