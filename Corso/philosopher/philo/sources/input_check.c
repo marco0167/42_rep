@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 10:59:51 by mcoppola          #+#    #+#             */
-/*   Updated: 2024/01/11 17:46:39 by mcoppola         ###   ########.fr       */
+/*   Updated: 2024/01/13 16:49:37 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,22 @@ int	is_valid_input(int ac, char **av)
 	return (1);
 }
 
-void	ft_validity_checker(int ac, char **av)
+int	ft_validity_checker(int ac, char **av)
 {
 	if (ac < 5 || ac > 6)
 	{
 		printf(STR_USAGE);
-		exit(1);
+		return (1);
 	}
 	if (!is_valid_input(ac, av))
 	{
 		printf(STR_ERR_INPUT);
-		exit(1);
+		return (1);
 	}
 	if (ft_atoi(av[1]) < 1 || ft_atoi(av[1]) > MAX_PHILOS)
 	{
 		printf(STR_ERR_NUM_PHILOS);
-		exit(1);
+		return (1);
 	}
+	return (0);
 }

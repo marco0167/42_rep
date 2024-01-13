@@ -70,7 +70,7 @@ typedef struct s_send
 }				t_send;
 
 int			is_valid_input(int ac, char **av);
-void		ft_validity_checker(int ac, char **av);
+int			ft_validity_checker(int ac, char **av);
 int			ft_atoi(const char *str);
 
 /* starters */
@@ -94,6 +94,6 @@ void		ft_printer(t_philo *philo, char *str, int isDead);
 
 /*  close */
 
-void		ft_close(t_send *send);
+int			ft_close(t_send *send);
 
 #endif

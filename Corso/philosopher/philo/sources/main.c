@@ -6,7 +6,7 @@
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 09:14:07 by mcoppola          #+#    #+#             */
-/*   Updated: 2024/01/11 20:44:17 by mcoppola         ###   ########.fr       */
+/*   Updated: 2024/01/13 16:50:00 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int	main(int ac, char **av)
 	t_table	*table;
 	t_send	*send;
 
-	ft_validity_checker(ac, av);
+	if (ft_validity_checker(ac, av))
+		return (1);
 	table = malloc(sizeof(t_table));
 	send = malloc(sizeof(t_send));
 	table->ph_n = ft_atoi(av[1]);
@@ -30,5 +31,5 @@ int	main(int ac, char **av)
 		table->meals_n = -1;
 	send->table = table;
 	init(send);
-	ft_close(send);
+	return (ft_close(send));
 }
