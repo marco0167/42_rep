@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcoppola <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/17 18:36:21 by mcoppola          #+#    #+#             */
-/*   Updated: 2023/11/17 18:40:56 by mcoppola         ###   ########.fr       */
+/*   Created: 2023/09/23 15:37:02 by asacchin          #+#    #+#             */
+/*   Updated: 2024/02/20 11:52:52 by mcoppola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "../../includes/minishell.h"
 
-int main (int argc, char **argv) {
-	printf("Hello World\n");
-	return (0);
+char	*ft_strchr(const char *s, int c)
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	str = (char *)s;
+	while ((unsigned char)s[i] != (unsigned char)c)
+	{
+		if (s[i] == '\0')
+			return (NULL);
+		i++;
+		str++;
+	}
+	return (str);
 }
