@@ -1,10 +1,10 @@
-NAME = megaphone
+NAME = phonebook
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -g
 STDFLAG = -std=c++98
 
-SRC = megaphone.cpp \
+SRC = phonebook.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -14,11 +14,6 @@ $(NAME): $(OBJ)
 std: $(OBJ)
 		$(CC) $(CFLAGS) $(STDFLAG) $(OBJ) -o $(NAME)
 
-test: $(NAME)
-		./$(NAME) "shhhhh... I think the students are asleep..."
-		./$(NAME) Damnit " ! " "Sorry students, I thought this thing was off."
-		./$(NAME) "This is a test"
-		./$(NAME)
 clean:
 		@rm -f $(OBJ)
 

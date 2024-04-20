@@ -31,20 +31,25 @@ void	addContact(PhoneBook *phonebook)
 		phonebook->contacts[++phonebook->lst_index] = new_contact;
 }
 
-void	printCol(std::string str)
+std::string index_to_string(short i)
+{
+	std::string str;
+
+	str.append(1, (char)(i + 48));
+	return str;
+}
+
+void	printCol(std::string str, char extra_char)
 {
 	int	len = str.length();
-	int	index = 0;
 
-	for (int i = 0; i < 10; i++)
+	std::cout << std::setw(10);
+	if (len > 10)
 	{
-		if (len > 10 && i == 9)
-				std::cout << '.';
-		else if (len + i < 10)
-				std::cout << ' ';
-		else
-			std::cout << str[index++];
+		str.resize(10);
+		str[9] = '.';
 	}
+	std::cout << str << extra_char;
 }
 
 void	searchContact(PhoneBook *phonebook)
@@ -56,10 +61,15 @@ void	searchContact(PhoneBook *phonebook)
 
 	if ((id[0] - 48) < 8 && phonebook->contacts[(id[0] - 48)].first_name[0])
 	{
+		std::cout << "First Name:     ";
 		std::cout << phonebook->contacts[(id[0] - 48)].first_name << '\n';
+		std::cout << "Last Name:      ";
 		std::cout << phonebook->contacts[(id[0] - 48)].last_name << '\n';
+		std::cout << "Phone Number:   ";
 		std::cout << phonebook->contacts[(id[0] - 48)].phone_number << '\n';
+		std::cout << "Nickname:       ";
 		std::cout << phonebook->contacts[(id[0] - 48)].nickname << '\n';
+		std::cout << "Darkest Secret: ";
 		std::cout << phonebook->contacts[(id[0] - 48)].drk_secret << "\n\n";
 	}
 	else
@@ -68,14 +78,10 @@ void	searchContact(PhoneBook *phonebook)
 
 void	printHeader()
 {
-	printCol("    ID    ");
-	std::cout << '|';
-	printCol("FIRST NAME");
-	std::cout << '|';
-	printCol("LAST  NAME");
-	std::cout << '|';
-	printCol(" NICKNAME ");
-	std::cout << '\n';
+	printCol("    ID    ", '|');
+	printCol("FIRST NAME", '|');
+	printCol("LAST  NAME", '|');
+	printCol(" NICKNAME ", '\n');
 }
 
 void	printContact(PhoneBook *phonebook)
@@ -89,14 +95,10 @@ void	printContact(PhoneBook *phonebook)
 		continue ;
 		if (i == 0)
 			printHeader();
-		printCol(std::to_string(i));
-		std::cout << '|';
-		printCol(phonebook->contacts[i].first_name);
-		std::cout << '|';
-		printCol(phonebook->contacts[i].last_name);
-		std::cout << '|';
-		printCol(phonebook->contacts[i].nickname);
-		std::cout << '\n';
+		printCol(index_to_string(i), '|');
+		printCol(phonebook->contacts[i].first_name, '|');
+		printCol(phonebook->contacts[i].last_name, '|');
+		printCol(phonebook->contacts[i].nickname, '\n');
 		c++;
 	}
 	if (!c)
@@ -104,8 +106,6 @@ void	printContact(PhoneBook *phonebook)
 	else
 		searchContact(phonebook);
 }
-
-
 
 int main()
 {
