@@ -59,7 +59,7 @@ void	searchContact(PhoneBook *phonebook)
 	std::cout << "\nSelect one contact by typing the ID: ";
 	std::cin >> id;
 
-	if ((id[0] - 48) < 8 && phonebook->contacts[(id[0] - 48)].first_name[0])
+	if (id[0] >= 48 && (id[0] - 48) < 8 && phonebook->contacts[(id[0] - 48)].first_name[0])
 	{
 		std::cout << "First Name:     ";
 		std::cout << phonebook->contacts[(id[0] - 48)].first_name << '\n';

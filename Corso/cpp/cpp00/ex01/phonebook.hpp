@@ -1,3 +1,6 @@
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
+
 #include <iostream>
 #include <iomanip>
 
@@ -8,6 +11,15 @@ class Contact {
 	std::string	phone_number;
 	std::string	nickname;
 	std::string	drk_secret;
+
+	void	setFirstName(std::string str)
+	{
+		first_name = str;
+	}
+	std::string	getFirstName()
+	{
+		return first_name;
+	}
 };
 
 class PhoneBook {
@@ -15,3 +27,5 @@ class PhoneBook {
 	Contact	contacts[8];
 	short	lst_index;
 };
+
+#endif
