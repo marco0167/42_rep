@@ -4,6 +4,7 @@ void	addContact(PhoneBook *phonebook)
 {
 	Contact	new_contact;
 
+	system("clear");
 	getline(std::cin, new_contact.first_name);
 	std::cout << "\nInsert the new contact name: ";
 	getline(std::cin, new_contact.first_name);
@@ -56,6 +57,7 @@ void	searchContact(PhoneBook *phonebook)
 {
 	std::string id;
 
+	system("clear");
 	std::cout << "\nSelect one contact by typing the ID: ";
 	std::cin >> id;
 
