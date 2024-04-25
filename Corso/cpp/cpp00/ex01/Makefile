@@ -9,10 +9,7 @@ SRC = phonebook.cpp \
 OBJ = $(SRC:.cpp=.o)
 
 $(NAME): $(OBJ)
-		@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-
-std: $(OBJ)
-		$(CC) $(CFLAGS) $(STDFLAG) $(OBJ) -o $(NAME)
+		@$(CC) $(CFLAGS) $(STDFLAG) $(OBJ) -o $(NAME)
 
 clean:
 		@rm -f $(OBJ)
