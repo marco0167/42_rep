@@ -1,8 +1,4 @@
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
-
-#include <iostream>
-#include <iomanip>
+#include "../phonebook.h"
 
 class Contact {
 	public:
@@ -21,11 +17,3 @@ class Contact {
 		return first_name;
 	}
 };
-
-class PhoneBook {
-	public:
-	Contact	contacts[8];
-	short	lst_index;
-};
-
-#endif
