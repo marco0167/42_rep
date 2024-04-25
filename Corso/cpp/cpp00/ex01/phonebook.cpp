@@ -1,7 +1,16 @@
 #include "./phonebook.h"
 
+bool	isWhitespace(string s){
+	for(int index = 0; index < s.length(); index++){
+		if(!std::isspace(s[index]))
+			return false;
+	}
+	return true;
+}
+
 void	addContact(PhoneBook *phonebook)
 {
+	Contact new_contact;
 	string	first_name;
 	string	last_name;
 	string	phone_number;
@@ -20,13 +29,17 @@ void	addContact(PhoneBook *phonebook)
 	getline(cin, nickname);
 	cout << "Insert the new contact darkest secret: ";
 	getline(cin, drk_secret);
-	if (!first_name[0] || !last_name[0] || !phone_number[0] || !nickname[0]
-		|| !drk_secret[0])
+	if (isWhitespace(first_name) || isWhitespace(last_name) || isWhitespace(phone_number)
+		|| isWhitespace(nickname) || isWhitespace(drk_secret))
 		{
 			cout << "\nContact not saved (found empty field)\n\n";
 			return ;
 		}
-	Contact new_contact(first_name, last_name, phone_number, nickname, drk_secret);
+	new_contact.setFirstName(first_name);
+	new_contact.setLastName(last_name);
+	new_contact.setPhoneNumber(phone_number);
+	new_contact.setNickname(nickname);
+	new_contact.setDkrSecret(drk_secret);
 	if (phonebook->lst_index == 7)
 	{
 		phonebook->lst_index = 0;

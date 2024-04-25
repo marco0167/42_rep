@@ -4,15 +4,17 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -g
 STDFLAG = -std=c++98
 
-SRC = phonebook.cpp \
+SRC = ./class/Contact.cpp phonebook.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
 $(NAME): $(OBJ)
 		@$(CC) $(CFLAGS) $(STDFLAG) $(OBJ) -o $(NAME)
+		@echo "\n$(NAME) ready (ง'̀-'́)ง\n"
 
 clean:
 		@rm -f $(OBJ)
+		@echo "\nCLEANED ┌П┐(ಠ_ಠ)\n"
 
 fclean: clean
 		@rm -f $(NAME)
@@ -20,6 +22,5 @@ fclean: clean
 re: fclean all
 
 all: $(NAME)
-	@echo "\n$(NAME) ready (ง'̀-'́)ง\n"
 
 .PHONY: all clean fclean re

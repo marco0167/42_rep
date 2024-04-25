@@ -9,7 +9,7 @@
 # define cout std::cout
 
 
-#include "./class/Contat.hpp"
+#include "./class/Contact.hpp"
 #include "./class/PhoneBook.hpp"
 
 
