@@ -10,6 +10,7 @@ OBJ = $(SRC:.cpp=.o)
 
 $(NAME): $(OBJ)
 		@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+		@echo "\n$(NAME) ready (ง'̀-'́)ง\n"
 
 std: $(OBJ)
 		$(CC) $(CFLAGS) $(STDFLAG) $(OBJ) -o $(NAME)
@@ -21,6 +22,7 @@ test: $(NAME)
 		./$(NAME)
 clean:
 		@rm -f $(OBJ)
+		@echo "\nCLEANED ┌П┐(ಠ_ಠ)\n"
 
 fclean: clean
 		@rm -f $(NAME)
@@ -28,6 +30,5 @@ fclean: clean
 re: fclean all
 
 all: $(NAME)
-	@echo "\n$(NAME) ready (ง'̀-'́)ง\n"
 
 .PHONY: all clean fclean re
