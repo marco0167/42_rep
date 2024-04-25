@@ -4,7 +4,13 @@
 #include <iostream>
 #include <iomanip>
 
-#include "./class/Contat.class.hpp"
-#include "./class/Phonebook.class.hpp"
+# define string std::string
+# define cin std::cin
+# define cout std::cout
+
+
+#include "./class/Contat.hpp"
+#include "./class/PhoneBook.hpp"
+
 
 #endif
