@@ -8,5 +8,8 @@ int	main()
 	zombie2->announce();
 	randomChump("ettore");
 	zombieistance.announce();
+	
 	delete zombie2;
+
+	return 0;
 }

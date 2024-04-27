@@ -17,4 +17,5 @@ int	main(int argc, char **argv)
 		horde->announce();
 
 	delete [] horde;
+	return 0;
 }
