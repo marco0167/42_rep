@@ -18,13 +18,16 @@ public:
 	ClapTrap&	operator=(const ClapTrap& obj);
 	~ClapTrap();
 
-	void attack(const string &target);
-	void takeDamage(unsigned int amount);
-	void beRepaired(unsigned int amount);
-
-	void setHitPoints(unsigned int amount);
-	void setEnergyPoints(unsigned int amount);
-	void setAttackDamage(unsigned int amount);
+	void			attack(const string &target);
+	void			takeDamage(unsigned int amount);
+	void			beRepaired(unsigned int amount);
+		
+	void			setHitPoints(unsigned int amount);
+	void			setEnergyPoints(unsigned int amount);
+	void			setAttackDamage(unsigned int amount);
+		
+	string			getName();
+	unsigned int	getAttackDamage();
 
 };
 

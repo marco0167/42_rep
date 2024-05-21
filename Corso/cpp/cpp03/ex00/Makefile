@@ -1,11 +1,11 @@
-NAME = fixed
+NAME = claptrap
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -g
 STDFLAG = -std=c++98
 
 SRC = ./src/main.cpp \
-		./class/Fixed.cpp \
+		./class/ClapTrap.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 

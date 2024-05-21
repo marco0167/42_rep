@@ -1,7 +1,7 @@
 #include "./ClapTrap.hpp"
 
 ClapTrap::ClapTrap(string name) : _name(name) {
-	std::cout << "Constructor for Claptrap " << this->_name << "has been called!" << std::endl;
+	std::cout << "Constructor for ClapTrap " << getName() << " has been called!" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap &obj) {
@@ -20,7 +20,7 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap &obj) {
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << "Destructor for Claptrap " << this->_name << "has been called!" << std::endl;
+	std::cout << "Destructor for Claptrap " << getName() << " has been called!" << std::endl;
 }
 
 void	ClapTrap::attack(const string &target) {
@@ -28,17 +28,17 @@ void	ClapTrap::attack(const string &target) {
 		setEnergyPoints(this->_energy_points - 1);
 		std::cout
 			<< "ClapTrap "
-			<< this->_name
+			<< getName()
 			<< " attacks "
 			<< target
 			<< ", causing "
-			<< this->_attack_damage
+			<< getAttackDamage()
 			<< " points of damage!"
 			<< std::endl;
 	} else
 		std::cout
 			<< "ClapTrap "
-			<< this->_name
+			<< getName()
 			<< " has not enought EnergyPoint to attack "
 			<< target
 			<< std::endl;
@@ -49,17 +49,23 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 		setEnergyPoints(this->_energy_points - 1);
 		std::cout
 			<< "ClapTrap "
-			<< this->_name
-			<< " has increase his HitPoints from "
-			<< this->_hit_points
-			<< " to "
-			<< this->_hit_points + amount
+			<< getName()
+			<< " has increase his HitPoints by "
+			<< amount
+			<< "!"
 			<< std::endl;
 			setHitPoints(this->_hit_points + amount);
+		std::cout
+			<< "ClapTrap "
+			<< getName()
+			<< " now has "
+			<< this->_hit_points
+			<< " HitPoints"
+			<< std::endl;
 	} else
 		std::cout
 			<< "ClapTrap "
-			<< this->_name
+			<< getName()
 			<< " has not enought energy point to increase his HitPoints"
 			<< std::endl;
 }
@@ -67,21 +73,23 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 void	ClapTrap::takeDamage(unsigned int amount) {
 	std::cout
 		<< "ClapTrap "
-		<< this->_name
+		<< getName()
 		<< " has been attaked and lose "
 		<< amount
-		<< " HitPoints "
+		<< " HitPoints!"
 		<< std::endl;
 	setHitPoints(this->_hit_points - amount);
 	if (this->_hit_points <= 0)
 		std::cout
 			<< "ClapTrap "
-			<< this->_name
+			<< getName()
 			<< " is DEAD"
 			<< std::endl;
 	else
 		std::cout
-			<< " Now it has "
+			<< "ClapTrap "
+			<< getName()
+			<< " now has "
 			<< this->_hit_points
 			<< " HitPoints"
 			<< std::endl;
@@ -92,9 +100,17 @@ void	ClapTrap::setHitPoints(unsigned int amount) {
 }
 
 void	ClapTrap::setEnergyPoints(unsigned int amount) {
-	this->_hit_points = amount;
+	this->_energy_points = amount;
 }
 
 void	ClapTrap::setAttackDamage(unsigned int amount) {
-	this->_hit_points = amount;
+	this->_attack_damage = amount;
+}
+
+string	ClapTrap::getName() {
+	return this->_name;
+}
+
+unsigned int	ClapTrap::getAttackDamage() {
+	return this->_attack_damage;
 }
