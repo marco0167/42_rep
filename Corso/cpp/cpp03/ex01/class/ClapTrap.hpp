@@ -13,13 +13,12 @@ class ClapTrap {
 	unsigned int	_attack_damage = 0;
 
 public:
-	ClapTrap();
 	ClapTrap(string name);
 	ClapTrap(ClapTrap &obj);
 	ClapTrap&	operator=(const ClapTrap& obj);
 	~ClapTrap();
 
-	void			attack(const string &target);c
+	void			attack(const string &target);
 	void			takeDamage(unsigned int amount);
 	void			beRepaired(unsigned int amount);
 		
