@@ -3,7 +3,7 @@
 
 int	main()
 {
-	ScavTrap user1();
+	ScavTrap user1;
 	ScavTrap user2("Matteo");
 
 	user1.setEnergyPoints(1);
