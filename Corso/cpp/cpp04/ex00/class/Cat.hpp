@@ -1,5 +1,5 @@
-#ifndef Cat_HPP
-#define Cat_HPP
+#ifndef CAT_HPP
+# define CAT_HPP
 
 # include "Animal.hpp"
 

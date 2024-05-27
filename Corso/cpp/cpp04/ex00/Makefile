@@ -1,7 +1,7 @@
 NAME = animal
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -g -Wshadow -Wno-shadow
+CFLAGS = -Wall -Wextra -Werror -g
 STDFLAG = -std=c++98
 
 SRC = ./src/main.cpp \
