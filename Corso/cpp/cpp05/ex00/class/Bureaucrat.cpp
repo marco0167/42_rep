@@ -1,11 +1,11 @@
 #include "./Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : name("Default"), grade(150) {}
+Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) {}
 
-Bureaucrat::Bureaucrat(std::string name, short grade) : name(name)
+Bureaucrat::Bureaucrat(std::string name, short grade) : _name(name)
 {
-	if (grade >= 1 && grade <= 150)
-		this->grade = grade;
+	if (_grade >= 1 && _grade <= 150)
+		this->_grade = grade;
 	else if (grade < 1)
 		throw this->gradeTooHigh;
 	else if (grade > 150)
@@ -14,7 +14,7 @@ Bureaucrat::Bureaucrat(std::string name, short grade) : name(name)
 
 Bureaucrat::~Bureaucrat() {}
 
-Bureaucrat::Bureaucrat(const Bureaucrat &rhs) : name(rhs.name)
+Bureaucrat::Bureaucrat(const Bureaucrat &rhs) : _name(rhs._name)
 {
 	*this = rhs;
 }
@@ -23,7 +23,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs)
 {
 	if (this != &rhs)
 	{
-		this->grade = rhs.grade;
+		this->_grade = rhs._grade;
 	}
 	return *this;
 }
@@ -42,26 +42,26 @@ std::ostream &operator<<(std::ostream &o, Bureaucrat &rhs)
 
 std::string Bureaucrat::getName()
 {
-	return this->name;
+	return this->_name;
 }
 
 short Bureaucrat::getGrade()
 {
-	return this->grade;
+	return this->_grade;
 }
 
 void Bureaucrat::incrementGrade()
 {
-	if (grade > 1)
-		this->grade = ++grade;
+	if (_grade > 1)
+		this->_grade = ++_grade;
 	else
 		throw this->gradeTooHigh;
 }
 
 void Bureaucrat::decrementGrade()
 {
-	if (grade < 150)
-		this->grade = --grade;
+	if (_grade < 150)
+		this->_grade = --_grade;
 	else
 		throw this->gradeTooLow;
 }
