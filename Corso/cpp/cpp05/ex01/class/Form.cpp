@@ -1,8 +1,8 @@
 #include "./Form.hpp"
 
-Form::Form() : name("Default"), isSigned(false), gradeToExecute(150), gradeToSign(150) {}
+Form::Form() : _name("Default"), _isSigned(false), _gradeToExecute(150), _gradeToSign(150) {}
 
-Form::Form(std::string name, short gradeToSign, short gradeToExecute) : name(name), isSigned(false), gradeToExecute(gradeToExecute), gradeToSign(gradeToSign)
+Form::Form(std::string name, short gradeToSign, short gradeToExecute) : _name(name), _isSigned(false), _gradeToExecute(gradeToExecute), _gradeToSign(gradeToSign)
 {
 	if (gradeToExecute < 1 || gradeToSign < 1)
 		throw this->gradeTooHigh;
@@ -12,7 +12,7 @@ Form::Form(std::string name, short gradeToSign, short gradeToExecute) : name(nam
 
 Form::~Form() {}
 
-Form::Form(const Form &rhs) : name(rhs.name), gradeToExecute(rhs.gradeToExecute), gradeToSign(rhs.gradeToSign)
+Form::Form(const Form &rhs) : _name(rhs._name), _gradeToExecute(rhs._gradeToExecute), _gradeToSign(rhs._gradeToSign)
 {
 	*this = rhs;
 }
@@ -21,7 +21,7 @@ Form &Form::operator=(const Form &rhs)
 {
 	if (this != &rhs)
 	{
-		this->isSigned = rhs.isSigned;
+		this->_isSigned = rhs._isSigned;
 	}
 	return *this;
 }
@@ -48,23 +48,23 @@ std::ostream &operator<<(std::ostream &o, Form &rhs)
 void Form::beSigned(Bureaucrat& rhs)
 {
 	if (rhs.getGrade() <= this->getGradeToSign())
-		this->isSigned = true;
+		this->_isSigned = true;
 	rhs.signForm(*this);
 }
 
 std::string	Form::getName() {
-	return this->name;
+	return this->_name;
 }
 
 bool	Form::getSigned() {
-	return this->isSigned;
+	return this->_isSigned;
 }
 
 short	Form::getGradeToSign() {
-	return this->gradeToSign;
+	return this->_gradeToSign;
 }
 
 short	Form::getGradeToExecute() {
-	return this->gradeToExecute;
+	return this->_gradeToExecute;
 }
 

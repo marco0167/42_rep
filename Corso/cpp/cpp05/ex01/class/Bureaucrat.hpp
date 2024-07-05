@@ -6,8 +6,8 @@
 class Form;
 
 class Bureaucrat {
-	const	std::string name;
-	short	grade;
+	const	std::string	_name;
+	short				_grade;
 
 public:
 	Bureaucrat();

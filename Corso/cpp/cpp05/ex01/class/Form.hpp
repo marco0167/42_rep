@@ -6,10 +6,10 @@
 class Bureaucrat;
 
 class Form {
-	const std::string	name;
-	bool				isSigned;
-	const short			gradeToSign;
-	const short			gradeToExecute;
+	const std::string	_name;
+	bool				_isSigned;
+	const short			_gradeToSign;
+	const short			_gradeToExecute;
 
 public:
 	Form();
