@@ -3,15 +3,6 @@
 
 # include <iostream>
 
-class ScalarConverter {
-
-public:
-	ScalarConverter();
-	~ScalarConverter();
-	ScalarConverter(const ScalarConverter &rhs);
-	ScalarConverter &operator=(const ScalarConverter &rhs);
-
-	void	convert(std::string value);
-};
+void	convert(std::string value);
 
 #endif
