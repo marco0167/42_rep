@@ -1,7 +1,6 @@
 #include "./Cat.hpp"
 
-Cat::Cat() : Animal() {
-	_type = "Cat";
+Cat::Cat() : Animal("Cat") {
 	std::cout << "Cat constructor called" << std::endl;
 }
 

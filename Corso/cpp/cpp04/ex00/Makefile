@@ -8,6 +8,8 @@ SRC = ./src/main.cpp \
 		./class/Animal.cpp \
 		./class/Cat.cpp \
 		./class/Dog.cpp \
+		./class/WrongAnimal.cpp \
+		./class/WrongCat.cpp \
 
 
 OBJ = $(SRC:.cpp=.o)

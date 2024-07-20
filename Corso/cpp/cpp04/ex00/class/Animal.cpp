@@ -4,6 +4,10 @@ Animal::Animal() : _type("Animal") {
 	std::cout << "Animal constructor called" << std::endl;
 }
 
+Animal::Animal(std::string type) : _type(type) {
+	std::cout << "Animal constructor called" << std::endl;
+}
+
 Animal::~Animal() {
 	std::cout << "Animal destructor called" << std::endl;
 }
