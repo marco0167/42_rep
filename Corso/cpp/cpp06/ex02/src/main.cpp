@@ -30,4 +30,11 @@ int main() {
 	identify(f);
 	identify(*f);
 	std::cout << std::endl;
+
+	delete a;
+	delete b;
+	delete c;
+	delete d;
+	delete e;
+	delete f;
 }
