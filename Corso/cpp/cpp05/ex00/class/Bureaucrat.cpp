@@ -4,11 +4,11 @@ Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) {}
 
 Bureaucrat::Bureaucrat(std::string name, short grade) : _name(name)
 {
-	if (_grade >= 1 && _grade <= 150)
+	if (grade >= 1 && grade <= 150)
 		this->_grade = grade;
 	else if (grade < 1)
 		throw this->gradeTooHigh;
-	else if (grade > 150)
+	else
 		throw this->gradeTooLow;
 }
 
@@ -30,13 +30,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs)
 
 std::ostream &operator<<(std::ostream &o, Bureaucrat &rhs)
 {
-	std::string str;
-
-	str.append(rhs.getName());
-	str.append(", bureaucrat grade ");
-	str.append(std::to_string(rhs.getGrade()));
-	str.append("\n");
-	o << str;
+	o << rhs.getName() << ", bureaucrat grade " << rhs.getGrade() << std::endl;
 	return o;
 }
 
