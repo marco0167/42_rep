@@ -28,20 +28,17 @@ Form &Form::operator=(const Form &rhs)
 
 std::ostream &operator<<(std::ostream &o, Form &rhs)
 {
-	std::string str;
+	o << "Form \""
+	<< rhs.getName() << "\""
+	<< ". A bureaucrat is signed to form? \""
+	<< (rhs.getSigned() ? "true" : "false")
+	<< "\"."
+	<< " Grade to sign in: "
+	<< rhs.getGradeToSign()
+	<< " grade to execute: "
+	<< rhs.getGradeToExecute()
+	<< std::endl;
 
-	str.append(rhs.getName());
-	str.append(", burocrat is signed to form: ");
-	if (rhs.getSigned())
-		str.append("true");
-	else
-		str.append("false");
-	str.append(", form grade to sign in: ");
-	str.append(std::to_string(rhs.getGradeToSign()));
-	str.append(", form grade to execute: ");
-	str.append(std::to_string(rhs.getGradeToExecute()));
-	str.append("\n");
-	o << str;
 	return o;
 }
 

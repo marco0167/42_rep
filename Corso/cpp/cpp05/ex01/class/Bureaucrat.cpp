@@ -68,9 +68,9 @@ void Bureaucrat::decrementGrade()
 
 void	Bureaucrat::signForm(Form& form) {
 	if (form.getSigned())
-		std::cout << this->getName() << " signed " << form.getName() << std::endl;
+		std::cout << "Bureaucrat \"" << this->getName() << "\" signed to form \"" << form.getName() << "\"." << std::endl;
 	else {
-		std::cout << this->getName() << " couldn’t sign " << form.getName() << " because ";
+		std::cout << "Bureaucrat \""  << this->getName() << "\" couldn’t sign to form \"" << form.getName() << "\"" << " because ";
 		throw gradeTooLow;
 	}
 }
