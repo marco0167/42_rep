@@ -1,10 +1,9 @@
-FROM debian:buster
+FROM debian:bullseye
 
-RUN apt-get update && apt-get install -y mariadb-server
+RUN apt-get update && apt-get upgrade -y && apt-get install -y mariadb-server
 
-COPY conf/ /docker-entrypoint-initdb.d/
-RUN chmod +x /docker-entrypoint-initdb.d/docker-entrypoint.sh
+COPY conf/mdb-conf.sh /mdb-conf.sh
 
-EXPOSE 3306
+RUN chmod +x /mdb-conf.sh
 
-CMD ["/docker-entrypoint-initdb.d/docker-entrypoint.sh"]
+ENTRYPOINT ["./mdb-conf.sh"]

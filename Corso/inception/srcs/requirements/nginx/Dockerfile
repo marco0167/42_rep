@@ -1,19 +1,16 @@
-FROM debian:buster
+FROM debian:bullseye
 
-RUN apt-get update && apt-get install -y nginx openssl gettext-base
+RUN apt-get update && apt-get upgrade -y && apt-get install -y nginx openssl
 
-# Generate self-signed certificate
-RUN mkdir -p /etc/nginx/ssl && \
-    openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
-    -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt \
-    -subj "/C=FR/ST=IDF/L=Paris/O=42/CN=login.42.fr"
+RUN mkdir -p /etc/nginx/ssl
 
-# Copy custom Nginx configuration
-COPY conf/nginx.conf /etc/nginx/nginx.conf.template
+RUN openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout \
+	/etc/nginx/ssl/inception.key -subj "/C=IT/ST=RM/L=RM/O=42/OU=42/CN=mcoppola.42.fr/UID=mcoppola"
 
-# Remove default nginx index page
-RUN rm -rf /var/www/html/*
+COPY conf/nginx.conf /etc/nginx/nginx.conf
 
-EXPOSE 443
+RUN mkdir -p /var/www/wordpress
 
-CMD ["/bin/sh", "-c", "envsubst '$$DOMAIN_NAME' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"]
+RUN chown -R www-data:www-data /var/www/wordpress
+
+CMD ["nginx", "-g", "daemon off;"]

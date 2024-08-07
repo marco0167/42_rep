@@ -1,50 +1,55 @@
-version: '3'
-services:
-  wordpress:
-    build: ./requirements/wordpress
-    environment:
-        - WORDPRESS_DB_HOST=${WORDPRESS_DB_HOST}
-        - WORDPRESS_DB_USER=${WORDPRESS_DB_USER}
-        - WORDPRESS_DB_PASSWORD=${WORDPRESS_DB_PASSWORD}
-        - WORDPRESS_DB_NAME=${WORDPRESS_DB_NAME}
-        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-        - MYSQL_USER=${MYSQL_USER}
-        - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-    volumes:
-      - wordpress_data:/var/www/html
-    ports:
-      - "9000:80"
-    networks:
-      - inception
-    depends_on:
-      - mariadb
-  mariadb:
-    build: ./requirements/mariadb
-    environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-    networks:
-      - inception
-    volumes:
-      - mariadb_data:/var/lib/mysql
-  nginx:
-    build: ./requirements/nginx
-    ports:
-      - "443:443"
-    environment:
-      - DOMAIN_NAME=mcoppola.42.fr
-    volumes:
-      - wordpress_data:/var/www/html
-    networks:
-      - inception
-    depends_on:
-      - wordpress
+# version: '3'
 
-volumes:
-  wordpress_data:
-  mariadb_data:
+# volumes:
+#   wordpress_data:
+#   mariadb_data:
 
-networks:
-  inception:
-    driver: bridge
+# networks:
+#   inception:
+#     driver: bridge
+
+
+# services:
+#   wordpress:
+#     build: ./requirements/wordpress
+#     environment:
+#         - WORDPRESS_DB_HOST=${WORDPRESS_DB_HOST}
+#         - WORDPRESS_DB_USER=${WORDPRESS_DB_USER}
+#         - WORDPRESS_DB_PASSWORD=${WORDPRESS_DB_PASSWORD}
+#         - WORDPRESS_DB_NAME=${WORDPRESS_DB_NAME}
+#         - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+#         - MYSQL_USER=${MYSQL_USER}
+#         - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+#     volumes:
+#       - wordpress_data:/var/www/html
+#     ports:
+#       - "9000:80"
+#     networks:
+#       - inception
+#     depends_on:
+#       - mariadb
+
+#   mariadb:
+#     build: ./requirements/mariadb
+#     environment:
+#       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+#       - MYSQL_USER=${MYSQL_USER}
+#       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+#     networks:
+#       - inception
+#     volumes:
+#       - mariadb_data:/var/lib/mysql
+
+#   nginx:
+#     build: ./requirements/nginx
+#     ports:
+#       - "443:443"
+#     environment:
+#       - DOMAIN_NAME=mcoppola.42.fr
+#     volumes:
+#       - wordpress_data:/var/www/html
+#     networks:
+#       - inception
+#     depends_on:
+#       - wordpress
+
