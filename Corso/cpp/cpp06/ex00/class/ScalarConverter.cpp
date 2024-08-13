@@ -1,5 +1,18 @@
 #include "./ScalarConverter.hpp"
 
+ScalarConverter::ScalarConverter() {}
+
+ScalarConverter::~ScalarConverter() {}
+
+ScalarConverter::ScalarConverter(const ScalarConverter &rhs) {
+	*this = rhs;
+}
+
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &rhs) {
+	return *this;
+}
+
+
 std::string	decimalPart(double val) {
 	std::string	decimal = "";
 
@@ -11,7 +24,7 @@ std::string	decimalPart(double val) {
 	return decimal;
 }
 
-void		convert(std::string value)
+void		ScalarConverter::convert(std::string value)
 {
 	try {
 		int		intVal = std::stoi(value);
