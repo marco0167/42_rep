@@ -10,7 +10,17 @@ struct Data
 	int i;
 };
 
-uintptr_t	serialize(Data *ptr);
-Data		*deserialize(uintptr_t raw);
+class Serializer
+{
+	Serializer();
+
+public:
+	~Serializer();
+	Serializer(const Serializer &rhs);
+	Serializer &operator=(const Serializer &rhs);
+
+	static uintptr_t serialize(Data *ptr);
+	static Data *deserialize(uintptr_t raw);
+};
 
 #endif
