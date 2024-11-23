@@ -1,24 +1,19 @@
-# FROM debian:buster
+# Description: Wordpress Dockerfile
 
-# RUN apt-get update && apt-get install -y php-fpm php-mysql wget
+# pull the base image
+FROM debian:bullseye
 
-# # Create /run/php/ directory
-# RUN mkdir -p /run/php/
+# update and upgrade the system
+RUN apt-get update && apt-get upgrade -y
 
-# # Change PHP-FPM config to listen on port 9000
-# RUN sed -i 's/listen = \/run\/php\/php7.3-fpm.sock/listen = 9000/' /etc/php/7.3/fpm/pool.d/www.conf
+# install the required packages
+RUN apt-get install -y curl php php7.4-fpm php-mysql mariadb-client netcat
 
-# RUN mkdir -p /var/www/html
+# copy the wordpress configuration script to the root directory in the container
+COPY ./configurations/entrypoint.sh /
 
-# # Download and set up WordPress
-# RUN wget https://wordpress.org/latest.tar.gz && \
-#     tar -xzvf latest.tar.gz && \
-#     rm latest.tar.gz && \
-#     mv wordpress/* /var/www/html && \
-#     rmdir wordpress
+# change the permission of the script to make it executable
+RUN  chmod +x entrypoint.sh
 
-# COPY conf/wp-config.php /var/www/html/wordpress/wp-config.php
-
-# EXPOSE 9000
-
-# CMD ["php-fpm7.3", "-F"]
+# define the entrypoint command to run when the container starts
+ENTRYPOINT ["./entrypoint.sh"]
