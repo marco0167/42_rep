@@ -17,7 +17,7 @@ volumes:
 services:
 #mariadb
   mariadb:
-    image: mariadb:user
+    image: mariadb:marco
     container_name: mariadb
     build: ./requirements/mariadb
     volumes:
@@ -29,7 +29,7 @@ services:
     restart: always
 #nginx
   nginx:
-    image: nginx:user
+    image: nginx:marco
     container_name: nginx
     build: ./requirements/nginx
     ports:
@@ -45,7 +45,7 @@ services:
     restart: always
 #wordpress
   wordpress:
-    image: wordpress:user
+    image: wordpress:marco
     container_name: wordpress
     build: ./requirements/wordpress
     depends_on:
