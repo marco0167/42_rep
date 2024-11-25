@@ -1,5 +1,15 @@
 #include "../class/Iter.hpp"
 
+void print(int &i)
+{
+	std::cout << i << std::endl;
+}
+
+void print(std::string &i)
+{
+	std::cout << i << std::endl;
+}
+
 int main()
 {
 	int arr[3] = {1, 14, 4};

@@ -12,10 +12,4 @@ void iter(T *array, unsigned int length, void(func)(T &))
 	}
 }
 
-template <typename T>
-void print(T &i)
-{
-	std::cout << i << std::endl;
-}
-
 #endif
