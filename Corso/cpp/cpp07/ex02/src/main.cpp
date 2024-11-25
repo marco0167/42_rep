@@ -12,13 +12,7 @@ int main(void)
     Array<int> intArray(SIZE);
     Array<int> intArray2(SIZE - 5);
 
-    // //! DA CAPIRE QUESTA COSA
-    // int *a = new int();
-    // std::cout << a << std::endl;
-    // //! -------------------------
-
-
-     for ( unsigned int i = 0; i < intArray.size(); i++ )
+    for ( unsigned int i = 0; i < intArray.size(); i++ )
         intArray[i] = i * 2;
 
     std::cout << "Int Array 1: " << intArray << std::endl;
