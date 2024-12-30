@@ -31,7 +31,7 @@ void Span::addNumber(int n)
 
 unsigned int Span::longestSpan()
 {
-	int max = 0;
+	unsigned int max = 0;
 	unsigned int tmp;
 
 	if (this->_container.size() > 1)
@@ -50,7 +50,7 @@ unsigned int Span::longestSpan()
 
 unsigned int Span::shortestSpan()
 {
-	int min = 0;
+	unsigned int min = 0;
 	unsigned int tmp;
 
 	if (this->_container.size() > 1)
@@ -72,7 +72,7 @@ void Span::addRandomNumbers(unsigned int qt)
 {
 	try
 	{
-		srand(static_cast<unsigned>(time(nullptr)));
+		srand(static_cast<unsigned>(time(NULL)));
 
 		for (unsigned int i = 0; i < qt; i++)
 		{

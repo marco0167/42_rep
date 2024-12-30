@@ -1,8 +1,7 @@
 NAME = span
 
-CC = c++
-CFLAGS = -Wall -Wextra -Werror -g
-STDFLAG = -std=c++98
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98
 
 PARAMETER ?= ""
 
@@ -13,7 +12,7 @@ SRC = ./src/main.cpp \
 OBJ = $(SRC:.cpp=.o)
 
 $(NAME): $(OBJ)
-		@$(CC) $(CFLAGS) $(STDFLAG) $(OBJ) -o $(NAME)
+		@$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 		@echo "$(NAME) ready (ง'̀-'́)ง"
 
 clean:

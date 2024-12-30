@@ -1,5 +1,5 @@
-#include <vector>
 #include <iostream>
+#include <vector>
 
 #include "../class/Easyfind.hpp"
 
@@ -14,5 +14,5 @@ int main()
 		std::cout << "Value found!" << std::endl;
 	else
 		std::cout << "Value not found!" << std::endl;
-		
+
 }
