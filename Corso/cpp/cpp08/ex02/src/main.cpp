@@ -20,8 +20,6 @@ int main () {
 
 	std::cout <<  "stack 1 size:" << mstack.size() << std::endl;
 
-	mstack.swap(mstack2);
-
 	std::cout << "stack 1 size:" <<  mstack.size() << std::endl;
 
 	mstack.push(3);
